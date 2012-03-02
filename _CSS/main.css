@@ -9,7 +9,6 @@ h2 { font-size:26px; }
 h3 { font-size:24px; }
 
 /*  !Header  */
-
 header { background: #184e78; height: 124px; }
 .top_gradient { height:124px; background:url(../_images/CSS/header_transBG.png) repeat-x; padding-top:15px;
 	-pie-background: linear-gradient(#133d5d, #184e78);  /* IE6+ */
