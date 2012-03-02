@@ -1,0 +1,446 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	
+	<title>Ambulatory Practice</title>
+	
+	<!-- CSS Styles -->
+	<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic|Lobster+Two:700,400,400italic,700italic' rel='stylesheet' type='text/css'/>
+	<link href="_CSS/reset.css" rel="stylesheet" type="text/css"/>
+	<link href="_CSS/main.css" rel="stylesheet" type="text/css" media="screen"/>
+	
+	<!-- Javascripts -->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script type="text/javascript" src="_Includes/jquery.hoverIntent.minified.js"></script>
+	<script type="text/javascript" src="_Includes/jquery.nivo.slider.pack.js"></script>
+	<script type="text/javascript" src="_Includes/slides.min.jquery.js"></script>
+	<script type="text/javascript" src="_Includes/javascripts.js"></script>
+	<script>
+		$(document).ready(function() {
+			var config = {
+				 sensitivity: 7,
+				 interval: 10,
+				 over: hoverOver,
+				 timeout: 200,
+				 out: hoverOut
+			};
+			
+			$("ul#topnav li").hoverIntent(config);
+			
+			$('#slider').nivoSlider({
+				effect: 'random', // Specify sets like: 'fold,fade,sliceDown'
+				slices: 20, // For slice animations
+				boxCols: 12, // For box animations
+				boxRows: 5, // For box animations
+				animSpeed: 500, // Slide transition speed
+				pauseTime: 4000, // How long each slide will show
+				startSlide: 0, // Set starting Slide (0 index)
+				directionNav: true, // Next & Prev navigation
+				directionNavHide: false, // Only show on hover
+				controlNav: true, // 1,2,3... navigation
+				controlNavThumbs: false, // Use thumbnails for Control Nav
+				controlNavThumbsFromRel: false, // Use image rel for thumbs
+				keyboardNav: true, // Use left & right arrows
+				pauseOnHover: false, // Stop animation while hovering
+				manualAdvance: false, // Force manual transitions
+				captionOpacity: 1, // Universal caption opacity
+				prevText: '', // Prev directionNav text
+				nextText: '', // Next directionNav text
+				randomStart: false // Start on a random slide
+			});
+			$("#new_postings_slides, #upcoming_events_slides").slides({
+				preload: true,
+				container: 'box_container',
+				play: 10000,
+				next: 'box_next',
+				prev: 'box_prev',
+				generatePagination: false				
+			});
+			$("#new_postings_slides").bind({
+				mouseenter:function(){
+					$(".arrows1").show();
+				},
+				mouseleave:function(){
+					$(".arrows1").hide();
+				}
+			});
+			$("#upcoming_events_slides").bind({
+				mouseenter:function(){
+					$(".arrows2").show();
+				},
+				mouseleave:function(){
+					$(".arrows2").hide();
+				}
+			});
+		});
+	
+	</script>
+	
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+		<header>
+			<div class="top_gradient">
+				<div class="user_bar">
+					<ul class="left">
+						<li class="welcome">Hello, Admin! <a href="#">logout</a></li>
+					</ul>
+				</div>
+				<div class="kp_logo"></div>
+				<div class="ambprac"></div>
+				<div class="ap_logo"></div>
+			</div>
+		</header>
+		
+		<div class="search_bar">
+			<div class="search_container">
+				<div id="date">November 8, 2011</div>
+				<div class="search_block">
+					<form class="search_field" method="POST" action="" name="search_field">
+					<input name="search" type="text" placeholder="Search" />
+					</form>
+				</div>
+			</div>
+		</div>
+		
+		<nav class="nav_bar">
+			<ul id="topnav">
+				<li class="first"><a class="home" href="#">Home</a></li>
+				<li class="dropdown">
+					<a class="acpc" href="#">ACPC</a>
+					<div class="sub">
+						<ul>
+							<li><a href="#">Message from Administration</a></li>
+							<li><a href="#">ACPC Members</a></li>
+							<li><a href="#">Committee Charter</a></li>
+							<li><a href="#">Contact ACPC</a></li>
+							<li><a href="#">Strategic Initiatives</a></li>
+						</ul>
+					</div>
+				</li>
+				<li class="dropdown">
+					<a class="cPractice" href="#">Clinical Practice</a>
+					<div class="sub">
+						<ul>
+							<li><a href="#">Advanced Practice Documents</a></li>
+							<li><a href="#">Advanced Practice Provider Requirements</a></li>
+							<li><a href="#">Allied Health Professional (AHP) Peer Review</a></li>
+							<li><a href="#">Ambulatory Primary Care RN Practice Compendium</a></li>
+							<li><a href="#">Clinical Practice Guidelines</a></li>
+							<li><a href="#">KP.org Lab Result Information</a></li>
+							<li><a href="#">Legal Issues</a></li>
+							<li><a href="#">Polices & Procedures</a></li>
+							<li><a href="#">Scope of Practice</a></li>
+							<li><a href="#">Standing Orders</a></li>
+						</ul>
+						<ul>
+							<li><a href="#">Sterilization</a></li>
+							<li><a href="#">Surgical Non-MD Grid</a></li>
+							<li><a href="#">Vaccines for Children Program, Vaccine Storage and Handling</a></li>
+						</ul>
+					</div>
+				</li>
+				<li class="dropdown">
+					<a class="education" href="#">Education & Research</a>
+					<div class="sub">
+						<ul>
+							<li><h4>Education</h4></li>
+							<li><a href="#">Affiliated Students</a></li>
+							<li><a href="#">CME CEU Funding/Reimbursement</a></li>
+							<li><a href="#">Education</a></li>
+							<li><a href="#">KP Learn</a></li>
+							<li><a href="#">National Patient Care Services - Clinical E-Learning</a></li>
+							<li><a href="#">Orientation</a></li>
+							<li><a href="#">SCPMG Online Learning Portal</a></li>
+							<li><a href="#">Symposia</a></li>
+						</ul>
+						<ul>
+							<li><h4>UNAC/UHCP<br/>Joint Labor & Management</h4></li>
+							<li><a href="#">Fund Request Guidelines - Cover Memo</a></li>
+							<li><a href="#">Fund Request Guidelines</a></li>
+						</ul>
+						<ul>
+							<li><h4>Research</h4></li>
+							<li><a href="#">Integrative Reviews</a></li>
+							<li><a href="#">Resource Warehouse</a></li>
+							<li><a href="#">Research Tools</a></li>
+						</ul>
+					</div>
+				</li>
+				<li class="dropdown">
+					<a class="quality" href="#">Quality & Safety</a>
+					<div class="sub">
+						<ul>
+							<li><h4>Quality</h4></li>
+							<li><a href="#">Department of Care and Service Quality</a></li>
+							<li><a href="#">Nursing Pathways</a></li>
+						</ul>
+						<ul>
+							<li><h4> Hand Hygiene</h4></li>
+							<li><a href="#">LMP Oversight</a></li>
+							<li><a href="#">Nursing Education</a></li>
+						</ul>
+					</div>
+				</li>
+				<li><a class="links" href="#">Connections & Links</a></li>
+				<li class="dropdown">
+					<a class="tools" href="#">Tools & Resources</a>
+					
+				</li>
+				<li class="dropdown">
+					<a class="partners" href="#">Community Partners</a>
+					<div class="sub">
+						<ul>
+							<li><a href="#">Community Benefit Annual Report</a></li>
+							<li><a href="#">Community Outreach E-Learning</a></li>
+							<li><a href="#">Kaiser Permanente Community Benefit</a></li>
+							<li><a href="#">Nursing Research Education Modules</a></li>
+						</ul>
+					</div>
+				</li>
+				<li class="dropdown">
+					<a class="med_centers" href="#">Medical Centers</a>
+					<div class="sub">
+					<ul>
+						<li><a href="#">Antelope Valley</a></li>
+						<li><a href="#">Baldwin Park</a></li>
+						<li><a href="#">Downey</a></li>
+						<li><a href="#">Fontana</a></li>
+						<li><a href="#">Kern County</a></li>
+						<li><a href="#">Los Angeles</a></li>
+						<li><a href="#">Irvine</a></li>
+						<li><a href="#">Orange County</a></li>
+						<li><a href="#">Panorama City</a></li>
+						<li><a href="#">Riverside</a></li>
+						<li><a href="#">San Diego</a></li>
+						<li><a href="#">South Bay</a></li>
+						<li><a href="#">West Los Angeles</a></li>
+						<li><a href="#">Woodland Hills</a></li>
+					</ul>
+					</div>
+				</li>
+				<li class="last"><a class="contact" href="#">Contact Us</a></li>
+			</ul>
+		</nav>
+	<div class="container">
+		<section class="slider">
+			<div id="slider" class="nivoSlider">
+				<a href="#" title="Announcement">
+					<img src="_images/Slides/announ.jpg" alt="Announcement img" title="Announcement"/></a>
+				<a href="#" title="Upcoming Event">
+					<img src="_images/Slides/activities.jpg" alt="Activities img" title="Activities"/></a>
+				<a href="#" title="Education Opportunity">
+					<img src="_images/Slides/education.jpg" alt="Education Opportunity img" title="Education Opportunity"/></a>
+				<a href="#" title="Featured Link">
+					<img src="_images/Slides/link.jpg" alt="Featured Link img" title="Featured Link"/></a>
+				<a href="#" title="Quote">
+					<img src="_images/Slides/quote.jpg" alt="Quote img" title="Quote"/></a>
+				<a href="#" title="Upcoming Event">
+					<img src="_images/Slides/reading.jpg" alt="Good Reading img" title="Good Reading"/></a>
+			<!-- end #slides --></div>
+		<!-- end .slider --></section>
+		
+		<section class="content">
+			<h1>Welcome to the new AmbulatoryPractice.org</h1>
+			<section id="what_new" class="info_slider">
+				<div class="control_box">
+					<h3>New Postings</h3>
+					<p>Check here to find out what's new on AmbulatoryPractice!</p>
+				</div>
+				<div id="new_postings_slides">
+					<div class="box_container">
+						<div>
+							<span>
+								<a href="#">
+									<img src="_images/Slides/new_postings/slide01.jpg" alt="slide 1" />
+									<p>Module A: Ordering/Signing in HealthConnect</p>
+								</a>
+							</span>
+							<span>
+								<a href="#">
+									<img src="_images/Slides/new_postings/slide02.jpg" alt="slide 2" />
+									<p>Module B</p>
+								</a>
+							</span>
+							<span>
+								<a href="#">
+									<img src="_images/Slides/new_postings/slide03.jpg" alt="slide 3" />
+									<p>Module C</p>
+								</a>
+							</span>
+						</div>
+						<div>
+							<span>
+								<a href="#">
+									<img src="_images/Slides/new_postings/slide04.jpg" alt="slide 4" />
+									<p>Module D</p>
+								</a>
+							</span>
+							<span>
+								<a href="#">
+									<img src="_images/Slides/new_postings/slide02.jpg" alt="slide 2" />
+									<p>Module E</p>
+								</a>
+							</span>
+						</div>
+					</div>
+					<a href="#" class="box_prev arrows1">
+						<div class="box_prev_arrow"></div>
+					</a>
+					<a href="#" class="box_next arrows1">
+						<div class="box_next_arrow"></div>
+					</a>
+				</div>
+				<div class="clear"></div>
+			<!-- end #what_new--></section>
+			<section id="what_happening" class="info_slider">
+				<div class="control_box">
+					<h3>Upcoming Events</h3>
+					<p>Check here to find out what's happening around Southern California!</p>
+				</div>
+				<div id="upcoming_events_slides">
+					<div class="box_container">
+						<div>
+							<span>
+								<a href="#">
+									<img src="_images/Slides/new_postings/slide01.jpg" alt="slide 1" />
+									<p>Green Street Practices</p>
+								</a>
+							</span>
+							<span>
+								<a href="#">
+									<img src="_images/Slides/new_postings/slide02.jpg" alt="slide 2" />
+									<p>Event B</p>
+								</a>
+							</span>
+							<span>
+								<a href="#">
+									<img src="_images/Slides/new_postings/slide03.jpg" alt="slide 3" />
+									<p>Event C</p>
+								</a>
+							</span>
+						</div>
+						<div>
+							<span>
+								<a href="#">
+									<img src="_images/Slides/new_postings/slide04.jpg" alt="slide 4" />
+									<p>Event D</p>
+								</a>
+							</span>
+							<span>
+								<a href="#">
+									<img src="_images/Slides/new_postings/slide02.jpg" alt="slide 2" />
+									<p>Event E</p>
+								</a>
+							</span>
+						</div>
+					</div>
+					<a href="#" class="box_prev arrows2">
+						<div class="box_prev_arrow"></div>
+					</a>
+					<a href="#" class="box_next arrows2">
+						<div class="box_next_arrow"></div>
+					</a>
+				</div>
+				<div class="clear"></div>
+			<!-- end .info_slider --></section>
+			<section class="bottom">
+				<article id="partners" class="info_window">
+					<h3>Community Partners</h3>
+					<ul class="bullets">
+						<li><a href="#">Community Benefit Annual Report</a></li>
+						<li><a href="#">Community Outreach E-Learning</a></li>
+						<li><a href="#">Kaiser Permanente Community Benefit</a></li>
+						<li><a href="#">Nursing Research Education Modules</a></li>
+					</ul>
+				</article>
+				<article id="multimedia" class="info_window">
+					<h3>Multimedia</h3>
+					<ul class="bullets">
+						<li><a href="#">2010 Interregional Video</a></li>
+						<li><a href="#">2nd Annual Ambulatory Practice Symposium Handouts</a></li>
+						<li><a href="#">Florence Nightingale Video</a></li>
+						<li><a href="#">Four Habits</a></li>
+						<li><a href="#">Heart Failure Video</a></li>
+						<li><a href="#">KP History of Nursing Video</a></li>
+						<li><a href="#">Scope of Practice Videos</a></li>
+						<li><a href="#">Teamwork and Communication Video</a></li>
+					</ul>
+				</article>
+				<article id="med_centers" class="info_window">
+					<h3>Medical Centers</h3>
+					<ul>
+						<li><a href="#">Antelope Valley</a></li>
+						<li class="dark"><a href="#">Baldwin Park</a></li>
+						<li><a href="#">Downey</a></li>
+						<li class="dark"><a href="#">Fontana</a></li>
+						<li><a href="#">Kern County</a></li>
+						<li class="dark"><a href="#">Los Angeles</a></li>
+						<li><a href="#">Irvine</a></li>
+						<li class="dark"><a href="#">Orange County</a></li>
+						<li><a href="#">Panorama City</a></li>
+						<li class="dark"><a href="#">Riverside</a></li>
+						<li><a href="#">San Diego</a></li>
+						<li class="dark"><a href="#">South Bay</a></li>
+						<li><a href="#">West Los Angeles</a></li>
+						<li class="dark"><a href="#">Woodland Hills</a></li>
+					</ul>
+				</article>
+				<article id="searches" class="info_window">
+					<h3> Past Searches </h3>
+					<div id="recent_searches">
+						<ul>
+							<li class="head">Recent Searches</li>
+							<li>"module a"</li>
+							<li class="dark">"skills lab"</li>
+							<li>"standized procedures"</li>
+							<li class="dark"></li>
+							<li></li>
+						</ul>
+					</div>
+					<div id="popular_searches">
+						<ul>
+							<li class="head">Popular Searches</li>
+							<li>"module a"</li>
+							<li class="dark">"skills lab"</li>
+							<li>"standardized procedures"</li>
+							<li class="dark"></li>
+							<li></li>
+						</ul>
+					</div>
+					<div id="favorite_searches">
+						<ul>
+							<li class="head">Favorite Searches</li>
+							<li>"module a"</li>
+							<li class="dark">"skills lab"</li>
+							<li>"standardized procedures"</li>
+							<li class="dark"></li>
+							<li></li>
+						</ul>
+					</div>
+				</article>
+			<!-- end #bottom--></section>
+		<!-- end .content--></section>
+		<div class="clear"></div>
+	<!-- end .container--></div>
+	<footer>
+			<div class="footer">
+				<div class="footer_container">
+					<ul>
+						<li>About Us</li>
+						<li>Contact Us</li>
+						<li>Site Map</li>
+						<li>KP.org</li>
+						<li>Thrive</li>
+					</ul>
+				</div>
+			</div>
+		<div class="clear"></div>
+	</footer>
+	
+</body>
+</html>

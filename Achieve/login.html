@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Log In</title>
+<link rel="stylesheet" type="text/css" href="_CSS/reset.css">
+<style>
+.lightbox_overlay {background:#777; opacity:.7; width:100%; height:100%; z-index:1000; position:absolute;}
+.login_window { width:350px; border:1px solid #666; padding:25px; margin:100px auto; background:#fff; }
+.login_form h1 {font-size:24px; padding-bottom:15px;}
+.login_form ul {width:350px; list-style-type:none; list-style-position:outside; margin:0px; padding:0px;}
+.login_form li {padding:2px; position:relative;}
+.login_form label {width:150px; margin-top:3px; display:inline-block; float:left; padding:3px;}
+
+</style>
+</head>
+
+<body>
+
+<div id="login_overlay" class="lightbox_overlay">
+	<div class="login_window">
+		<form class="login_form" action="" method="post" name="login_form">
+			<ul>
+				<li>
+					<h1>Log In</h1>
+				</li>
+				<li>
+					<label for="username">NUID/Username:</label>
+					<input type="text" name="username" required />
+				</li>
+				<li>
+					<label for="password">Password:</label>
+					<input name="password" type="text" required />
+				</li>
+				<li>
+					<button class="submit" type="submit">Log In</button>
+					<input type="checkbox" name="remember" value="remember">Remember Me</input>
+				</li>
+				<li>
+					<p>Are you a new user? <a href="">Sign up here</a></p>
+				</li>
+			</ul>
+		</form>
+	</div>
+</div>
+
+</body>
+</html>
