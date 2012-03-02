@@ -44,7 +44,7 @@ function display_header(){
 		
 		<div class="search_bar">
 			<div class="search_container">
-				<div id="date">November 8, 2011</div>
+				<div id="date">'.date("F j, Y").'</div>
 				<div class="search_block">
 					<form class="search_field" method="POST" action="" name="search_field">
 					<input name="search" type="text" placeholder="Search" />
