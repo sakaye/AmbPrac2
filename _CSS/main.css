@@ -110,7 +110,7 @@ section.slider { width:1010px; height:389px; margin-left:-25px; margin-bottom:20
 #searches li.head { background:#524d4c; color:#fff; font-size:18px; }
 
 /****** Footer Section ******/
-.footer { height:34px; background:url(../_images/CSS/nav_bg.png) repeat-x; }
+.footer { height:34px; width:100%; background:url(../_images/CSS/nav_bg.png) repeat-x; }
 .footer_container { width:350px; margin:auto; }
 .footer ul { color:#948987; text-align:center; }
 .footer ul li { line-height:34px; padding:0px 5px; float:left; }

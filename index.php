@@ -3,7 +3,9 @@
 require_once("_Includes/PHP_lib/output_fns.php");
 require_once("_Includes/PHP_lib/db_connect.php");
 
-create_html();
+$page_name = 'Ambulatory Practice - Home';
+
+create_html($page_name);
 display_header();
 
 ?>
@@ -181,20 +183,6 @@ display_header();
 		<!-- end .content--></section>
 		<div class="clear"></div>
 	<!-- end .container--></div>
-	<footer>
-			<div class="footer">
-				<div class="footer_container">
-					<ul>
-						<li><a href="#">About Us</a></li>
-						<li><a href="#">Contact Us</a></li>
-						<li><a href="#">Site Map</a></li>
-						<li><a href="#">KP.org</a></li>
-						<li><a href="#">Thrive</a></li>
-					</ul>
-				</div>
-			</div>
-		<div class="clear"></div>
-	</footer>
-	
-</body>
-</html>
+<?php
+display_footer();
+?>
