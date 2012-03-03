@@ -13,11 +13,14 @@ header { background: #184e78; height: 124px; }
 .top_gradient { height:124px; background:url(../_images/CSS/header_transBG.png) repeat-x; padding-top:15px;
 	-pie-background: linear-gradient(#133d5d, #184e78);  /* IE6+ */
     behavior: url(PIE.htc); }
-.ambprac {background-image:url(../_images/CSS/ambprac_header.png); width: 519px; height:72px; margin:auto;}
+.ambprac {background-image:url(../_images/CSS/ambprac_header.png); width: 519px; height:72px; margin:auto; margin-top: 16px; }
 .user_bar { width:960px; margin:auto; }
-.user_bar ul { font-size:16px; color:#fff; }
-.user_bar a { color: #CCC }
-.user_bar a:visited { color: #CCC }
+form#loginform { float: right; }
+form#loginform label { width: 90px; text-align:right; font-size:16px; line-height:8px; color:#fff; display:inline-block; }
+form#loginform #remember_label { width:125px; margin: 5px 0px 5px 75px; font-size: 12px; }
+form#loginform input { margin: 3px 0px; }
+form#loginform input#login { float: right; }
+
 
 /* !Search Bar */
 #date {color:#fff; float:left; font-size: 16px; line-height: 22px; margin-top: 6px; }

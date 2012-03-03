@@ -12,10 +12,10 @@
 	
 	<!-- Javascripts -->
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-	<script type="text/javascript" src="../_Includes/jquery.hoverIntent.minified.js"></script>
-	<script type="text/javascript" src="../_Includes/jquery.nivo.slider.pack.js"></script>
-	<script type="text/javascript" src="../_Includes/slides.min.jquery.js"></script>
-	<script type="text/javascript" src="../_Includes/javascripts.js"></script>
+	<script type="text/javascript" src="../_Includes/JS_lib/jquery.hoverIntent.minified.js"></script>
+	<script type="text/javascript" src="../_Includes/JS_lib/jquery.nivo.slider.pack.js"></script>
+	<script type="text/javascript" src="../_Includes/JS_lib/slides.min.jquery.js"></script>
+	<script type="text/javascript" src="../_Includes/JS_lib/output_fns.js"></script>
 	<script>
 		$(document).ready(function() {
 			var config = {
@@ -28,7 +28,8 @@
 			
 			$("ul#topnav li").hoverIntent(config);
 			
-			$('#slider').nivoSlider({
+			
+$('#slider').nivoSlider({
 				effect: 'random', // Specify sets like: 'fold,fade,sliceDown'
 				slices: 20, // For slice animations
 				boxCols: 12, // For box animations
@@ -48,6 +49,7 @@
 				prevText: '', // Prev directionNav text
 				nextText: '', // Next directionNav text
 				randomStart: false // Start on a random slide
+
 			});
 			$("#new_postings_slides, #upcoming_events_slides").slides({
 				preload: true,
@@ -87,7 +89,13 @@
 			<div class="top_gradient">
 				<div class="user_bar">
 					<form method="post" action="login.php" name="loginform" id="loginform">
-						
+						<label for="nuid">NUID:</label>
+							<input type="text" name="nuid" id="nuid" placeholder="Username" /> <br/>
+						<label for="password">Password:</label>
+							<input type="password" name="password" id="password" /> <br/>
+						<label for="remember" id="remember_label" >Keep me logged in</label>
+							<input type="checkbox" name="remember" id="remember" /> <br/>
+						<input type="submit" name="login" id="login" value="Login" />
 					</form>
 				</div>
 				<div class="kp_logo"></div>
@@ -230,17 +238,17 @@
 		<section class="slider">
 			<div id="slider" class="nivoSlider">
 				<a href="#" title="Announcement">
-					<img src="_images/Slides/announ.jpg" alt="Announcement img" title="Announcement"/></a>
+					<img src="../_images/Slides/announ.jpg" alt="Announcement img" title="Announcement"/></a>
 				<a href="#" title="Upcoming Event">
-					<img src="_images/Slides/activities.jpg" alt="Activities img" title="Activities"/></a>
+					<img src="../_images/Slides/activities.jpg" alt="Activities img" title="Activities"/></a>
 				<a href="#" title="Education Opportunity">
-					<img src="_images/Slides/education.jpg" alt="Education Opportunity img" title="Education Opportunity"/></a>
+					<img src="../_images/Slides/education.jpg" alt="Education Opportunity img" title="Education Opportunity"/></a>
 				<a href="#" title="Featured Link">
-					<img src="_images/Slides/link.jpg" alt="Featured Link img" title="Featured Link"/></a>
+					<img src="../_images/Slides/link.jpg" alt="Featured Link img" title="Featured Link"/></a>
 				<a href="#" title="Quote">
-					<img src="_images/Slides/quote.jpg" alt="Quote img" title="Quote"/></a>
+					<img src="../_images/Slides/quote.jpg" alt="Quote img" title="Quote"/></a>
 				<a href="#" title="Upcoming Event">
-					<img src="_images/Slides/reading.jpg" alt="Good Reading img" title="Good Reading"/></a>
+					<img src="../_images/Slides/reading.jpg" alt="Good Reading img" title="Good Reading"/></a>
 			<!-- end #slides --></div>
 		<!-- end .slider --></section>
 		
@@ -256,19 +264,19 @@
 						<div>
 							<span>
 								<a href="#">
-									<img src="_images/Slides/new_postings/slide01.jpg" alt="slide 1" />
+									<img src="../_images/Slides/new_postings/slide01.jpg" alt="slide 1" />
 									<p>Module A: Ordering/Signing in HealthConnect</p>
 								</a>
 							</span>
 							<span>
 								<a href="#">
-									<img src="_images/Slides/new_postings/slide02.jpg" alt="slide 2" />
+									<img src="../_images/Slides/new_postings/slide02.jpg" alt="slide 2" />
 									<p>Module B</p>
 								</a>
 							</span>
 							<span>
 								<a href="#">
-									<img src="_images/Slides/new_postings/slide03.jpg" alt="slide 3" />
+									<img src="../_images/Slides/new_postings/slide03.jpg" alt="slide 3" />
 									<p>Module C</p>
 								</a>
 							</span>
@@ -276,13 +284,13 @@
 						<div>
 							<span>
 								<a href="#">
-									<img src="_images/Slides/new_postings/slide04.jpg" alt="slide 4" />
+									<img src="../_images/Slides/new_postings/slide04.jpg" alt="slide 4" />
 									<p>Module D</p>
 								</a>
 							</span>
 							<span>
 								<a href="#">
-									<img src="_images/Slides/new_postings/slide02.jpg" alt="slide 2" />
+									<img src="../_images/Slides/new_postings/slide02.jpg" alt="slide 2" />
 									<p>Module E</p>
 								</a>
 							</span>
@@ -307,19 +315,19 @@
 						<div>
 							<span>
 								<a href="#">
-									<img src="_images/Slides/new_postings/slide01.jpg" alt="slide 1" />
+									<img src="../_images/Slides/new_postings/slide01.jpg" alt="slide 1" />
 									<p>Green Street Practices</p>
 								</a>
 							</span>
 							<span>
 								<a href="#">
-									<img src="_images/Slides/new_postings/slide02.jpg" alt="slide 2" />
+									<img src="../_images/Slides/new_postings/slide02.jpg" alt="slide 2" />
 									<p>Event B</p>
 								</a>
 							</span>
 							<span>
 								<a href="#">
-									<img src="_images/Slides/new_postings/slide03.jpg" alt="slide 3" />
+									<img src="../_images/Slides/new_postings/slide03.jpg" alt="slide 3" />
 									<p>Event C</p>
 								</a>
 							</span>
@@ -327,13 +335,13 @@
 						<div>
 							<span>
 								<a href="#">
-									<img src="_images/Slides/new_postings/slide04.jpg" alt="slide 4" />
+									<img src="../_images/Slides/new_postings/slide04.jpg" alt="slide 4" />
 									<p>Event D</p>
 								</a>
 							</span>
 							<span>
 								<a href="#">
-									<img src="_images/Slides/new_postings/slide02.jpg" alt="slide 2" />
+									<img src="../_images/Slides/new_postings/slide02.jpg" alt="slide 2" />
 									<p>Event E</p>
 								</a>
 							</span>
