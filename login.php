@@ -9,19 +9,20 @@ display_header();
 
 ?>
 <div class="container">
-	<div id="login_container">
-		
-		<h1 class="underlined">Login</h1>
-		
-		<form method="post" action="login.php" name="loginform" id="loginform">
-			<label for="nuid">NUID:</label>
-				<input type="text" name="nuid" id="nuid" placeholder="Username" autofocus="autofocus" /> <br/>
-			<label for="password">Password:</label>
-				<input type="password" name="password" id="password" /> <br/>
-			<label for="remember" id="remember_label" >Keep me logged in</label>
-				<input type="checkbox" name="remember" id="remember" /> <br/>
-				<input type="submit" name="login" id="login" value="Login" />
-		</form>
+	<div class="form_background">
+		<div class="form_container">
+			<h1 class="underlined">Login</h1>
+			<form method="post" action="login.php" name="loginform" id="loginform">
+				<label for="nuid">Username (NUID)</label>
+					<input type="text" name="nuid" id="nuid" autofocus="autofocus" /> <br/>
+				<label for="password">Password</label>
+					<input type="password" name="password" id="password" /> <br/>
+				<label for="remember" id="remember_label" >Keep me logged in</label>
+					<input type="checkbox" name="remember" id="remember" /> <br/>
+					<input type="submit" name="login" id="login" value="Login" />
+			</form>
+			
+		</div>
 	</div>
 </div>
 <?php display_footer(); ?>

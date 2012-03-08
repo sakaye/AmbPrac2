@@ -1,13 +1,12 @@
 @charset "utf-8";
 
 body { font-family: 'Droid Serif', serif; font-size:14px; background: #fff url(../_images/CSS/bg.png) repeat; }
-.container { width:960px; min-height:1500px; margin:auto; }
+.container { width:960px; min-height:700px; margin:auto; }
 *:focus {outline:none;}
 h1, h2, h3, h4, h5, h6 { font-family: "Lobster Two", cursive; }
-h1 { font-size:30px; }
-h2 { font-size:26px; }
+h1 { font-size:36px; }
+h2 { font-size:30px; }
 h3 { font-size:24px; }
-h1.underlined { color:#184e78; padding:20px; margin:10px 0px; border-bottom:1px solid #184e78; }
 
 /*  Header  */
 header { background: #184e78; height: 124px; }
@@ -23,7 +22,7 @@ header { background: #184e78; height: 124px; }
 .search_bar { height:34px; background:url(../_images/CSS/nav_bg.png) repeat-x; }
 .search_container { width:960px; margin:auto; }
 .search_block { margin-top:4px; float:right; }
-.search_block input { width:200px; height:20px;	padding:2px 22px 2px 8px; background:#948987 url(../_images/CSS/mag_glass.png) 98% center no-repeat;
+.search_block input { width:200px; height:20px; font-size:14px; padding:2px 22px 2px 8px; background:#948987 url(../_images/CSS/mag_glass.png) 98% center no-repeat;
 	border-top:1px solid #433f3e;
 	border-right:1px solid #948987;
 	border-bottom:1px solid #a79f9e;
@@ -34,12 +33,10 @@ header { background: #184e78; height: 124px; }
 	border-radius:5px;
 }
 .search_block input:focus {border:1px solid #dfd4d3;}
-:-moz-placeholder { color:#5d5553; }
-::-webkit-input-placeholder { color:#5d5553; }
 
 
 /* Navagation Bar */
-nav.nav_bar { height:50px; margin-bottom:20px; background:url(../_images/CSS/nav_bg_large.png) repeat-x; }
+nav.nav_bar { height:50px; margin-bottom:50px; background:url(../_images/CSS/nav_bg_large.png) repeat-x; }
 ul#topnav { width:960px; margin:auto; }
 ul#topnav li {height:44px; width:95px; padding-bottom:6px; border-right:1px solid #948987; float:left; position:relative; z-index:2000; }
 ul#topnav li.dropdown { background:url(../_images/CSS/menu_arrow.png) no-repeat 50% 90%; }
@@ -96,8 +93,23 @@ section.slider { width:1010px; height:389px; margin-left:-25px; margin-bottom:20
 .box_container div a:hover { text-decoration:underline; }
 .box_container div a:visited { color:#000; }
 
-/****** Login Page ******/
-#login_container { width:480px; }
+/****** Container General ******/
+h1.underlined { color:#000; padding:20px 0px; margin:20px 0px; background:url(../_images/CSS/underline.gif) repeat-x bottom; }
+.container .form_background { width:529px; height:429px; border:1px solid #b4b4b4; background-color:#efefef;  }
+.container .form_container { width:480px; margin:auto; }
+.container form label { width:200px; font-size:18px; display:inline-block; }
+.container form input { font-size:24px; padding:5px; border:1px solid #7d7d7d; margin:10px 0px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	-o-border-radius:5px;
+	border-radius:5px;
+	box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
+    -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
+    -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
+	}
+.container input:focus { border-color:#e89e1d; }
+.container input#login { float:right; }
+
 
 /****** Bottom Section ******/
 .bottom { min-height:220px; }
