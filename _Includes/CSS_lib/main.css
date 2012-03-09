@@ -1,6 +1,35 @@
 @charset "utf-8";
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
 
-body { font-family: 'Droid Serif', serif; font-size:14px; background: #fff url(../_images/CSS/bg.png) repeat; }
+html, body, div, span, iframe, h1, h2, h3, h4, h5, h6, p, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+a {
+	text-decoration:none;
+}
+
+/****** MAIN CSS START ******/
+
+body { font-family: 'Droid Serif', serif; font-size:14px; background: #fff url(images/bg.png) repeat; }
 .container { width:960px; min-height:700px; margin:auto; }
 *:focus {outline:none;}
 h1, h2, h3, h4, h5, h6 { font-family: "Lobster Two", cursive; }
@@ -9,20 +38,20 @@ h2 { font-size:30px; }
 h3 { font-size:24px; }
 
 /*  Header  */
-header { background: #184e78; height: 124px; }
-.top_gradient { height:124px; background:url(../_images/CSS/header_transBG.png) repeat-x; padding-top:15px;
+header { background:#184e78; height:124px; }
+.top_gradient { height:124px; background:url(images/header_transBG.png) repeat-x; padding-top:15px;
 	-pie-background: linear-gradient(#133d5d, #184e78);  /* IE6+ */
     behavior: url(PIE.htc); }
-.ambprac {background-image:url(../_images/CSS/ambprac_header.png); width: 519px; height:72px; margin:auto; margin-top: 16px; }
+.ambprac {background-image:url(images/ambprac_header.png); width: 519px; height:72px; margin:auto; margin-top: 16px; }
 .user_bar { width:960px; margin:auto; }
 
 
 /* Search Bar */
 #date {color:#fff; float:left; font-size: 16px; line-height: 22px; margin-top: 6px; }
-.search_bar { height:34px; background:url(../_images/CSS/nav_bg.png) repeat-x; }
+.search_bar { height:34px; background:url(images/nav_bg.png) repeat-x; }
 .search_container { width:960px; margin:auto; }
 .search_block { margin-top:4px; float:right; }
-.search_block input { width:200px; height:20px; font-size:14px; padding:2px 22px 2px 8px; background:#948987 url(../_images/CSS/mag_glass.png) 98% center no-repeat;
+.search_block input { width:200px; height:20px; font-size:14px; padding:2px 22px 2px 8px; background:#948987 url(images/mag_glass.png) 98% center no-repeat;
 	border-top:1px solid #433f3e;
 	border-right:1px solid #948987;
 	border-bottom:1px solid #a79f9e;
@@ -36,10 +65,10 @@ header { background: #184e78; height: 124px; }
 
 
 /* Navagation Bar */
-nav.nav_bar { height:50px; margin-bottom:50px; background:url(../_images/CSS/nav_bg_large.png) repeat-x; }
+nav.nav_bar { height:50px; margin-bottom:50px; background:url(images/nav_bg_large.png) repeat-x; }
 ul#topnav { width:960px; margin:auto; }
 ul#topnav li {height:44px; width:95px; padding-bottom:6px; border-right:1px solid #948987; float:left; position:relative; z-index:2000; }
-ul#topnav li.dropdown { background:url(../_images/CSS/menu_arrow.png) no-repeat 50% 90%; }
+ul#topnav li.dropdown { background:url(images/menu_arrow.png) no-repeat 50% 90%; }
 ul#topnav li a{ width:100%; height:100%; font-size:15px; text-align:center; line-height:17px; color:#948987; padding:3px 0px; float:left; }
 ul#topnav li a.hover { background:#efefef; color:#184e78; }
 ul#topnav li.last { border:none; }
@@ -51,8 +80,8 @@ ul#topnav li .sub ul li a:hover { background:#dedede; }
 ul#topnav li .sub h4 { width:180px; font-family: 'Droid Serif', serif; font-weight:bold; font-size:18px; padding:5px 0px; margin:0px 10px; border-bottom:1px solid #000; }
 
 /* The Nivo Slider styles */
-section.slider { width:1010px; height:389px; margin-left:-25px; margin-bottom:20px; background:url(../_images/CSS/slider_shadow.png) no-repeat; }
-.nivoSlider { position:relative; width:960px; height:357px; margin-left:25px; background:url(../_images/Slides/loading.gif) no-repeat 50% 50%; }
+section.slider { width:1010px; height:389px; margin-left:-25px; margin-bottom:20px; background:url(images/slider_shadow.png) no-repeat; }
+.nivoSlider { position:relative; width:960px; height:357px; margin-left:25px; background:url(images/loading.gif) no-repeat 50% 50%; }
 .nivoSlider img { position:absolute; top:0px; left:0px; display:none; }
 /* If an image is wrapped in a link */
 .nivoSlider a.nivo-imageLink { position:absolute; top:0px; left:0px; width:100%; height:100%; border:0; padding:0; margin:0; z-index:6; display:none; }
@@ -66,12 +95,12 @@ section.slider { width:1010px; height:389px; margin-left:-25px; margin-bottom:20
 .nivo-html-caption { display:none; }
 /* Direction nav styles (e.g. Next & Prev) */
 .nivo-directionNav a { position:absolute; top:45%; z-index:9; cursor:pointer; width:46px; height:46px; }
-.nivo-prevNav { left:10px; background:url(../_images/CSS/slider_left.png) no-repeat; }
-.nivo-nextNav { right:10px;	background:url(../_images/CSS/slider_right.png) no-repeat; }
+.nivo-prevNav { left:10px; background:url(images/slider_left.png) no-repeat; }
+.nivo-nextNav { right:10px;	background:url(images/slider_right.png) no-repeat; }
 /* Control nav styles (e.g. 1,2,3...) */
 .nivo-controlNav { position:absolute; bottom:-30px; left:50%; margin-left:-48px; }
-.nivo-controlNav a { display:block; float:left; cursor:pointer;	text-indent:-9999px; margin:2px; width:12px; height:13px; background:url(../_images/CSS/pagination_blue.png) no-repeat; }
-.nivo-controlNav a.active {	background:url(../_images/CSS/pagination_blue.png) 0px -13px no-repeat; }
+.nivo-controlNav a { display:block; float:left; cursor:pointer;	text-indent:-9999px; margin:2px; width:12px; height:13px; background:url(images/pagination_blue.png) no-repeat; }
+.nivo-controlNav a.active {	background:url(images/pagination_blue.png) 0px -13px no-repeat; }
 
 /* Home Page Content Section */
 .content h1 { color:#184e78; text-align:center; margin-bottom:20px; }
@@ -80,8 +109,8 @@ section.slider { width:1010px; height:389px; margin-left:-25px; margin-bottom:20
 .info_slider .control_box h3 { color: #184e78; text-align:center; }
 .info_slider .control_box p { text-align:center; padding-top:10px; }
 #new_postings_slides, #upcoming_events_slides { width:720px; height:210px; padding-top:10px; border-top:1px dashed #184e78; float:right; position:relative; }
-.box_next_arrow, .box_prev_arrow { width:30px; height:200px; background:url(../_images/CSS/box_slider_next.png) }
-.box_prev_arrow { background:url(../_images/CSS/box_slider_prev.png); }
+.box_next_arrow, .box_prev_arrow { width:30px; height:200px; background:url(images/box_slider_next.png) }
+.box_prev_arrow { background:url(images/box_slider_prev.png); }
 .box_next, .box_prev { position:absolute; top:5px; left:0px; display:block; z-index:101; display:none; }
 .box_next { left:690px; }
 .box_container { width:720px; height:210px; float:left; }
@@ -94,7 +123,7 @@ section.slider { width:1010px; height:389px; margin-left:-25px; margin-bottom:20
 .box_container div a:visited { color:#000; }
 
 /****** Container General ******/
-h1.underlined { color:#000; padding:20px 0px; margin:20px 0px; background:url(../_images/CSS/underline.gif) repeat-x bottom; }
+h1.underlined { color:#000; padding:20px 0px; margin:20px 0px; background:url(images/underline.gif) repeat-x bottom; }
 .container .form_background { width:529px; height:429px; border:1px solid #b4b4b4; background-color:#efefef;  }
 .container .form_container { width:480px; margin:auto; }
 .container form label { width:200px; font-size:18px; display:inline-block; }
@@ -108,8 +137,14 @@ h1.underlined { color:#000; padding:20px 0px; margin:20px 0px; background:url(..
     -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
 	}
 .container input:focus { border-color:#e89e1d; }
-.container input#login { float:right; }
+.container input#login { width:132px; height:51px; border:0; font-size:18px; color:#fff; float:right;
+	background:url(images/submit_button.png); cursor:pointer; }
+.container input#login:active { background-position-y:51px; }
 
+/****** Login Page ******/
+.forgot { padding:10px 0; display:inline-block; }
+#forgot_user, #forgot_pass { font-size:12px; font-style:italic; }
+#forgot_user:visited, #forgot_pass:visited { color:#184e78; }
 
 /****** Bottom Section ******/
 .bottom { min-height:220px; }
@@ -125,7 +160,7 @@ h1.underlined { color:#000; padding:20px 0px; margin:20px 0px; background:url(..
 #searches li.head { background:#524d4c; color:#fff; font-size:18px; }
 
 /****** Footer Section ******/
-.footer { height:34px; width:100%; background:url(../_images/CSS/nav_bg.png) repeat-x; }
+.footer { height:34px; width:100%; background:url(images/nav_bg.png) repeat-x; }
 .footer_container { width:350px; margin:auto; }
 .footer ul { color:#948987; text-align:center; }
 .footer ul li { line-height:34px; padding:0px 5px; float:left; }

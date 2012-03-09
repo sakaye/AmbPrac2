@@ -1,6 +1,7 @@
 <?php 
 session_start();
 
+
 $dbhost = "localhost"; //this will usually be "localhost", but can sometimes differ
 $dbname = "ambulprac"; //the name of the datebase that you are going to use
 $dbuser = "root"; // the username that you created, or were given, to access your database

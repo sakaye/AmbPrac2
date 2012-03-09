@@ -1,7 +1,7 @@
 <?php
 
-require_once("_Includes/PHP_lib/output_fns.php");
-require_once("_Includes/PHP_lib/db_connect.php");
+require_once("_Includes/global_vars.php");
+require_once(PHP_FNS);
 
 $page_name = 'Ambulatory Practice - Home';
 

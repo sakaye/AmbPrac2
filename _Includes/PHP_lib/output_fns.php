@@ -1,4 +1,5 @@
 <?php
+
 function create_html($page_name){
 	echo '
 <!DOCTYPE HTML>
@@ -10,15 +11,15 @@ function create_html($page_name){
 	
 	<!-- CSS Styles -->
 	<link href="http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic|Lobster+Two:700,400,400italic,700italic" rel="stylesheet" type="text/css"/>
-	<link href="_CSS/reset.css" rel="stylesheet" type="text/css"/>
-	<link href="_CSS/main.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link href="'.MAIN.'" rel="stylesheet" type="text/css" media="screen"/>
+	
 	
 	<!-- Javascripts -->
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-	<script type="text/javascript" src="_Includes/JS_lib/jquery.nivo.slider.pack.js"></script>
-	<script type="text/javascript" src="_Includes/JS_lib/slides.min.jquery.js"></script>
-	<script type="text/javascript" src="_Includes/JS_lib/output_fns.js"></script>
-	<script type="text/javascript" src="_Includes/JS_lib/jquery.hoverIntent.minified.js"></script>
+	<script type="text/javascript" src="'.JS_LIB.'jquery.nivo.slider.pack.js"></script>
+	<script type="text/javascript" src="'.JS_LIB.'slides.min.jquery.js"></script>
+	<script type="text/javascript" src="'.JS_FNS.'"></script>
+	<script type="text/javascript" src="'.JS_LIB.'jquery.hoverIntent.minified.js"></script>
 	
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -42,7 +43,7 @@ function display_header(){
 		
 		<div class="search_bar">
 			<div class="search_container">
-				<div id="date">'.date("F j, Y").'</div>
+				<div id="date">'.date("l, F j, Y").'</div>
 				<div class="search_block">
 					<form class="search_field" method="POST" action="" name="search_field">
 					<input name="search" type="text" />
