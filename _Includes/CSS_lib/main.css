@@ -39,10 +39,13 @@ h3 { font-size:24px; }
 
 /*  Header  */
 header { background:#184e78; height:124px; }
+header a { color:#fff; font-size:16px; }
+header a:hover { text-decoration:underline; }
+header a:visited { color:#fff; }
 .top_gradient { height:124px; background:url(images/header_transBG.png) repeat-x; padding-top:15px;
 	-pie-background: linear-gradient(#133d5d, #184e78);  /* IE6+ */
     behavior: url(PIE.htc); }
-.ambprac {background-image:url(images/ambprac_header.png); width: 519px; height:72px; margin:auto; margin-top: 16px; }
+#ambprac_logo {width: 519px; height:72px; margin:auto; /* margin-top: 16px; */ }
 .user_bar { width:960px; margin:auto; }
 
 

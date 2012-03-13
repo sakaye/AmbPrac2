@@ -27,17 +27,32 @@ function create_html($page_name){
 </head>
 	';
 }
+
+function login_display(){
+	if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['Nuid'])) //check to see if the user is already logged in
+	{
+		echo '<a href="#">Hello, '.$first_name.'</a>';
+	}
+	else // display login
+	{
+		echo '<a href="http://localhost/AmbPrac2/login/">Login</a>';
+	}
+
+}
+
 function display_header(){
 	echo '
 <body>
 	<header>
 			<div class="top_gradient">
 				<div class="user_bar">
-				
+					'.login_display().'
 				</div>
-				<div class="kp_logo"></div>
-				<div class="ambprac"></div>
-				<div class="ap_logo"></div>
+				<div id="ambprac_logo">
+					<a href="http://localhost/AmbPrac2/">
+						<img src="http://localhost/AmbPrac2/_Includes/CSS_Lib/images/ambprac_header.png" alt="Ambulatory Practice Logo" />
+					</a>
+				</div>
 			</div>
 		</header>
 		
@@ -54,7 +69,7 @@ function display_header(){
 		
 		<nav class="nav_bar">
 			<ul id="topnav">
-				<li class="first"><a class="home" href="#">Home</a></li>
+				<li class="first"><a class="home" href="http://localhost/AmbPrac2/">Home</a></li>
 				<li class="dropdown">
 					<a class="acpc" href="#">ACPC</a>
 					<div class="sub">
