@@ -5,7 +5,7 @@ require_once(PHP_FNS);
 $page_name = 'Ambulatory Practice - Login';
 
 create_html($page_name);
-display_header();
+display_header("login");
 
 ?>
 <div class="container">
@@ -14,16 +14,20 @@ display_header();
 			<h1 class="underlined">Sign In</h1>
 			<form method="post" action="login.php" name="loginform" id="loginform">
 				<label for="nuid">Username (NUID)</label>
-					<input type="text" name="nuid" id="nuid" autofocus="autofocus" /> <br/>
+					<input type="text" name="username" id="username" autofocus="autofocus" /> <br/>
 				<label for="password">Password</label>
 					<input type="password" name="password" id="password" /> <br/>
 				<label for="remember" id="remember_label" >Keep me logged in</label>
 					<input type="checkbox" name="remember" id="remember" /> <br/>
-					<input type="submit" name="login" id="login" value="Sign In" />
+					<input type="submit" name="login" class="submit" id="login" value="Sign In" />
 			</form>
 			<span class="forgot">
 				<a id="forgot_user" href="#">Forgot Username? </a>| <a id="forgot_pass" href="#">Forgot Password?</a>
 			</span>
+		</div>
+		<div class="call_out">
+			<h3 class="call_out_header">New Member?</h3>
+			<p>Sign up now. It only takes a few minutes to create a new account.</p>
 		</div>
 	</div>
 </div>

@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	
+	<title><?=$title?></title>
+	
+	<!-- CSS Styles -->
+		<link href="http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic|Lobster+Two:700,400,400italic,700italic" rel="stylesheet" type="text/css"/>
+	<?php for($i = 0; $i < sizeof($config->styles); $i++):?>
+		<link href="<?=$config->cssPath . $config->styles[$i]?>" rel="stylesheet" type="text/css"/>
+	<?php endfor;?>
+	
+	<!-- Javascripts -->
+	<?php
+		//if custom $scripts were not set, use the defaults
+		if(isset($scripts)):
+			for($i = 0; $i < sizeof($scripts); $i++):
+	?>
+			<script src="<?=$config->jsPath . $scripts[$i]?>" type="text/javascript"></script>
+	<?php   endfor;	
+		else:
+			for($i = 0; $i < sizeof($config->scripts); $i++):
+	?>
+			<script src="<?=$config->jsPath. $config->scripts[$i]?>" type="text/javascript"></script>
+	<?php   endfor;
+		endif;
+	?>
+	
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body id="<?=$body_ID?>">
+	<header>
+			<div class="top_gradient">
+				<div class="user_bar">
+					<?php if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['Nuid'])) //check to see if the user is already logged in
+						{
+							echo '<a href="#">Hello, '.$first_name.'</a>';
+						}
+						else // display login
+						{
+							echo '<a href="#">Login </a>';
+							echo '<a href="#">Sign Up </a>';
+						}
+					?>
+				</div>
+				<div id="ambprac_logo">
+					<a href="<?=$config->siteRoot?>">
+						<img src="http://localhost/AmbPrac2/_Includes/CSS_Lib/images/ambprac_header.png" alt="Ambulatory Practice Logo" />
+					</a>
+				</div>
+			</div>
+		</header>
+		
+		<div class="search_bar">
+			<div class="search_container">
+				<div id="date"><?=date("l, F j, Y")?></div>
+				<div class="search_block">
+					<form class="search_field" method="GET" action="" name="search_field">
+					<input name="search" type="text" />
+					</form>
+				</div>
+			</div>
+		</div>
+		<?php require $config->viewsPath . "nav.php"; ?>

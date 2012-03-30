@@ -4,9 +4,9 @@ require_once('../_Includes/global_vars.php');
 require_once(DB_CON);
 
 
-if (isset($_POST['Submit']))
+if (isset($_POST['register']))
 {	
-	$nuid = mysql_real_escape_string($_POST['nuid']);
+	$username = mysql_real_escape_string($_POST['username']);
 	$salt = 'a342b943d045';
     $password = sha1(mysql_real_escape_string($_POST['password']).$salt);
     $email = mysql_real_escape_string($_POST['email']);
@@ -14,15 +14,15 @@ if (isset($_POST['Submit']))
     $last_name = mysql_real_escape_string($_POST['last_name']);
     $title = $_POST['title'];
     $area = $_POST['area'];
-	$val_key = sha1($nuid.$first_name.date('mY')); //create the validation key
+	$val_key = sha1($username.$first_name.date('mY')); //create the validation key
 	
 	
-	$accountquery = mysql_query("SELECT nuid,email FROM users WHERE nuid = '".$nuid."' AND email = '".$email."'");
+	$accountquery = mysql_query("SELECT username,email FROM users WHERE username = '".$username."' AND email = '".$email."'");
 	$account = mysql_fetch_array($accountquery); //create array to database query to check for duplicate username and email
 	
 	
 	/*
-$checknuid = mysql_query("SELECT * FROM users WHERE nuid = '".$nuid."'");
+$checkuser = mysql_query("SELECT * FROM users WHERE username = '".$username."'");
 	$checkemail = mysql_query("SELECT * FROM users WHERE email = '".$email."'");
 */
 
@@ -41,16 +41,16 @@ $checknuid = mysql_query("SELECT * FROM users WHERE nuid = '".$nuid."'");
     	if(preg_match("/^[a-zA-Z0-9_.-]+@kp\.org$/",$email)) //check email for @kp.org to validate employee status
     	{
     		$kp_emp = 1;
-    		$registerquery = mysql_query("INSERT INTO users (nuid, password, email, first_name, last_name, title, area, val_key, kp_employee) VALUES('".$nuid."','".$password."','".$email."','".$first_name."','".$last_name."','".$title."','".$area."','".$val_key."','".$kp_emp."')");
+    		$registerquery = mysql_query("INSERT INTO users (username, password, email, first_name, last_name, title, area, val_key, kp_employee) VALUES('".$username."','".$password."','".$email."','".$first_name."','".$last_name."','".$title."','".$area."','".$val_key."','".$kp_emp."')");
     	}
     	else		//create account without kp employee status
     	{
-     	$registerquery = mysql_query("INSERT INTO users (nuid, password, email, first_name, last_name, title, area, val_key) VALUES('".$nuid."','".$password."','".$email."','".$first_name."','".$last_name."','".$title."','".$area."','".$val_key."')");
+     		$registerquery = mysql_query("INSERT INTO users (username, password, email, first_name, last_name, title, area, val_key) VALUES('".$username."','".$password."','".$email."','".$first_name."','".$last_name."','".$title."','".$area."','".$val_key."')");
 	    }
         if($registerquery)
         {
         	echo "<h1>Success</h1>";
-        	echo "<p>Your account was successfully created. Please <a href=\"index.php\">click here to login</a>.</p>";
+        	echo "<p>Your account was successfully created.</p>";
         }
         else
         {

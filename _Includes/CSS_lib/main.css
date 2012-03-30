@@ -128,21 +128,28 @@ section.slider { width:1010px; height:389px; margin-left:-25px; margin-bottom:20
 /****** Container General ******/
 h1.underlined { color:#000; padding:20px 0px; margin:20px 0px; background:url(images/underline.gif) repeat-x bottom; }
 .container .form_background { width:529px; min-height:429px; border:1px solid #b4b4b4; background-color:#efefef;  }
+.form_field { height:75px; }
+form span.error { color:red; width:247px; margin-right:25px; text-align:center; float: right; display: block; }
+form select { font-size:24px; }
 .container .form_container { width:480px; margin:auto; }
 .container form label { width:200px; font-size:18px; display:inline-block; }
-.container form input { font-size:24px; padding:5px; border:1px solid #7d7d7d; margin:10px 0px;
+.container form input { font-size:22px; padding:5px; border:1px solid #7d7d7d; margin:10px 2px;
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
 	-o-border-radius:5px;
 	border-radius:5px;
-	box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
-    -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
-    -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
+	box-shadow: rgba(0,0,0, 0.2) 0px 0px 8px;  
+    -moz-box-shadow: rgba(0,0,0, 0.2) y0px 0px 8px;  
+    -webkit-box-shadow: rgba(0,0,0, 0.2) 0px 0px 8px; 
 	}
+.container form input.input_error { border:1px solid red;
+	box-shadow: rgba(255,0,0, 1) 0px 0px 8px;  
+    -moz-box-shadow: rgba(255,0,0, 1) 0px 0px 8px;  
+    -webkit-box-shadow: rgba(255,0,0, 1) 0px 0px 8px;
+ }
 .container input:focus { border-color:#e89e1d; }
-.container input.submit { width:132px; height:51px; border:0; font-size:18px; color:#fff; float:right;
-	background:url(images/submit_button.png); cursor:pointer; }
-.container input#login:active { background-position-y:51px; }
+.container input.submit { width:132px; height:51px; border:0; font-size:18px; color:#fff; float:right;background:url(images/submit_button.png); cursor:pointer; }
+.container input.submit:active { background-position-y:51px; }
 .form_container p { padding:10px 0; }
 
 /****** Login Page ******/
