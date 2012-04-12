@@ -43,12 +43,12 @@
 						}
 						else // display login
 						{
-							echo '<a href="#">Login </a>';
-							echo '<a href="#">Sign Up </a>';
+							echo '<a id="signup_btn" class="header_btn right" href="#">Sign Up</a>';
+							echo '<a id="login_btn" class="header_btn right" href="#">Login</a>';
 						}
 					?>
 				</div>
-				<div id="ambprac_logo">
+				<div class="ambprac">
 					<a href="<?=$config->siteRoot?>">
 						<img src="http://localhost/AmbPrac2/_Includes/CSS_Lib/images/ambprac_header.png" alt="Ambulatory Practice Logo" />
 					</a>
@@ -56,12 +56,12 @@
 			</div>
 		</header>
 		
-		<div class="search_bar">
-			<div class="search_container">
+		<div id="search_bar" class="top_bar">
+			<div class="topbar_container">
 				<div id="date"><?=date("l, F j, Y")?></div>
 				<div class="search_block">
 					<form class="search_field" method="GET" action="" name="search_field">
-					<input name="search" type="text" />
+					<input name="search" type="text" autofocus="autofocus" />
 					</form>
 				</div>
 			</div>

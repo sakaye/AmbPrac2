@@ -8,6 +8,7 @@ $config->siteRoot = str_replace("index.php", "", $_SERVER['PHP_SELF']);
 $config->documentRoot = str_replace("index.php", "", $_SERVER['SCRIPT_FILENAME']);
 $config->webRoot = $_SERVER['SERVER_NAME'] . $config->siteRoot; 
 $config->viewsPath = $config->documentRoot . "views/";
+$config->modelsPath = $config->documentRoot . "models/";
 $config->jsPath = $config->siteRoot . "js/";
 $config->cssPath = $config->siteRoot . "css/";
 $config->imagePath = $config->siteRoot . "images/Slides/";
@@ -20,8 +21,20 @@ $app = new Slim();
 
 require 'helpers/helper.php';
 
+//routes
+
 $app->get('/', 'home');
 $app->get('/test(/)', 'test');
+$app->get('/testing/:id','testing');
+$app->get('/register(/)', 'register');
+$app->post('/register(/)', 'register');
+$app->get('/login(/)', 'login');
+$app->post('/login(/)', 'login');
+$app->get('/:main(/)', 'showSubsections');
+$app->get('/:main/:subsection(/)', 'listContent');
+$app->get('/:main/:subsection/:content(/)', 'content');
+$app->get('/:subsection(/)','subSection');
+$app->get('/:main/:nav(/)','listContent');
 
 $app->run();
 
@@ -32,21 +45,64 @@ function home(){
 	$title = 'Ambulatory Practice - Home';
 	$body_ID = 'home';
 	$scripts = $config->scripts;
-	array_push($scripts,'jquery.nivo.slider.pack.js','jquery.slides.min.js');
+	$scripts[] = 'jquery.nivo.slider.pack.js'; 
+	$scripts[] = 'jquery.slides.min.js';
 	require $config->viewsPath . 'header.php';
 	require $config->viewsPath . 'home.php';
 	require $config->viewsPath . 'footer.php';
 	
 }
 
+function main($slug){
+	global $config;
+	
+}
+
+function register(){
+	global $config;
+	$title = 'Register Page';
+	$body_ID = 'register';
+	require $config->viewsPath . 'header.php';
+	require $config->viewsPath . 'register.php';
+	require $config->viewsPath . 'footer.php';
+}
+
 function login(){
 	global $config;
-	$account = new db_account();
-	$account->makeQuery();
-	$title = 'Ambulatory Practice - Login';
+	$title = 'Login In';
 	$body_ID = 'login';
 	require $config->viewsPath . 'header.php';
+	require $config->viewsPath . 'login.php';
 	require $config->viewsPath . 'footer.php';
+
+}
+
+function subSection($slug){
+	global $config;
+	require $config->modelsPath . 'Subsection.php';
+	require $config->modelsPath . 'Content.php';
+	
+	$s = new Subsection();
+	$s->getSubsectionBySlug($slug);
+	$s->getContent();
+	
+	
+	print_r($s);
+}
+
+function testing($id){
+	global $config;
+	require $config->modelsPath . 'Subsection.php';
+	require $config->modelsPath . 'Content.php';
+	
+	$s = new Subsection($id);
+	$s->getContent();
+	
+	print_r($s);
+}
+
+function showSubNav(){
+	
 }
 
 

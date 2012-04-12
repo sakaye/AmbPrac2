@@ -41,15 +41,4 @@ function db(){
 	return $config->db_connect();
 }
 
-class db_account extends Settings {
-	private $db;
-
-	public function makeQuery(){
-		$this->db = db();
-		$query = 'SELECT * FROM users';
-		$statement = $this->db->prepare($query);
-		$statement->execute();
-	}	
-}
-
 ?>

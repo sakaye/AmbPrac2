@@ -117,7 +117,7 @@ section.slider { width:1010px; height:389px; margin-left:-25px; margin-bottom:20
 .info_slider .control_box h3 { color: #184e78; text-align:center; }
 .info_slider .control_box p { text-align:center; padding-top:10px; }
 #new_postings_slides, #upcoming_events_slides { width:720px; height:210px; padding-top:10px; border-top:1px solid #184e78; float:right; position:relative; }
-.box_next_arrow, .box_prev_arrow { width:30px; height:200px; background:url(images/box_slider_next.png) }
+.box_next_arrow, .box_prev_arrow { width:30px; height:200px; background:url(images/box_slider_next.png); }
 .box_prev_arrow { background:url(images/box_slider_prev.png); }
 .box_next, .box_prev { position:absolute; top:5px; left:0px; display:block; z-index:101; display:none; }
 .box_next { left:690px; }

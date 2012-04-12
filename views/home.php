@@ -16,7 +16,7 @@
 			<!-- end #slides --></div>
 		<!-- end .slider --></section>
 		
-		<section class="content">
+		<section class="home_page">
 			<h1>Welcome to the new AmbulatoryPractice.org</h1>
 			<section id="what_new" class="info_slider">
 				<div class="control_box">
@@ -118,10 +118,9 @@
 						<div class="box_next_arrow"></div>
 					</a>
 				</div>
-				<div class="clear"></div>
 			<!-- end .info_slider --></section>
 			<section class="bottom">
-				<article id="multimedia" class="info_window">
+				<section id="multimedia" class="info_window">
 					<h3>Multimedia</h3>
 					<ul class="bullets">
 						<li><a href="#">2010 Interregional Video</a></li>
@@ -133,8 +132,8 @@
 						<li><a href="#">Scope of Practice Videos</a></li>
 						<li><a href="#">Teamwork and Communication Video</a></li>
 					</ul>
-				</article>
-				<article id="searches" class="info_window">
+				</section><!-- end .multimedia -->
+				<section id="searches" class="info_window">
 					<h3> Past Searches </h3>
 					<div id="recent_searches">
 						<ul>
@@ -166,8 +165,7 @@
 							<li></li>
 						</ul>
 					</div>
-				</article>
-			<!-- end #bottom--></section>
-		<!-- end .content--></section>
-		<div class="clear"></div>
-	<!-- end .container--></div>
+				</section><!-- end #searches -->
+			</section><!-- end .bottom-->
+		</section><!-- end .content-->
+	</div><!-- end .container-->
