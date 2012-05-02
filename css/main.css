@@ -241,10 +241,64 @@ div.clear {
 		padding-bottom:30px;
 		clear:both;
 	}
+	div.list_background {
+		width:669px;
+		min-height:429px;
+		padding:20px 20px;
+		border:1px solid #b4b4b4;
+		background-color:#efefef;
+		float:left;
+	}
+		div.list_background ul {
+			font-size:1.25em; /* 20/16 */
+		}
+		div.list_background li {
+			padding:10px 0px 9px;
+			border-bottom:1px dashed #b4b4b4;
+		}
+		div.list_background li:first-child {
+			padding-top:0px;
+		}
+		div.list_background li:last-child {
+			border:none;
+		}
+		div.list_background li a {
+			color:#184e78;
+		}
+		div.list_background li a:hover {
+			color:#da9720;
+		}
+		div.list_background p {
+			font-size:.75em; /* 12/16 */
+			color:#818181;
+			padding-top:5px;
+			padding-left:20px;
+		}
+	ul.content_list a {
+		font-size:.875em; /* 16/16 */
+	}
+	ul.content_list li {
+		padding: 5px 0px;
+		border:none;
+	}
+	div.content_background {
+		width:920px;
+		min-height:429px;
+		padding:20px 20px;
+		border:1px solid #b4b4b4;
+		background-color:#efefef;
+	}
+	div.content_sidebar {
+		width:229px;
+		min-height:200px;
+		border:1px solid #b4b4b4;
+		background-color:#efefef;
+		float:right;
+	}
 	h1.underlined {
 		color:#000;
 		padding:20px 0px;
-		margin:20px 0px;
+		margin:0px 0px 10px;
 		background:url(images/underline.gif) repeat-x bottom;
 	}
 	div.form_background {

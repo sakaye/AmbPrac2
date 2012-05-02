@@ -27,14 +27,16 @@ $app->get('/', 'home');
 $app->get('/test(/)', 'test');
 $app->get('/testing/:id','testing');
 $app->get('/register(/)', 'register');
-$app->post('/register(/)', 'register');
+$app->post('/register(/)', 'registerComplete');
 $app->get('/login(/)', 'login');
 $app->post('/login(/)', 'login');
+$app->get('/driver(/)', 'driver');
 $app->get('/:main(/)', 'showSubsections');
 $app->get('/:main/:subsection(/)', 'listContent');
 $app->get('/:main/:subsection/:content(/)', 'content');
 $app->get('/:subsection(/)','subSection');
 $app->get('/:main/:nav(/)','listContent');
+
 
 $app->run();
 
@@ -58,10 +60,53 @@ function main($slug){
 	
 }
 
+function changeSettings(){
+	$u = new User($_SESSION['username']);
+}
+
 function register(){
 	global $config;
 	$title = 'Register Page';
 	$body_ID = 'register';
+
+	$post = array();
+	$errors = array();
+
+	showRegistrationForm(array(),array());
+}
+
+function registerComplete(){
+	global $config;
+	//look into autoloading classes.
+	require $config->modelsPath . "User.php";
+	//grab post variable
+	$errors = check_registration($_POST);
+	if(count($errors) > 0){
+		showRegistrationForm($errors,$_POST);
+		return false;
+	}
+	//here to load post data
+	$obj = (object)array(
+		"username" => "dustin",
+		"first_name" => "dustin",
+		"last_name" => "lakin",
+		"password" => "test"
+		);
+	$u = new User();
+	$status = $u->createUser($obj);
+	if($status){
+		home();
+	}else{
+		$errors = array(
+			"username" => "Already in use";
+			):
+		showRegistrationForm($errors,$_POST);
+	}
+}
+
+function showRegistrationForm($errors,$post){
+	global $config;
+
 	require $config->viewsPath . 'header.php';
 	require $config->viewsPath . 'register.php';
 	require $config->viewsPath . 'footer.php';
@@ -100,6 +145,15 @@ function testing($id){
 	
 	print_r($s);
 }
+
+function driver(){
+	global $config;
+	//look into autoloading classes.
+	require $config->modelsPath . "User.php";
+	$u = new User();
+	$u->loginUser("dustin","test");
+}
+
 
 function showSubNav(){
 	
