@@ -50,7 +50,7 @@
 				</div>
 				<div class="ambprac">
 					<a href="<?=$config->siteRoot?>">
-						<img src="http://localhost/AmbPrac2/_Includes/CSS_Lib/images/ambprac_header.png" alt="Ambulatory Practice Logo" />
+						<img src="http://localhost/AmbPrac2/css/images/ambprac_header.png" alt="Ambulatory Practice Logo" />
 					</a>
 				</div>
 			</div>

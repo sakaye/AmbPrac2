@@ -70,7 +70,6 @@ div.clear {
 		width:519px;
 		height:72px;
 		margin:auto;
-		background:url(images/ambprac_header.png);
 	}
 	div.user_bar {
 		width:960px;
@@ -283,7 +282,7 @@ div.clear {
 	}
 	div.content_background {
 		width:920px;
-		min-height:429px;
+		min-height:320px;
 		padding:20px 20px;
 		border:1px solid #b4b4b4;
 		background-color:#efefef;
@@ -303,7 +302,7 @@ div.clear {
 	}
 	div.form_background {
 		width:529px;
-		min-height:429px;
+		min-height:320px;
 		border:1px solid #b4b4b4;
 		background-color:#efefef;
 		float:left;
@@ -324,11 +323,11 @@ div.clear {
 	div.container form select { font-size:24px; }
 	div.container form label {
 		width:200px;
-		font-size:18px;
+		font-size:1.125em; /* 18/16 */
 		display:inline-block;
 	}
 	div.container form input {
-		font-size:22px;
+		font-size:1em; /* 16/16 */
 		padding:5px;
 		border:1px solid #7d7d7d;
 		margin:10px 2px;
@@ -363,6 +362,13 @@ div.clear {
 		cursor:pointer;
 	}
 	div.container input.submit:active { background-position-y:51px; }
+	span.forgot {
+		padding-top:20px;
+		display:inline-block;
+	}
+	span.forgot a {
+		font-size:.75em; /* 12/16 */
+	}
 	div.form_container p { padding:10px 0; }
 	div.call_out {
 		width:400px;

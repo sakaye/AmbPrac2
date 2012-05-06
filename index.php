@@ -31,7 +31,7 @@ $app->post('/register(/)', 'registerComplete');
 $app->get('/login(/)', 'login');
 $app->post('/login(/)', 'login');
 $app->get('/driver(/)', 'driver');
-$app->get('/:main(/)', 'showSubsections');
+$app->get('/:main(/)', 'mainSection');
 $app->get('/:main/:subsection(/)', 'listContent');
 $app->get('/:main/:subsection/:content(/)', 'content');
 $app->get('/:subsection(/)','subSection');
@@ -55,7 +55,7 @@ function home(){
 	
 }
 
-function main($slug){
+function mainSection($slug){
 	global $config;
 	
 }
@@ -67,8 +67,6 @@ function changeSettings(){
 function register(){
 	global $config;
 	$title = 'Register Page';
-	$body_ID = 'register';
-
 	$post = array();
 	$errors = array();
 
@@ -87,10 +85,10 @@ function registerComplete(){
 	}
 	//here to load post data
 	$obj = (object)array(
-		"username" => "dustin",
-		"first_name" => "dustin",
-		"last_name" => "lakin",
-		"password" => "test"
+		"username" => $_POST[username],
+		"first_name" => $_POST[first_name],
+		"last_name" => $_POST[last_name],
+		"password" => $_POST[password]
 		);
 	$u = new User();
 	$status = $u->createUser($obj);
@@ -98,15 +96,15 @@ function registerComplete(){
 		home();
 	}else{
 		$errors = array(
-			"username" => "Already in use";
-			):
+			"username" => "Already in use"
+			);
 		showRegistrationForm($errors,$_POST);
 	}
 }
 
 function showRegistrationForm($errors,$post){
 	global $config;
-
+	$title = 'Registration Form';
 	require $config->viewsPath . 'header.php';
 	require $config->viewsPath . 'register.php';
 	require $config->viewsPath . 'footer.php';

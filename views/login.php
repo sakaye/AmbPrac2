@@ -7,7 +7,7 @@
 					<input type="text" name="username" id="username" autofocus="autofocus" /> <br/>
 				<label for="password">Password</label>
 					<input type="password" name="password" id="password" /> <br/>
-				<label for="remember" id="remember_label" >Keep me logged in</label>
+				<label for="remember" id="remember_label" >Keep me logged in?</label>
 					<input type="checkbox" name="remember" id="remember" /> <br/>
 					<input type="submit" name="login" class="submit" id="login" value="Sign In" />
 			</form>
