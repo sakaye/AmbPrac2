@@ -31,11 +31,10 @@ $app->post('/register(/)', 'registerComplete');
 $app->get('/login(/)', 'login');
 $app->post('/login(/)', 'login');
 $app->get('/driver(/)', 'driver');
-$app->get('/:main(/)', 'mainSection');
-$app->get('/:main/:subsection(/)', 'listContent');
-$app->get('/:main/:subsection/:content(/)', 'content');
-$app->get('/:subsection(/)','subSection');
-$app->get('/:main/:nav(/)','listContent');
+$app->get('/:section(/)', 'mainSection');
+$app->get('/:section/:subsection(/)', 'listContent');
+$app->get('/:section/:subsection/:content(/)', 'content');
+
 
 
 $app->run();
@@ -44,6 +43,8 @@ $app->run();
 
 function home(){
 	global $config;
+	require $config->modelsPath . "Section.php";
+	require $config->modelsPath . "Subsection.php";
 	$title = 'Ambulatory Practice - Home';
 	$body_ID = 'home';
 	$scripts = $config->scripts;
@@ -57,6 +58,16 @@ function home(){
 
 function mainSection($slug){
 	global $config;
+	require $config->modelsPath . "Section.php";
+	require $config->modelsPath . "Subsection.php";
+	//find section ID from DB
+	$section = new Section($slug);
+	$title = $section->section_name;
+	$body_ID = "";
+	
+	require $config->viewsPath . 'header.php';
+	require $config->viewsPath . 'section.php';
+	require $config->viewsPath . 'footer.php';
 	
 }
 
@@ -67,6 +78,7 @@ function changeSettings(){
 function register(){
 	global $config;
 	$title = 'Register Page';
+	$body_ID = "";
 	$post = array();
 	$errors = array();
 
@@ -105,6 +117,7 @@ function registerComplete(){
 function showRegistrationForm($errors,$post){
 	global $config;
 	$title = 'Registration Form';
+	$body_ID = "";
 	require $config->viewsPath . 'header.php';
 	require $config->viewsPath . 'register.php';
 	require $config->viewsPath . 'footer.php';
@@ -152,13 +165,12 @@ function driver(){
 	$u->loginUser("dustin","test");
 }
 
-
-function showSubNav(){
-	
-}
-
-
 function test(){
+	global $config;
+	require $config->modelsPath . "Section.php";
+	require $config->modelsPath . "Subsection.php";
+	$t = getAllSections();
+	print_r($t);
 	phpinfo();
 }
 

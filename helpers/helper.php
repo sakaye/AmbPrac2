@@ -21,4 +21,18 @@ function check_registration($post){
 
 	return $errors;
 }
+
+function getAllSections(){
+	$allSections = array();
+	$sql = "SELECT * FROM `section`";
+	$result  = db()->query($sql);
+	while($row = $result->fetch_object()){
+		$s = new Section();
+		$s->fillData($row);
+		$allSections[] = $s;
+	}
+	
+	return $allSections;
+}
+
 ?>
