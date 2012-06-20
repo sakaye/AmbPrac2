@@ -7,14 +7,16 @@
 				for($i=0; $i < count($subSections); $i++):
 					$subSection = $subSections[$i];
 				?>
-				<li><a href="<?php
-								if ($subSection->outside_link):
-									echo $subSection->subsection_slug;
-								else:
-								echo $config->siteRoot.$section->section_slug.'/'.$subSection->subsection_slug
-								
-								?>"><?=$subSection->subsection_name?></a>
-			
+					<?php
+						if ($subSection->outside_link == 1):
+					?>
+						<li><a href="<?=$subSection->URL;?>"><?=$subSection->subsection_name?></a>
+					<?php
+						else:
+					?>
+						<li><a href="<?=$config->siteRoot.$section->section_slug.'/'.$subSection->subsection_slug?>"><?=$subSection->subsection_name?></a>
+						<?php endif; ?>
+						
 					<?php if($subSection->subsection_caption): ?>
 						<p><?=$subSection->subsection_caption?></p>
 					<?php endif; ?>
@@ -23,7 +25,10 @@
 				<?php endfor; ?>
 			</ul>			
 		</div>
-		<div class="content_sidebar">
+		<!--
+<div class="content_sidebar">
 			<h3>Sidebar</h3>
-		</div>		
+		</div>
+-->
+		<div class="clear"></div>		
 <!-- end .container--></div>

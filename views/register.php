@@ -2,7 +2,6 @@
 	<div class="form_background">
 		<div class="form_container">
 			<h1 class="underlined">Register Now</h1>
-			<p>Enter the following information to create a new account.</p>
 			<form method="post" action="register.php" name="registerform" id="registerform">
 				<div class="form_field">
 					<label for="username">Username (NUID)</label>
@@ -50,4 +49,15 @@
 			</form>
 		</div>
 	</div>
+	<div class="call_out">
+		<h3 class="call_out_header">Registration Information</h3>
+		<p>KP Employees - please enter the following information to create a new account.</p>
+			<ul>
+				<li>NUID for Username</li>
+				<li>KP Email Address</li>
+			</ul>
+		<p>If you do not have an NUID or KP Email to may create a username and use a personal email.</p>
+	</div>
+	<div class="clear"></div>
 </div>
+

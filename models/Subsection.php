@@ -1,12 +1,12 @@
 <?php
 
 class Subsection{
-	public $id, $section_id, $subsection_name, $subsection_caption, $subsection_slug, $link, $locked;
+	public $id, $section_id, $subsection_name, $subsection_caption, $subsection_slug, $URL, $outside_link, $locked;
 	public $content = array();
 	
-	function __construct($id=null){
-		if($id !== null){
-			$this->getSubsection($id);
+	function __construct($slug=null){
+		if($slug !== null){
+			$this->getSubsectionBySlug($slug);
 		}
 	}
 	
@@ -33,6 +33,7 @@ class Subsection{
 		$this->subsection_caption = $row->subsection_caption;
 		$this->section_id = $row->section_id;
 		$this->subsection_slug = $row->subsection_slug;
+		$this->URL = $row->URL;
 		$this->outside_link = $row->outside_link;
 		$this->locked = $row->locked;
 	}

@@ -37,16 +37,13 @@
 	<header>
 			<div class="top_gradient">
 				<div class="user_bar">
-					<?php if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['Nuid'])) //check to see if the user is already logged in
-						{
-							echo '<a href="#">Hello, '.$first_name.'</a>';
-						}
-						else // display login
-						{
-							echo '<a id="signup_btn" class="header_btn right" href="#">Sign Up</a>';
-							echo '<a id="login_btn" class="header_btn right" href="#">Login</a>';
-						}
-					?>
+					<?php if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['Nuid'])):?> //check to see if the user is already logged in
+							<a href="#">Hello, <?=$first_name?>.</a>
+						<?php
+						else:  // display login ?>
+							<a id="signup_btn" class="header_btn right" href="<?=$config->siteRoot.'register'?>">Sign Up</a>
+							<a id="login_btn" class="header_btn right" href="<?=$config->siteRoot.'login'?>">Login</a>
+						<?php endif; ?>
 				</div>
 				<div class="ambprac">
 					<a href="<?=$config->siteRoot?>">

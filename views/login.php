@@ -18,6 +18,7 @@
 	</div>
 	<div class="call_out">
 		<h3 class="call_out_header">New Member?</h3>
-		<p>Sign up now. It only takes a few minutes to create a new account.</p>
+		<p>Sign up now. It's free and only takes a few minutes to create a new account.</p>
+		<a href="<?=$config->siteRoot."register"?>" class="submit_btn">Sign Up Now</a>
 	</div>
 </div>

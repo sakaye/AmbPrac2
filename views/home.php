@@ -119,7 +119,7 @@
 					</a>
 				</div>
 			<!-- end .info_slider --></section>
-			<section class="bottom">
+<!--			<section class="bottom">
 				<section id="multimedia" class="info_window">
 					<h3>Multimedia</h3>
 					<ul class="bullets">
@@ -133,7 +133,7 @@
 						<li><a href="#">Teamwork and Communication Video</a></li>
 					</ul>
 				</section><!-- end .multimedia -->
-				<section id="searches" class="info_window">
+<!--				<section id="searches" class="info_window">
 					<h3> Past Searches </h3>
 					<div id="recent_searches">
 						<ul>
@@ -166,6 +166,7 @@
 						</ul>
 					</div>
 				</section><!-- end #searches -->
-			</section><!-- end .bottom-->
+<!--			</section><!-- end .bottom-->
 		</section><!-- end .content-->
 	</div><!-- end .container-->
+	<div class="clear"></div>

@@ -39,11 +39,11 @@ class User{
 	}
 
 	function loginUser($username, $password){
+		$username = mysql_real_escape_string($_POST['username']);
 		$salt = "1234124k12ljKJSDklasjdkljj214l1j24j";
+		$password = sha1(mysql_real_escape_string($_POST['password']).$salt);
 		
-		//clean variables
-		
-		$sql = "SELECT * FROM `users` WHERE `username` = '$username' AND `password` = '$password'";
+		$sql = "SELECT * FROM `users` WHERE `username` = '$username' AND `password` = '$password' LIMIT 1";
 		$result = db()->query($sql);
 		if($result && $result->num_rows > 0){
 			$row = $result->fetch_object();
@@ -66,6 +66,7 @@ class User{
 	function createUser($obj){
 		$salt = "1234124k12ljKJSDklasjdkljj214l1j24j";
 		//sql injection cleaning;
+		
 		$sql = "INSERT INTO users VALUES('$obj->username','$obj->last_name','$obj->first_name','$obj->password','$obj->email',1,'test','$obj->title','$obj->area',1,'val_key', NULL)";
 		if(db()->query($sql)){
 			$this->setSessions();

@@ -2,39 +2,28 @@
 			<div class="topbar_container">
 				<ul id="topnav">
 					<li><a class="home" href="<?=$config->siteRoot?>">Home</a></li>
-				<!-- i for loop to get all the sections 
-						if statment to create the end UL's for the menus
-					 	
-					 	j for loop to get all the subsections
-					 	end j for loop
-					 
-					 end i for loop
-				
-				-->
+
 					<?php
 					$sections = getAllSections();
 					for ($i=0; $i < count($sections); $i++):
 						$s = $sections[$i];
 					?>
-					<li class="dropdown">
-						<a href="<?=$config->siteRoot.$s->slug?>"><?=$s->section_name?></a>
-						<div class="sub">
+					<li <?php if ($s->section_dropdown == 1){echo 'class="dropdown"';}?>>
+						<a href="<?=$config->siteRoot.$s->section_slug?>"><?=$s->section_name?></a>
+							<div <?php if ($s->section_dropdown == 1){echo 'class="sub"';}?>>
 							<ul>
-							
-							
 								<?php
-								$subSections = $section->getAllSubsections();
-								for($i=0; $i < count($subSections); $i++):
-									$subSection = $subSections[$i];
+								$subSections = $s->getAllSubsections();
+								for($j=0; $j < count($subSections); $j++):
+									$subSection = $subSections[$j];
 								?>
-								<li><a href="<?=$config->siteRoot.$section->section_slug.'/'.$subSection->subsection_slug?>"><?=$subSection->subsection_name?></a></li>
+								<li><a href="<?=$config->siteRoot.$s->section_slug.'/'.$subSection->subsection_slug?>"><?=$subSection->subsection_name?></a></li>
 								<?php endfor; ?>
-								
-								
 							</ul>
 						</div>
 					</li>
 					<?php endfor; ?>
+					
 					<li class="last"><a class="contact" href="#">Contact Us</a></li>
 				</ul>
 			</div>

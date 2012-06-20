@@ -54,6 +54,20 @@ div.container {
 div.clear {
 	clear:both;
 }
+a.submit_btn{
+	width:132px;
+	font-size:1.125em; /* 18/16 */
+	color:#fff;
+	padding:16px 0px 17px;
+	margin:auto;
+	margin-top:30px;
+	background:url(images/submit_button.png);
+	display:block;
+	text-align:center;
+}
+a.submit_btn:visited{
+	color:#fff;
+}
 
 /****** HEADER STYLES ******/
 	header {
@@ -117,7 +131,6 @@ div.clear {
 	footer a:hover, footer a:active {
 		color:#ffffff;
 	}
-
 
 /****** NAVAGATION STYLES ******/
 	div.top_bar, nav.top_bar, footer {
@@ -243,7 +256,7 @@ div.clear {
 	div.list_background {
 		width:669px;
 		min-height:429px;
-		padding:20px 20px;
+		padding:0px 20px;
 		border:1px solid #b4b4b4;
 		background-color:#efefef;
 		float:left;
@@ -311,16 +324,18 @@ div.clear {
 		width:480px;
 		margin:auto;
 	}
-	div.form_field { height:75px; }
+	div.form_field { height:60px; }
 	div.container form span.error {
 		color:red;
 		width:247px;
 		margin-right:25px;
-		text-align:center;
 		float:right;
 		display:block;
 	}
-	div.container form select { font-size:24px; }
+	div.container form select {
+		font-size:24px;
+		margin:5px 2px;
+		}
 	div.container form label {
 		width:200px;
 		font-size:1.125em; /* 18/16 */
@@ -328,9 +343,10 @@ div.clear {
 	}
 	div.container form input {
 		font-size:1em; /* 16/16 */
+		width:250px;
 		padding:5px;
 		border:1px solid #7d7d7d;
-		margin:10px 2px;
+		margin:5px 2px;
 		-webkit-border-radius:5px;
 		   -moz-border-radius:5px;
 		    -ms-border-radius:5px;
@@ -354,6 +370,7 @@ div.clear {
 	div.container input.submit { 
 		width:132px;
 		height:51px;
+		margin:0px 0px 20px;
 		border:0;
 		font-size:18px;
 		color:#fff;
@@ -372,7 +389,26 @@ div.clear {
 	div.form_container p { padding:10px 0; }
 	div.call_out {
 		width:400px;
+		min-height:200px;
+		border:1px solid #b4b4b4;
+		background-color:#efefef;
+		padding-bottom:20px;
 		float:right;
+	}
+	div.call_out ul, div.call_out p{
+		list-style:inside;
+		padding:10px 5px 0px 10px;
+	}
+	div.call_out li{
+		padding:2px 0px;
+		color:#818181;
+	}
+	div.call_out h3.call_out_header {
+		background-color:#494443;
+		color:#ffffff;
+		padding:13px 0px 13px 10px;
+		font-weight:normal;
+		margin-bottom:10px;
 	}
 
 

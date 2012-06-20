@@ -20,6 +20,9 @@ $config->styles	 = array('main.css');
 $app = new Slim();
 
 require 'helpers/helper.php';
+require $config->modelsPath . "Section.php";
+require $config->modelsPath . "Subsection.php";
+require $config->modelsPath . "Content.php";
 
 //routes
 
@@ -31,20 +34,17 @@ $app->post('/register(/)', 'registerComplete');
 $app->get('/login(/)', 'login');
 $app->post('/login(/)', 'login');
 $app->get('/driver(/)', 'driver');
-$app->get('/:section(/)', 'mainSection');
-$app->get('/:section/:subsection(/)', 'listContent');
-$app->get('/:section/:subsection/:content(/)', 'content');
-
+$app->get('/:section(/)', 'showSection');
+$app->get('/:section/:subsection(/)', 'showSubsection');
+$app->get('/:section/:subsection/:content(/)', 'showContent');
 
 
 $app->run();
 
 //controllers here!
 
-function home(){
+function home(){  //displays the Home page with required JS scripts for sliders
 	global $config;
-	require $config->modelsPath . "Section.php";
-	require $config->modelsPath . "Subsection.php";
 	$title = 'Ambulatory Practice - Home';
 	$body_ID = 'home';
 	$scripts = $config->scripts;
@@ -53,22 +53,36 @@ function home(){
 	require $config->viewsPath . 'header.php';
 	require $config->viewsPath . 'home.php';
 	require $config->viewsPath . 'footer.php';
-	
 }
 
-function mainSection($slug){
+function showSection($section_slug){
 	global $config;
-	require $config->modelsPath . "Section.php";
-	require $config->modelsPath . "Subsection.php";
-	//find section ID from DB
-	$section = new Section($slug);
+	$section = new Section($section_slug); //find section ID from DB
 	$title = $section->section_name;
-	$body_ID = "";
-	
+	$body_ID = "section";
 	require $config->viewsPath . 'header.php';
 	require $config->viewsPath . 'section.php';
+	require $config->viewsPath . 'footer.php';	
+}
+
+function showSubsection($section_slug, $subsection_slug){
+	global $config;
+	$subsection = new Subsection($subsection_slug); //find subsection ID from DB
+	$title = $subsection->subsection_name;
+	$body_ID = "subsection";
+	require $config->viewsPath . 'header.php';
+	require $config->viewsPath . 'subsection.php';
 	require $config->viewsPath . 'footer.php';
-	
+}
+
+function showContent($section_slug, $subsection_slug, $content_slug){
+	global $config;
+	$content = new Content($content_slug); //find content ID from DB
+	$title = $content->content_name;
+	$body_ID = "content";
+	require $config->viewsPath . 'header.php';
+	require $config->viewsPath . 'content.php';
+	require $config->viewsPath . 'footer.php';
 }
 
 function changeSettings(){
@@ -78,7 +92,7 @@ function changeSettings(){
 function register(){
 	global $config;
 	$title = 'Register Page';
-	$body_ID = "";
+	$body_ID = "register";
 	$post = array();
 	$errors = array();
 
@@ -100,7 +114,9 @@ function registerComplete(){
 		"username" => $_POST[username],
 		"first_name" => $_POST[first_name],
 		"last_name" => $_POST[last_name],
-		"password" => $_POST[password]
+		"password" => $_POST[password],
+		"title" => $_POST[title],
+		"area" => $_POST[area]
 		);
 	$u = new User();
 	$status = $u->createUser($obj);
@@ -133,29 +149,6 @@ function login(){
 
 }
 
-function subSection($slug){
-	global $config;
-	require $config->modelsPath . 'Subsection.php';
-	require $config->modelsPath . 'Content.php';
-	
-	$s = new Subsection();
-	$s->getSubsectionBySlug($slug);
-	$s->getContent();
-	
-	
-	print_r($s);
-}
-
-function testing($id){
-	global $config;
-	require $config->modelsPath . 'Subsection.php';
-	require $config->modelsPath . 'Content.php';
-	
-	$s = new Subsection($id);
-	$s->getContent();
-	
-	print_r($s);
-}
 
 function driver(){
 	global $config;
@@ -167,9 +160,7 @@ function driver(){
 
 function test(){
 	global $config;
-	require $config->modelsPath . "Section.php";
-	require $config->modelsPath . "Subsection.php";
-	$t = getAllSections();
+	$t = new Subsection();
 	print_r($t);
 	phpinfo();
 }
