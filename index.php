@@ -30,7 +30,7 @@ $app->get('/', 'home');
 $app->get('/test(/)', 'test');
 $app->get('/testing/:id','testing');
 $app->get('/register(/)', 'register');
-$app->post('/register(/)', 'registerComplete');
+$app->post('/register(/)', 'registerValidate');
 $app->get('/login(/)', 'login');
 $app->post('/login(/)', 'login');
 $app->get('/driver(/)', 'driver');
@@ -99,7 +99,7 @@ function register(){
 	showRegistrationForm(array(),array());
 }
 
-function registerComplete(){
+function registerValidate(){
 	global $config;
 	//look into autoloading classes.
 	require $config->modelsPath . "User.php";
@@ -111,17 +111,17 @@ function registerComplete(){
 	}
 	//here to load post data
 	$obj = (object)array(
-		"username" => $_POST[username],
-		"first_name" => $_POST[first_name],
-		"last_name" => $_POST[last_name],
-		"password" => $_POST[password],
-		"title" => $_POST[title],
-		"area" => $_POST[area]
+		"username" => $_POST['username'],
+		"first_name" => $_POST['first_name'],
+		"last_name" => $_POST['last_name'],
+		"password" => $_POST['password'],
+		"title" => $_POST['title'],
+		"area" => $_POST['area']
 		);
 	$u = new User();
 	$status = $u->createUser($obj);
 	if($status){
-		home();
+		registerComplete();
 	}else{
 		$errors = array(
 			"username" => "Already in use"
