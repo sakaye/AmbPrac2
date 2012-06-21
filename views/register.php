@@ -17,7 +17,7 @@
 				</div>
 				<div class="form_field">
 					<label for="first_name">First Name</label>
-					<input type="text" name="first_name" id="first_name" />
+					<input type="text" name="first_name" id="first_name" value="<?=$_POST['first_name']?>" />
 				</div>
 				<div class="form_field">
 					<label for="last_name">Last Name</label>

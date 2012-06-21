@@ -64,10 +64,12 @@ class User{
 	}
 
 	function createUser($obj){
+		$username = mysql_real_escape_string($obj->username);
 		$salt = "1234124k12ljKJSDklasjdkljj214l1j24j";
+		$password = sha1(mysql_real_escape_string($obj->password).$salt);
 		//sql injection cleaning;
 		
-		$sql = "INSERT INTO users VALUES('$obj->username','$obj->last_name','$obj->first_name','$obj->password','$obj->email',1,'test','$obj->title','$obj->area',1,'val_key', NULL)";
+		$sql = "INSERT INTO users(username, last_name, first_name, password, email) VALUES('$username','$obj->last_name','$obj->first_name','$password','$obj->email','test','$obj->title','$obj->area',1,'val_key', NULL)";
 		if(db()->query($sql)){
 			$this->setSessions();
 			return true;
