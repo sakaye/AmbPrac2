@@ -68,9 +68,10 @@ class User{
 		$salt = "1234124k12ljKJSDklasjdkljj214l1j24j";
 		$password = sha1(mysql_real_escape_string($obj->password).$salt);
 		$val_key = sha1(mysql_real_escape_string($obj->first_name).mysql_real_escape_string($obj->last_name));
+		$active = 1;
 		//sql injection cleaning;
 		
-		$sql = "INSERT INTO users(username, last_name, first_name, password, email, title, area, val_key) VALUES('$username','$obj->last_name','$obj->first_name','$password','$obj->email','$obj->title','$obj->area','$val_key')";
+		$sql = "INSERT INTO users(username, last_name, first_name, password, email, title, area, active, val_key) VALUES('$username','$obj->last_name','$obj->first_name','$password','$obj->email','$obj->title','$obj->area', '$active','$val_key')";
 		if(db()->query($sql)){
 			$this->setSessions();
 			return true;
