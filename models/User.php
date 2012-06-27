@@ -67,9 +67,10 @@ class User{
 		$username = mysql_real_escape_string($obj->username);
 		$salt = "1234124k12ljKJSDklasjdkljj214l1j24j";
 		$password = sha1(mysql_real_escape_string($obj->password).$salt);
+		$val_key = sha1(mysql_real_escape_string($obj->first_name).mysql_real_escape_string($obj->last_name));
 		//sql injection cleaning;
 		
-		$sql = "INSERT INTO users(username, last_name, first_name, password, email) VALUES('$username','$obj->last_name','$obj->first_name','$password','$obj->email','test','$obj->title','$obj->area',1,'val_key', NULL)";
+		$sql = "INSERT INTO users(username, last_name, first_name, password, email, title, area, val_key) VALUES('$username','$obj->last_name','$obj->first_name','$password','$obj->email','$obj->title','$obj->area','$val_key')";
 		if(db()->query($sql)){
 			$this->setSessions();
 			return true;
@@ -82,6 +83,76 @@ class User{
 
 	function isEmployee(){
 		return $kp_employee === 1;
+	}
+
+	public static function check_registration($_POST){
+		$error = array();
+		//check username for bad characters
+		if (!empty($_POST['username'])){
+			if (preg_match("/[^a-zA-Z0-9]+$/", $_POST['username'])) {
+				$error['username_error'] = "Username contains invalid character(s)"; 
+			}
+		}
+		else {
+			$error['username_error'] = "Username can not be blank";
+		}
+		//check passwords
+		if (!empty($_POST['password']) && (!empty($_POST['confirm_password']))){
+			if ($_POST['password'] == $_POST['confirm_password']){
+				if (preg_match("/^(?=.*\d+)(?=.*[a-zA-Z])[0-9a-zA-Z!@#$%]{6,}$/", $_POST['password'])){
+					//password is valid
+				}
+				else {
+					$error['password_error'] = "Password contains invalid character(s)";
+				}
+			}
+			else {
+				$error['password_error'] = "Passwords do not match";
+				$error['comfirmpassword_error'] = "Passwords do not match";
+			}
+		}
+		else {
+			if (empty($_POST['password'])){
+				$error['password_error'] = "Password can not be left blank";
+			}
+			if (empty($_POST['confirm_password'])){
+				$error['comfirmpassword_error'] = "Comfirm password can not be left blank";
+			}
+		}
+		
+		//check first/last name for bad characters
+		if (!empty($_POST['first_name'])){
+			if (preg_match("/[^a-zA-Z]+$/", $_POST['first_name'])) { $error['firstname_error'] = "First name contains invalid character(s)"; }
+		}
+		else { $error['firstname_error'] = "First name can not be blank"; }
+		
+		if (!empty($_POST['last_name'])){
+			if (preg_match("/[^a-zA-Z]+$/", $_POST['last_name'])) { $error['lastname_error'] = "Last name contains invalid character(s)"; }
+		}
+		else {
+			$error['lastname_error'] = "Last name can not be blank";
+		}
+		
+		//check valid email
+		if (!empty($_POST['email'])){
+			if (preg_match("/\b^[a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$\b/", $_POST['email'])) {
+				//email address is correctly formatted
+			}
+			else { $error['email_error'] = "Email format is incorrect"; }
+		}
+		else {
+			$error['email_error'] = "Email can not be blank";
+		}
+		
+		//check title/area isn't blank
+		if (empty($_POST['title'])){
+			$error['title_error'] = "Title can not be blank";
+		}
+		if (empty($_POST['area'])){
+			$error['area_error'] = "Area can not be blank";
+		}
+		
+		return $error;
 	}
 
 }

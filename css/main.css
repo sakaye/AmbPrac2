@@ -50,7 +50,9 @@ div.container {
 	width:960px;
 	min-height:700px;
 	margin:auto;
-}
+	padding-bottom:30px;
+	clear:both;
+}		
 div.clear {
 	clear:both;
 }
@@ -247,12 +249,6 @@ a.submit_btn:visited{
 		border-bottom:1px solid #000;
 	}
 /****** CONTENT STYLES ******/
-	div.container {
-		width:960px;
-		margin:auto;
-		padding-bottom:30px;
-		clear:both;
-	}
 	div.list_background {
 		width:669px;
 		min-height:429px;
@@ -301,7 +297,7 @@ a.submit_btn:visited{
 		background-color:#efefef;
 	}
 	div.content_sidebar {
-		width:229px;
+		width:228px;
 		min-height:200px;
 		border:1px solid #b4b4b4;
 		background-color:#efefef;
@@ -314,7 +310,7 @@ a.submit_btn:visited{
 		background:url(images/underline.gif) repeat-x bottom;
 	}
 	div.form_background {
-		width:529px;
+		width:528px;
 		min-height:320px;
 		border:1px solid #b4b4b4;
 		background-color:#efefef;
@@ -324,20 +320,23 @@ a.submit_btn:visited{
 		width:480px;
 		margin:auto;
 	}
-	div.form_field { height:60px; }
+	div.form_field {
+		min-height:30px;
+		clear:both;
+	}
 	div.container form span.error {
 		color:red;
-		width:247px;
-		margin-right:25px;
+		width:260px;
+		margin-right:2px;
 		float:right;
 		display:block;
 	}
 	div.container form select {
 		font-size:24px;
-		margin:5px 2px;
+		margin:10px 2px;
 		}
 	div.container form label {
-		width:200px;
+		width:214px;
 		font-size:1.125em; /* 18/16 */
 		display:inline-block;
 	}
@@ -346,7 +345,7 @@ a.submit_btn:visited{
 		width:250px;
 		padding:5px;
 		border:1px solid #7d7d7d;
-		margin:5px 2px;
+		margin:5px 0px;
 		-webkit-border-radius:5px;
 		   -moz-border-radius:5px;
 		    -ms-border-radius:5px;
@@ -370,13 +369,14 @@ a.submit_btn:visited{
 	div.container input.submit { 
 		width:132px;
 		height:51px;
-		margin:0px 0px 20px;
+		margin:5px 0px 20px;
 		border:0;
 		font-size:18px;
 		color:#fff;
 		float:right;
 		background:url(images/submit_button.png);
 		cursor:pointer;
+		clear:both;
 	}
 	div.container input.submit:active { background-position-y:51px; }
 	span.forgot {
@@ -387,6 +387,13 @@ a.submit_btn:visited{
 		font-size:.75em; /* 12/16 */
 	}
 	div.form_container p { padding:10px 0; }
+	div.form_container p.required { color:red; }
+	div.form_container p.form_info {
+		text-align:center;
+		font-size:.875em;
+		color:#133e5f;
+		padding:5px 0px 15px;
+	}
 	div.call_out {
 		width:400px;
 		min-height:200px;

@@ -90,12 +90,8 @@ function changeSettings(){
 }
 
 function register(){
-	global $config;
-	$title = 'Register Page';
-	$body_ID = "register";
 	$post = array();
 	$errors = array();
-
 	showRegistrationForm(array(),array());
 }
 
@@ -104,8 +100,12 @@ function registerValidate(){
 	//look into autoloading classes.
 	require $config->modelsPath . "User.php";
 	//grab post variable
-	$errors = check_registration($_POST);
+	print_r($_POST);
+	$errors = User::check_registration($_POST);
+	print_r($errors);
+		
 	if(count($errors) > 0){
+
 		showRegistrationForm($errors,$_POST);
 		return false;
 	}
@@ -114,6 +114,7 @@ function registerValidate(){
 		"username" => $_POST['username'],
 		"first_name" => $_POST['first_name'],
 		"last_name" => $_POST['last_name'],
+		"email" => $_POST['email'],
 		"password" => $_POST['password'],
 		"title" => $_POST['title'],
 		"area" => $_POST['area']
