@@ -35,32 +35,30 @@
 
 <body id="<?=$body_ID?>">
 	<header>
-			<div class="top_gradient">
-				<div class="user_bar">
-					<?php if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['Nuid'])):?> //check to see if the user is already logged in
-							<a href="#">Hello, <?=$first_name?>.</a>
-						<?php
-						else:  // display login ?>
-							<a id="signup_btn" class="header_btn right" href="<?=$config->siteRoot.'register'?>">Sign Up</a>
-							<a id="login_btn" class="header_btn right" href="<?=$config->siteRoot.'login'?>">Login</a>
-						<?php endif; ?>
-				</div>
-				<div class="ambprac">
-					<a href="<?=$config->siteRoot?>">
-						<img src="http://localhost/AmbPrac2/css/images/ambprac_header.png" alt="Ambulatory Practice Logo" />
-					</a>
-				</div>
-			</div>
-		</header>
-		
-		<div id="search_bar" class="top_bar">
-			<div class="topbar_container">
-				<div id="date"><?=date("l, F j, Y")?></div>
-				<div class="search_block">
-					<form class="search_field" method="GET" action="" name="search_field">
-					<input name="search" type="text" autofocus="autofocus" />
-					</form>
-				</div>
+		<div class="user_bar">
+			<?php if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['Nuid'])):?> //check to see if the user is already logged in
+					<a href="#">Hello, <?=$first_name?>.</a>
+				<?php
+				else:  // display login ?>
+					<a id="signup_btn" class="header_btn right" href="<?=$config->siteRoot.'register'?>">Sign Up</a>
+					<a id="login_btn" class="header_btn right" href="<?=$config->siteRoot.'login'?>">Login</a>
+				<?php endif; ?>
+		</div>
+		<div class="ambprac">
+			<a href="<?=$config->siteRoot?>">
+				<img src="http://localhost/AmbPrac2/css/images/ambprac_header.png" alt="Ambulatory Practice Logo" />
+			</a>
+		</div>
+	</header>
+	
+	<div id="search_bar" class="top_bar">
+		<div class="topbar_container">
+			<div id="date"><?=date("l, F j, Y")?></div>
+			<div class="search_block">
+				<form class="search_field" method="GET" action="" name="search_field">
+				<input name="search" type="text" autofocus="autofocus" />
+				</form>
 			</div>
 		</div>
-		<?php require $config->viewsPath . "nav.php"; ?>
+	</div>
+	<?php require $config->viewsPath . "nav.php"; ?>

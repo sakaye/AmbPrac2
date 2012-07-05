@@ -9,19 +9,6 @@ function load_json(){
   return $json;
 }
 
-function check_registration($post){
-	//check evertyhing here.
-	$errors = array();
-	if(strlen($post['username']) === 0){
-		$errors["username"] = "Username is not long enough";
-	}
-	
-
-	//more here
-
-	return $errors;
-}
-
 function getAllSections(){
 	$allSections = array();
 	$sql = "SELECT * FROM `section`";

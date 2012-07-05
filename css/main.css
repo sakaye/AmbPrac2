@@ -74,7 +74,7 @@ a.submit_btn:visited{
 /****** HEADER STYLES ******/
 	header {
 		width:100%;
-		height:140px;
+		height:130px;
 		background-color:#184e78;
 		background-image: -webkit-gradient(linear, left top, left bottom, from(#133e5f), to(#184e78)); /* Saf4+, Chrome */	
 		background-image: -webkit-linear-gradient(top, #133e5f, #184e78); /* Chrome 10+, Saf5.1+, iOS 5+ */
@@ -90,7 +90,7 @@ a.submit_btn:visited{
 	div.user_bar {
 		width:960px;
 		height:30px;
-		padding-top:20px;
+		padding-top:10px;
 		margin:auto;
 	}
 	span#username {
@@ -392,7 +392,7 @@ a.submit_btn:visited{
 		text-align:center;
 		font-size:.875em;
 		color:#133e5f;
-		padding:5px 0px 15px;
+		padding:15px 0px 5px;
 	}
 	div.call_out {
 		width:400px;

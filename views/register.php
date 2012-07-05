@@ -2,8 +2,9 @@
 	<div class="form_background">
 		<div class="form_container">
 			<h1 class="underlined">Register Now</h1>
-			<p class="required">*All fields are required*</p>
+			<p class="required">All fields are required*</p>
 			<form method="post" action="<?= $config->siteRoot . "register" ?>" name="registerform" id="registerform">
+				<p class="form_info">KP employees use your NUID</p>
 				<div class="form_field">
 					<label for="username">Username (NUID)</label>
 					<input <?= (isset($errors['username_error'])) ? 'class="input_error"' : "" ?> type="text" name="username" id="username" placeholder="A123456" autofocus="autofocus" <?= !empty($_POST['username']) ? 'value="'.$_POST['username'].'"' : ""  ?>/>
@@ -11,22 +12,21 @@
 						<span class="error"><?= $errors['username_error'];?></span>
 					<?php endif; ?>
 				</div>
-				<p class="form_info">KP employees use your NUID</p>
+				<p class="form_info">Password must be at least 6 characters and include a number</p>
 				<div class="form_field">
 					<label for="password">Password</label>
-					<input <?= (isset($errors['password_error'])) ? 'class="input_error"' : "" ?> type="password" name="password" id="password" />
+					<input <?= (isset($errors['password_error'])) ? 'class="input_error"' : "" ?> type="password" name="password" id="password" placeholder="pa55word" />
 					<?php if(isset($errors['password_error'])): ?>
 						<span class="error"><?= $errors['password_error'];?></span>
 					<?php endif; ?>
 				</div>
 				<div class="form_field">
 					<label for="confirm_password">Confirm Password</label>
-					<input <?= (isset($errors['comfirmpassword_error'])) ? 'class="input_error"' : "" ?> type="password" name="confirm_password" id="confirm_password" /> 
+					<input <?= (isset($errors['comfirmpassword_error'])) ? 'class="input_error"' : "" ?> type="password" name="confirm_password" id="confirm_password" placeholder="pa55word" /> 
 					<?php if(isset($errors['comfirmpassword_error'])): ?>
 						<span class="error"><?= $errors['comfirmpassword_error'];?></span>
 					<?php endif; ?>
 				</div>
-				<p class="form_info">Password must be at least 6 characters and include a number</p>
 				<div class="form_field">
 					<label for="first_name">First Name</label>
 					<input <?= (isset($errors['firstname_error'])) ? 'class="input_error"' : "" ?> type="text" name="first_name" id="first_name" placeholder="John" <?= !empty($_POST['first_name']) ? 'value="'.$_POST['first_name'].'"' : ""  ?>/>
@@ -41,6 +41,7 @@
 						<span class="error"><?= $errors['lastname_error'];?></span>
 					<?php endif; ?>
 				</div>
+				<p class="form_info">KP employees use your KP email address</p>
 				<div class="form_field">
 					<label for="email">Email Address</label>
 					<input <?= (isset($errors['email_error'])) ? 'class="input_error"' : "" ?> type="text" name="email" id="email" placeholder="John.T.Doe@kp.org" <?= !empty($_POST['email']) ? 'value="'.$_POST['email'].'"' : ""  ?>/>
@@ -48,7 +49,7 @@
 						<span class="error"><?= $errors['email_error'];?></span>
 					<?php endif; ?>
 				</div>
-				<p class="form_info">KP employees use your KP email address</p>
+				<p class="form_info">Choose a title closest to yours</p>
 				<div class="form_field">
 					<label for="title">Title</label>
 					<select name="title" id="title">
@@ -60,7 +61,6 @@
 						<span class="error"><?= $errors['title_error'];?></span>
 					<?php endif; ?>
 				</div>
-				<p class="form_info">KP employees choose a title closest to yours</p>
 				<div class="form_field">
 					<label for="area">Region</label>
 					<select name="area" id="area">
