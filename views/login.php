@@ -2,7 +2,7 @@
 	<div class="form_background">
 		<div class="form_container">
 			<h1 class="underlined">Sign In</h1>
-			<form method="post" action="login.php" name="loginform" id="loginform">
+			<form method="post" action="<?= $config->siteRoot . "login" ?>" name="loginform" id="loginform">
 				<label for="nuid">Username (NUID)</label>
 					<input type="text" name="username" id="username" autofocus="autofocus" /> <br/>
 				<label for="password">Password</label>

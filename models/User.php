@@ -1,6 +1,6 @@
 <?php
 class User{
-	public $username, $last_name, $first_name, $password, $email, $kp_employee, $reloginDigest, $title, $area, $active, $val_key, $creation_date;
+	public  $ID, $username, $last_name, $first_name, $password, $email, $kp_employee, $reloginDigest, $title, $area, $active, $val_key, $creation_date;
 	
 	function __construct($username = null){
 		if($username !== null){
@@ -25,6 +25,7 @@ class User{
 	}
 
 	function fillData($row){
+		$this->ID = $row->ID;
 		$this->username = $row->username;
 		$this->last_name = $row->last_name;
 		$this->first_name = $row->first_name;
@@ -38,7 +39,7 @@ class User{
 		
 	}
 
-	function loginUser($username, $password){
+	function loginUser($_POST){
 		$username = mysql_real_escape_string($_POST['username']);
 		$salt = "1234124k12ljKJSDklasjdkljj214l1j24j";
 		$password = sha1(mysql_real_escape_string($_POST['password']).$salt);
@@ -56,35 +57,76 @@ class User{
 	}
 
 	function setSessions(){
+		$_SESSION['Username'] = $this->username;
+		$_SESSION['First_name'] = $this->first_name;
+		$_SESSION['Logged_in'] = 1;
+		$_SESSION['User_ID'] = $this->ID;
+		
+ 		$expireDate = time() + 60 * 30;
 		//cookie or session here.
 		//name or small common used things
 		//isAdmin 
 		//primary key
-		$_SESSION['name'] = $this->last_name . "," . $this->first_name;
 	}
 
 	function createUser($obj){
+		//sql injection cleaning;
 		$username = mysql_real_escape_string($obj->username);
 		$salt = "1234124k12ljKJSDklasjdkljj214l1j24j";
 		$password = sha1(mysql_real_escape_string($obj->password).$salt);
-		$val_key = sha1(mysql_real_escape_string($obj->first_name).mysql_real_escape_string($obj->last_name));
+		$email = mysql_real_escape_string($obj->email);
+		$first_name = mysql_real_escape_string($obj->first_name);
+		$last_name = mysql_real_escape_string($obj->last_name);
+		$val_key = sha1($first_name.$last_name.$username);
 		$active = 1;
-		//sql injection cleaning;
-		
-		$sql = "INSERT INTO users(username, last_name, first_name, password, email, title, area, active, val_key) VALUES('$username','$obj->last_name','$obj->first_name','$password','$obj->email','$obj->title','$obj->area', '$active','$val_key')";
-		if(db()->query($sql)){
-			$this->setSessions();
-			return true;
-		}else{
-			echo $sql;
-			echo db()->error;
-			return false;
+
+		$error = array();
+		//check to see if username is already in use
+		$sql = "SELECT count(*) AS count FROM `users` WHERE `username` = '$username'";
+		$result = db()->query($sql);
+		$row = $result->fetch_object();
+		if($row->count > 0){
+			$error['username_error'] = "Username is already registered";
 		}
+		else{
+			//check to see if email is already in use
+			$sql = "SELECT count(*) AS count FROM `users` WHERE `email` = '$email'";
+			$result = db()->query($sql);
+			$row = $result->fetch_object();
+			if($row->count > 0){
+				$error['email_error'] = "Email is already registered";
+			}
+			else{
+				//create the user
+				$sql = "INSERT INTO `users`(username, last_name, first_name, password, email, title, area, active, val_key)
+				VALUES('$username','$last_name','$first_name','$password','$email','$obj->title','$obj->area', '$active','$val_key')";
+				if(db()->query($sql)){
+					$this->setSessions();
+					
+				}else{
+					echo $sql;
+					echo db()->error;
+				}
+			}
+		}	
+		
+		return $error;
 	}
 
 	function isEmployee(){
 		return $kp_employee === 1;
 	}
+
+
+
+
+
+
+
+
+
+
+
 
 	public static function check_registration($_POST){
 		$error = array();

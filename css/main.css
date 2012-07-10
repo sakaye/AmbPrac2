@@ -393,6 +393,7 @@ a.submit_btn:visited{
 		font-size:.875em;
 		color:#133e5f;
 		padding:15px 0px 5px;
+		clear:both;
 	}
 	div.call_out {
 		width:400px;

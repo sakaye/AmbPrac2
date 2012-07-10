@@ -23,6 +23,7 @@ require 'helpers/helper.php';
 require $config->modelsPath . "Section.php";
 require $config->modelsPath . "Subsection.php";
 require $config->modelsPath . "Content.php";
+require $config->modelsPath . "User.php";
 
 //routes
 
@@ -32,8 +33,7 @@ $app->get('/testing/:id','testing');
 $app->get('/register(/)', 'register');
 $app->post('/register(/)', 'registerValidate');
 $app->get('/login(/)', 'login');
-$app->post('/login(/)', 'login');
-$app->get('/driver(/)', 'driver');
+$app->post('/login(/)', 'loginValidate');
 $app->get('/:section(/)', 'showSection');
 $app->get('/:section/:subsection(/)', 'showSubsection');
 $app->get('/:section/:subsection/:content(/)', 'showContent');
@@ -90,25 +90,19 @@ function changeSettings(){
 }
 
 function register(){
-	$post = array();
 	$errors = array();
-	showRegistrationForm(array(),array());
+	showRegistrationForm($errors,$_POST);
 }
 
 function registerValidate(){
 	global $config;
-	//look into autoloading classes.
-	require $config->modelsPath . "User.php";
+	//look into autoloading classes
 	//grab post variable
-	print_r($_POST);
 	$errors = User::check_registration($_POST);
-	print_r($errors);
-		
 	if(count($errors) > 0){
-
 		showRegistrationForm($errors,$_POST);
 		return false;
-	}
+		}
 	//here to load post data
 	$obj = (object)array(
 		"username" => $_POST['username'],
@@ -120,27 +114,52 @@ function registerValidate(){
 		"area" => $_POST['area']
 		);
 	$u = new User();
-	$status = $u->createUser($obj);
-	if($status){
-		registerComplete();
-	}else{
-		$errors = array(
-			"username" => "Already in use"
-			);
+	$errors = $u->createUser($obj);
+	if(count($errors) > 0){
 		showRegistrationForm($errors,$_POST);
+		return false;
+	}else{
+		registerComplete($u);
 	}
 }
 
-function showRegistrationForm($errors,$post){
+function showRegistrationForm($errors,$_POST){
 	global $config;
 	$title = 'Registration Form';
-	$body_ID = "";
+	$body_ID = "register";
 	require $config->viewsPath . 'header.php';
 	require $config->viewsPath . 'register.php';
 	require $config->viewsPath . 'footer.php';
 }
+function registerComplete($user){
+	global $config;
+	$title = 'Registration Complete';
+	$body_ID = 'register';
+	require $config->viewsPath . 'header.php';
+	require $config->viewsPath . 'register_complete.php';
+	require $config->viewsPath . 'footer.php';
+}
 
 function login(){
+	$errors = array();
+	showLoginForm($errors);
+}
+
+function loginValidate(){
+	global $config;
+	$u = new User();
+	$LoggedIn = $u->loginUser($_POST);
+	if ($LoggedIn == true){
+		home();
+	}
+	else{
+		$errors['login_error'] = "Username and Password combination were invalid. Please try to login again";
+		showLoginForm($errors);
+		
+	}
+}
+
+function showLoginForm($errors){
 	global $config;
 	$title = 'Login In';
 	$body_ID = 'login';
@@ -150,19 +169,8 @@ function login(){
 
 }
 
-
-function driver(){
-	global $config;
-	//look into autoloading classes.
-	require $config->modelsPath . "User.php";
-	$u = new User();
-	$u->loginUser("dustin","test");
-}
-
 function test(){
 	global $config;
-	$t = new Subsection();
-	print_r($t);
 	phpinfo();
 }
 
