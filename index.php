@@ -150,7 +150,8 @@ function loginValidate(){
 	$u = new User();
 	$errors = $u->loginUser($_POST);
 	if ($errors == false){ //redirect to home page
-		home();
+		global $app;
+		$app->redirect($config->siteRoot);
 	}
 	else{ //show errors on login page
 		showLoginForm($errors, $_POST);
@@ -169,8 +170,10 @@ function showLoginForm($errors){
 }
 
 function logout(){
+	global $config;
 	$logout = User::logout_User();
-	$app->redirect('/');
+	global $app;
+	$app->redirect($config->siteRoot);
 }
 
 function test(){

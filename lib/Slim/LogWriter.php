@@ -32,15 +32,41 @@
  */
 
 /**
- * Pass Exception
+ * Log Writer
  *
- * This Exception will cause the Router::dispatch method
- * to skip the current matching route and continue to the next
- * matching route. If no subsequent routes are found, a
- * HTTP 404 Not Found response will be sent to the client.
+ * This class is used by Slim_Log to write log messages to a valid, writable
+ * resource handle (e.g. a file or STDERR).
  *
  * @package Slim
  * @author  Josh Lockhart
- * @since   1.0.0
+ * @since   1.5.2
  */
-class Slim_Exception_Pass extends Exception {}
+class Slim_LogWriter {
+    /**
+     * @var resource
+     */
+    protected $resource;
+
+    /**
+     * Constructor
+     * @param   resource    $resource
+     * @return  void
+     * @throws  InvalidArgumentException
+     */
+    public function __construct( $resource ) {
+        if ( !is_resource($resource) ) {
+            throw new InvalidArgumentException('Cannot create LogWriter. Invalid resource handle.');
+        }
+        $this->resource = $resource;
+    }
+
+    /**
+     * Write message
+     * @param   mixed       $message
+     * @param   int         $level
+     * @return  int|false
+     */
+    public function write( $message, $level = null ) {
+        return fwrite($this->resource, (string)$message . PHP_EOL);
+    }
+}
