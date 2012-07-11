@@ -3,8 +3,13 @@
 		<div class="form_container">
 			<h1 class="underlined">Sign In</h1>
 			<form method="post" action="<?= $config->siteRoot . "login" ?>" name="loginform" id="loginform">
+			
+				<?php if(isset($errors['login_error'])): ?>
+					<p class="error"><?= $errors['login_error']; ?></p>
+				<?php endif; ?>
+
 				<label for="nuid">Username (NUID)</label>
-					<input type="text" name="username" id="username" autofocus="autofocus" /> <br/>
+					<input type="text" name="username" id="username" autofocus="autofocus" <?= !empty($_POST['username']) ? 'value="'.$_POST['username'].'"' : ""  ?> /> <br/>
 				<label for="password">Password</label>
 					<input type="password" name="password" id="password" /> <br/>
 				<label for="remember" id="remember_label" >Keep me logged in?</label>

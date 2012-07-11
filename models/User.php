@@ -50,10 +50,11 @@ class User{
 			$row = $result->fetch_object();
 			$this->fillData($row);
 			$this->setSessions();
-			return true;
-		}else{
 			return false;
+		}else{
+			$error['login_error'] = "Username/Password combination were invalid.<br/>Please try to login again.";
 		}
+		return $error;
 	}
 
 	function setSessions(){
@@ -125,8 +126,9 @@ class User{
 
 
 
-
-
+	public static function logout_User(){
+		session_destroy();
+	}
 
 	public static function check_registration($_POST){
 		$error = array();

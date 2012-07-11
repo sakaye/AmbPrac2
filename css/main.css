@@ -324,12 +324,17 @@ a.submit_btn:visited{
 		min-height:30px;
 		clear:both;
 	}
-	div.container form span.error {
+	form#registerform span.error {
 		color:red;
 		width:260px;
 		margin-right:2px;
 		float:right;
 		display:block;
+	}
+	form#loginform p.error {
+		color:red;
+		text-align:center;
+		font-size:1.125em; /* 18/16 */
 	}
 	div.container form select {
 		font-size:24px;

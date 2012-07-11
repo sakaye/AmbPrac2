@@ -29,11 +29,11 @@ require $config->modelsPath . "User.php";
 
 $app->get('/', 'home');
 $app->get('/test(/)', 'test');
-$app->get('/testing/:id','testing');
 $app->get('/register(/)', 'register');
 $app->post('/register(/)', 'registerValidate');
 $app->get('/login(/)', 'login');
 $app->post('/login(/)', 'loginValidate');
+$app->get('/logout(/)', 'logout');
 $app->get('/:section(/)', 'showSection');
 $app->get('/:section/:subsection(/)', 'showSubsection');
 $app->get('/:section/:subsection/:content(/)', 'showContent');
@@ -148,13 +148,12 @@ function login(){
 function loginValidate(){
 	global $config;
 	$u = new User();
-	$LoggedIn = $u->loginUser($_POST);
-	if ($LoggedIn == true){
+	$errors = $u->loginUser($_POST);
+	if ($errors == false){ //redirect to home page
 		home();
 	}
-	else{
-		$errors['login_error'] = "Username and Password combination were invalid. Please try to login again";
-		showLoginForm($errors);
+	else{ //show errors on login page
+		showLoginForm($errors, $_POST);
 		
 	}
 }
@@ -167,6 +166,11 @@ function showLoginForm($errors){
 	require $config->viewsPath . 'login.php';
 	require $config->viewsPath . 'footer.php';
 
+}
+
+function logout(){
+	$logout = User::logout_User();
+	$app->redirect('/');
 }
 
 function test(){

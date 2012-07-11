@@ -36,13 +36,14 @@
 <body id="<?=$body_ID?>">
 	<header>
 		<div class="user_bar">
-			<?php if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['Nuid'])):?> //check to see if the user is already logged in
-					<a href="#">Hello, <?=$first_name?>.</a>
-				<?php
-				else:  // display login ?>
+			<?php if(!empty($_SESSION['Logged_in']) && !empty($_SESSION['Username'])): //check to see if the user is already logged in ?>
+					<span id="username">Welcome, <?=$_SESSION['First_name']?></span>
+					<a id="logout_btn" class="header_btn right" href="<?=$config->siteRoot.'logout'?>">Logout</a>
+			<?php
+				  else:  // display login/signup buttons ?>
 					<a id="signup_btn" class="header_btn right" href="<?=$config->siteRoot.'register'?>">Sign Up</a>
 					<a id="login_btn" class="header_btn right" href="<?=$config->siteRoot.'login'?>">Login</a>
-				<?php endif; ?>
+			<?php endif; ?>
 		</div>
 		<div class="ambprac">
 			<a href="<?=$config->siteRoot?>">
