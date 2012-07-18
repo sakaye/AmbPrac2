@@ -50,6 +50,9 @@ class User{
 			$row = $result->fetch_object();
 			$this->fillData($row);
 			$this->setSessions();
+			if($_POST['remember'] == true){
+				$this->setCookies();
+			}
 			return false;
 		}else{
 			$error['login_error'] = "Username/Password combination were invalid.<br/>Please try to login again.";
@@ -60,14 +63,15 @@ class User{
 	function setSessions(){
 		$_SESSION['Username'] = $this->username;
 		$_SESSION['First_name'] = $this->first_name;
-		$_SESSION['Logged_in'] = 1;
+		$_SESSION['Logged_in'] = true;
 		$_SESSION['User_ID'] = $this->ID;
-		
- 		$expireDate = time() + 60 * 30;
-		//cookie or session here.
-		//name or small common used things
-		//isAdmin 
-		//primary key
+	}
+	
+	function setCookies(){
+		$digest = sha1(rand(1,20).$this->username.rand(1,20));
+		$sql = "UPDATE users SET reloginDigest = '$digest' WHERE username = '$this->username' LIMIT 1";
+		db()->query($sql);
+		setcookie( 'reloginID', $digest, time()+60*60*24*7,'/','ambulatorypractice.org', false, true);
 	}
 
 	function createUser($obj){

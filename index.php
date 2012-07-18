@@ -1,6 +1,7 @@
 <?php
 require 'lib/Slim/Slim.php';
 require 'helpers/Settings.php';
+session_start();
 
 //config setup
 $config = new Settings();
@@ -58,7 +59,7 @@ function home(){  //displays the Home page with required JS scripts for sliders
 function showSection($section_slug){
 	global $config;
 	$section = new Section($section_slug); //find section ID from DB
-	$title = $section->section_name;
+	$title = $section->name;
 	$body_ID = "section";
 	require $config->viewsPath . 'header.php';
 	require $config->viewsPath . 'section.php';
@@ -68,7 +69,7 @@ function showSection($section_slug){
 function showSubsection($section_slug, $subsection_slug){
 	global $config;
 	$subsection = new Subsection($subsection_slug); //find subsection ID from DB
-	$title = $subsection->subsection_name;
+	$title = $subsection->name;
 	$body_ID = "subsection";
 	require $config->viewsPath . 'header.php';
 	require $config->viewsPath . 'subsection.php';
@@ -78,7 +79,7 @@ function showSubsection($section_slug, $subsection_slug){
 function showContent($section_slug, $subsection_slug, $content_slug){
 	global $config;
 	$content = new Content($content_slug); //find content ID from DB
-	$title = $content->content_name;
+	$title = $content->name;
 	$body_ID = "content";
 	require $config->viewsPath . 'header.php';
 	require $config->viewsPath . 'content.php';

@@ -94,7 +94,7 @@ a.submit_btn:visited{
 		margin:auto;
 	}
 	span#username {
-		font-size:1em;
+		font-size:1em; /* 16/16 */
 		color:#ffffff;
 	}
 	a.header_btn {
@@ -206,9 +206,12 @@ a.submit_btn:visited{
 	ul#topnav div.sub {
 		position:absolute; 
 		top:45px;
-		left:0;
+		left:-1px;
 		z-index:1000;
 		background:#efefef;
+		border-bottom:1px solid #353231;
+		border-left:1px solid #353231;
+		border-right:1px solid #353231;
 		padding:0px;
 		float:left;
 		display:none; 
@@ -476,7 +479,10 @@ a.submit_btn:visited{
 		position:absolute;
 		right:0px;
 		bottom:20px;
-		background:#000;
+		background:#353231;
+		border-bottom:1px solid #665c5b;
+		border-top:1px solid #665c5b;
+		border-left:1px solid #665c5b;
 		color:#fff;
 		width:300px;
 		z-index:8;

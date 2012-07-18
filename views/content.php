@@ -1,6 +1,6 @@
 <div class="container">
 		<div class="content_background">
-			<h1 class="underlined"><?=$content->content_name?></h1>
+			<h1 class="underlined"><?=$content->name?></h1>
 			
 		</div>
 		<!--

@@ -8,16 +8,16 @@
 					for ($i=0; $i < count($sections); $i++):
 						$s = $sections[$i];
 					?>
-					<li <?php if ($s->section_dropdown == 1){echo 'class="dropdown"';}?>>
-						<a href="<?=$config->siteRoot.$s->section_slug?>"><?=$s->section_name?></a>
-							<div <?php if ($s->section_dropdown == 1){echo 'class="sub"';}?>>
+					<li <?php if ($s->dropdown == 1){echo 'class="dropdown"';}?>>
+						<a href="<?=$config->siteRoot.$s->slug?>"><?=$s->name?></a>
+							<div <?php if ($s->dropdown == 1){echo 'class="sub"';}?>>
 							<ul>
 								<?php
 								$subSections = $s->getAllSubsections();
 								for($j=0; $j < count($subSections); $j++):
 									$subSection = $subSections[$j];
 								?>
-								<li><a href="<?=$config->siteRoot.$s->section_slug.'/'.$subSection->subsection_slug?>"><?=$subSection->subsection_name?></a></li>
+								<li><a href="<?=$config->siteRoot.$s->slug.'/'.$subSection->slug?>"><?=$subSection->name?></a></li>
 								<?php endfor; ?>
 							</ul>
 						</div>

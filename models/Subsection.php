@@ -1,7 +1,7 @@
 <?php
 
 class Subsection{
-	public $id, $section_id, $subsection_name, $subsection_caption, $subsection_slug, $URL, $outside_link, $locked;
+	public $id, $section_id, $name, $caption, $slug, $URL, $locked;
 	public $content = array();
 	
 	function __construct($slug=null){
@@ -12,7 +12,7 @@ class Subsection{
 	
 	function getSubsectionBySlug($slug){
 /* 		$slug =	db()->mysql_real_escape_string($slug); */
-		$sql = "SELECT * FROM subsection WHERE subsection_slug = '$slug' LIMIT 1";
+		$sql = "SELECT * FROM subsection WHERE slug = '$slug' LIMIT 1";
 		$result = db()->query($sql);
 		if($row = $result->fetch_object()){
 			$this->fillData($row);	
@@ -29,12 +29,11 @@ class Subsection{
 	
 	function fillData($row){
 		$this->id = $row->id;
-		$this->subsection_name = $row->subsection_name;
-		$this->subsection_caption = $row->subsection_caption;
+		$this->name = $row->name;
+		$this->caption = $row->caption;
 		$this->section_id = $row->section_id;
-		$this->subsection_slug = $row->subsection_slug;
+		$this->slug = $row->slug;
 		$this->URL = $row->URL;
-		$this->outside_link = $row->outside_link;
 		$this->locked = $row->locked;
 	}
 	

@@ -1,7 +1,9 @@
 <?php
 
 class Section{
-	public $id, $section_name, $section_slug, $section_dropdown, $subSections;
+	public $id, $name, $slug, $dropdown;
+	public $subSections = array();
+	
 	
 	function __construct($slug = null){
 		if($slug !== null){
@@ -10,7 +12,7 @@ class Section{
 	}
 	
 	function getSectionBySlug($slug){
-		$sql = "SELECT * FROM section WHERE section_slug = '$slug' LIMIT 1";
+		$sql = "SELECT * FROM section WHERE slug = '$slug' LIMIT 1";
 		$result = db()->query($sql);
 		if($row = $result->fetch_object()){
 			$this->fillData($row);	
@@ -19,9 +21,9 @@ class Section{
 	
 	function fillData($row){
 		$this->id = $row->id;
-		$this->section_name = $row->section_name;
-		$this->section_slug = $row->section_slug;
-		$this->section_dropdown = $row->section_dropdown;
+		$this->name = $row->name;
+		$this->slug = $row->slug;
+		$this->dropdown = $row->dropdown;
 	}
 	
 	function getAllSubsections(){

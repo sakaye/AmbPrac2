@@ -1,7 +1,7 @@
 <?php
 
 class Content{
-	public $id, $subsection_id, $content_name, $content_slug, $order, $content_type, $URL, $file_name;
+	public $id, $subsection_id, $name, $slug, $order, $type, $URL, $file_name;
 	
 	function __construct($slug = null){
 		if($slug !== null){
@@ -10,7 +10,7 @@ class Content{
 	}
 	
 	function getContentBySlug($slug){
-		$sql = "SELECT * FROM content WHERE content_slug = '$slug' LIMIT 1";
+		$sql = "SELECT * FROM content WHERE slug = '$slug' LIMIT 1";
 		$result = db()->query($sql);
 		if($row = $result->fetch_object()){
 			$this->fillData($row);	
@@ -20,10 +20,10 @@ class Content{
 	function fillData($row){
 		$this->id = $row->id;
 		$this->subsection_id = $row->subsection_id;
-		$this->content_name = $row->content_name;
-		$this->content_slug = $row->content_slug;
+		$this->name = $row->name;
+		$this->slug = $row->slug;
 		$this->order = $row->order;
-		$this->content_type = $row->content_type;
+		$this->type = $row->type;
 		$this->URL = $row->URL;
 		$this->file_name = $row->file_name;
 	}
