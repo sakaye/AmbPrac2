@@ -1,7 +1,7 @@
 <?php
 
 class Content{
-	public $id, $subsection_id, $name, $slug, $order, $type, $URL, $file_name;
+	public $id, $subsection_id, $name, $slug, $order, $description, $type, $URL, $file_name;
 	
 	function __construct($slug = null){
 		if($slug !== null){
@@ -23,6 +23,7 @@ class Content{
 		$this->name = $row->name;
 		$this->slug = $row->slug;
 		$this->order = $row->order;
+		$this->description = $row->description;
 		$this->type = $row->type;
 		$this->URL = $row->URL;
 		$this->file_name = $row->file_name;

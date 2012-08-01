@@ -12,6 +12,7 @@ $config->viewsPath = $config->documentRoot . "views/";
 $config->modelsPath = $config->documentRoot . "models/";
 $config->jsPath = $config->siteRoot . "js/";
 $config->cssPath = $config->siteRoot . "css/";
+$config->cssImg = $config->siteRoot . "css/images/";
 $config->imagePath = $config->siteRoot . "images/Slides/";
 
 //default script file name (all of them)
@@ -25,6 +26,7 @@ require $config->modelsPath . "Section.php";
 require $config->modelsPath . "Subsection.php";
 require $config->modelsPath . "Content.php";
 require $config->modelsPath . "User.php";
+require $config->modelsPath . "Search.php";
 
 //routes
 
@@ -35,6 +37,7 @@ $app->post('/register(/)', 'registerValidate');
 $app->get('/login(/)', 'login');
 $app->post('/login(/)', 'loginValidate');
 $app->get('/logout(/)', 'logout');
+$app->get('/search-results(/)', 'search');
 $app->get('/:section(/)', 'showSection');
 $app->get('/:section/:subsection(/)', 'showSubsection');
 $app->get('/:section/:subsection/:content(/)', 'showContent');
@@ -172,14 +175,46 @@ function showLoginForm($errors){
 
 function logout(){
 	global $config;
-	$logout = User::logout_User();
 	global $app;
+	$logout = User::logout_User();
 	$app->redirect($config->siteRoot);
+}
+
+function search(){
+	global $config;
+	$title = 'Search Results';
+	$body_ID = 'search';
+	$s = new Search();
+	$searchResults = $s->doSearch();
+/* 	print_r($searchResults); */
+	require $config->viewsPath . 'header.php';
+	require $config->viewsPath . 'search.php';
+	require $config->viewsPath . 'footer.php';
 }
 
 function test(){
 	global $config;
 	phpinfo();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ?>

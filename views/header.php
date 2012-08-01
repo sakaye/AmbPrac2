@@ -2,7 +2,9 @@
 
 <html>
 <head>
-	<meta charset="utf-8">
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	<meta name="ROBOTS" content="NOINDEX, NOFOLLOW" />
+	<meta name="description" content="" />
 	
 	<title><?=$title?></title>
 	
@@ -47,17 +49,17 @@
 		</div>
 		<div class="ambprac">
 			<a href="<?=$config->siteRoot?>">
-				<img src="http://localhost/AmbPrac2/css/images/ambprac_header.png" alt="Ambulatory Practice Logo" />
+				<img src="<?=$config->cssImg?>ambprac_header.png" alt="Ambulatory Practice Logo" />
 			</a>
 		</div>
 	</header>
 	
-	<div id="search_bar" class="top_bar">
+	<div class="top_bar">
 		<div class="topbar_container">
 			<div id="date"><?=date("l, F j, Y")?></div>
 			<div class="search_block">
-				<form class="search_field" method="GET" action="" name="search_field">
-				<input name="search" type="text" autofocus="autofocus" />
+				<form id="search" method="GET" action="<?= $config->siteRoot . "search-results"?>" name="search_field">
+				<input name="searchTerm" type="text" />
 				</form>
 			</div>
 		</div>

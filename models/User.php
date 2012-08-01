@@ -9,11 +9,11 @@ class User{
 	}
 
 	function getUser($username){
-		$username = mysql_real_escape_string($_POST['username']);
+		$username = db()->real_escape_string($_POST['username']);
 		$salt = "1234124k12ljKJSDklasjdkljj214l1j24j";
-		$password = sha1(mysql_real_escape_string($_POST['password']).$salt);
+		$password = sha1(db()->real_escape_string($_POST['password']).$salt);
 		
-		$sql = "SELECT * FROM users WHERE `username` = '$username' LIMIT 1";
+		$sql = "SELECT * FROM `users` WHERE `username` = '$username' LIMIT 1";
 		$result = db()->query($sql);
 		if($result && $result->num_rows > 0){
 			$row = $result->fetch_object();
@@ -40,9 +40,9 @@ class User{
 	}
 
 	function loginUser($_POST){
-		$username = mysql_real_escape_string($_POST['username']);
+		$username = db()->real_escape_string($_POST['username']);
 		$salt = "1234124k12ljKJSDklasjdkljj214l1j24j";
-		$password = sha1(mysql_real_escape_string($_POST['password']).$salt);
+		$password = sha1(db()->real_escape_string($_POST['password']).$salt);
 		
 		$sql = "SELECT * FROM `users` WHERE `username` = '$username' AND `password` = '$password' LIMIT 1";
 		$result = db()->query($sql);
@@ -50,7 +50,7 @@ class User{
 			$row = $result->fetch_object();
 			$this->fillData($row);
 			$this->setSessions();
-			if($_POST['remember'] == true){
+			if(isset($_POST['remember']) && $_POST['remember'] == true){
 				$this->setCookies();
 			}
 			return false;
@@ -71,17 +71,17 @@ class User{
 		$digest = sha1(rand(1,20).$this->username.rand(1,20));
 		$sql = "UPDATE users SET reloginDigest = '$digest' WHERE username = '$this->username' LIMIT 1";
 		db()->query($sql);
-		setcookie( 'reloginID', $digest, time()+60*60*24*7,'/','ambulatorypractice.org', false, true);
+		setcookie( 'reloginID', $digest, time()+60*60*24*7,'/','http://ambulatorypractice.org', false, true);
 	}
 
 	function createUser($obj){
 		//sql injection cleaning;
-		$username = mysql_real_escape_string($obj->username);
+		$username = db()->real_escape_string($obj->username);
 		$salt = "1234124k12ljKJSDklasjdkljj214l1j24j";
-		$password = sha1(mysql_real_escape_string($obj->password).$salt);
-		$email = mysql_real_escape_string($obj->email);
-		$first_name = mysql_real_escape_string($obj->first_name);
-		$last_name = mysql_real_escape_string($obj->last_name);
+		$password = sha1(db()->real_escape_string($obj->password).$salt);
+		$email = db()->real_escape_string($obj->email);
+		$first_name = db()->real_escape_string($obj->first_name);
+		$last_name = db()->real_escape_string($obj->last_name);
 		$val_key = sha1($first_name.$last_name.$username);
 		$active = 1;
 
@@ -118,13 +118,7 @@ class User{
 		return $error;
 	}
 
-	function isEmployee(){
-		return $kp_employee === 1;
-	}
-
-
-
-
+	
 
 
 
