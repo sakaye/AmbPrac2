@@ -51,7 +51,7 @@ class User{
 			$this->fillData($row);
 			$this->setSessions();
 			if(isset($_POST['remember']) && $_POST['remember'] == true){
-				$this->setCookies();
+/* 				$this->setCookies(); */
 			}
 			return false;
 		}else{
@@ -71,7 +71,7 @@ class User{
 		$digest = sha1(rand(1,20).$this->username.rand(1,20));
 		$sql = "UPDATE users SET reloginDigest = '$digest' WHERE username = '$this->username' LIMIT 1";
 		db()->query($sql);
-		setcookie( 'reloginID', $digest, time()+60*60*24*7,'/','http://ambulatorypractice.org', false, true);
+		setcookie( 'reloginID', $digest, time()+60*60*24*7,'/','http://ambpracdev.org', false, true);
 	}
 
 	function createUser($obj){

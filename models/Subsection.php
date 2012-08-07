@@ -11,7 +11,7 @@ class Subsection{
 	}
 	
 	function getSubsectionBySlug($slug){
-/* 		$slug =	db()->mysql_real_escape_string($slug); */
+		$slug =	db()->real_escape_string($slug);
 		$sql = "SELECT * FROM subsection WHERE slug = '$slug' LIMIT 1";
 		$result = db()->query($sql);
 		if($row = $result->fetch_object()){

@@ -12,7 +12,8 @@ class Search{
 			$searchResults = array();
 			$i=0;
 			while($row = $result->fetch_object()){
-				$searchResults[$i] = $this->fillData($row);
+				$slug = $this->getURL($row);
+				$searchResults[$i] = $this->fillData($row, $slug);
 				$i++;
 			}
 		}
@@ -22,7 +23,7 @@ class Search{
 	return $searchResults;
 	}
 	
-	function fillData($row){
+	function fillData($row, $slug){
 		$data = array(
 			'id' => $row->id,
 			'subsection_id' => $row->subsection_id,
@@ -31,9 +32,18 @@ class Search{
 			'description' => $row->description,
 			'type' => $row->type,
 			'URL' => $row->URL,
-			'file_name' => $row->file_name);
+			'file_name' => $row->file_name,
+			'link' => $slug->section_slug .'/'. $slug->subsection_slug . '/');
 	
 		return $data;
+	}
+	
+	function getURL($row){
+		$sql = "SELECT section.slug AS section_slug, subsection.slug AS subsection_slug FROM `section` JOIN `subsection` ON section.id  = subsection.section_id WHERE subsection.id = '$row->subsection_id' LIMIT 1;";
+		$result = db()->query($sql);
+		$slug = $result->fetch_object();
+		
+	return $slug;
 	}
 
 }

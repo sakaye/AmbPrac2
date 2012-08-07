@@ -354,7 +354,7 @@ form#registerform span.error {
 	float:right;
 	display:block;
 }
-form#loginform p.error {
+p.error {
 	color:red;
 	text-align:center;
 	font-size:1.125em; /* 18/16 */
