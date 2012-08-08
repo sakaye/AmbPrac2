@@ -155,7 +155,7 @@ function loginValidate(){
 	$errors = $u->loginUser($_POST);
 	if ($errors == false){ //redirect to home page
 		global $app;
-		$app->redirect($config->siteRoot);
+		$app->redirect('/', 301);
 	}
 	else{ //show errors on login page
 		showLoginForm($errors, $_POST);
@@ -177,7 +177,7 @@ function logout(){
 	global $config;
 	global $app;
 	$logout = User::logout_User();
-	$app->redirect($config->siteRoot);
+	$app->redirect('/', 301);
 }
 
 function search(){
