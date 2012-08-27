@@ -8,15 +8,15 @@
 					$content = $contents[$i];
 				?>
 				<?php
-				if ($content->type == 1): //Links
+				if ($content->type == "www"): //Links
 				?>
 					<li><a href="<?=$content->URL;?>" target="_blank"><?=$content->name;?></a></li>
 				<?php
-				elseif ($content->type == 2): //Documents-Files
+				elseif ($content->type == "doc"): //Documents-Files
 				?>
 					<li><a href="<?=$config->siteRoot."documents/".$section_slug."/".$content->file_name;?>" target="_blank"><?=$content->name;?></a></li>
 				<?php
-				elseif ($content->type == 3): //Modules
+				elseif ($content->type == "edu"): //Modules
 				?>	
 					<li><a href="<?=$config->siteRoot."documents/".$section_slug."/".$content->slug."/player.html";?>" target="_blank"><?=$content->name;?></a></li>
 				<?php
@@ -29,7 +29,7 @@
 			
 		</div>
 		<!--
-<div class="content_sidebar">
+<div class="subsection_sidebar">
 			<h3>Sidebar</h3>
 		</div>
 -->

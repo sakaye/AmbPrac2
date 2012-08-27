@@ -13,7 +13,8 @@ $config->modelsPath = $config->documentRoot . "models/";
 $config->jsPath = $config->siteRoot . "js/";
 $config->cssPath = $config->siteRoot . "css/";
 $config->cssImg = $config->siteRoot . "css/images/";
-$config->imagePath = $config->siteRoot . "images/Slides/";
+$config->picsPath = $config->siteRoot . "css/ACPC_member_pics/";
+$config->slidesPath = $config->siteRoot . "images/Slides/";
 
 //default script file name (all of them)
 $config->scripts = array('jquery-1.7.1.min.js', 'jquery.hoverIntent.minified.js', 'scripts.js');
@@ -38,6 +39,10 @@ $app->get('/login(/)', 'login');
 $app->post('/login(/)', 'loginValidate');
 $app->get('/logout(/)', 'logout');
 $app->get('/search-results(/)', 'search');
+$app->get('/employee-only(/)', 'employeeOnly');
+$app->get('/ambulatory-clinical-practice-committee/message-from-admin(/)', 'messageAdmin');
+$app->get('/ambulatory-clinical-practice-committee/committee-charter(/)', 'charter');
+$app->get('/ambulatory-clinical-practice-committee/members(/)', 'acpcMembers');
 $app->get('/:section(/)', 'showSection');
 $app->get('/:section/:subsection(/)', 'showSubsection');
 $app->get('/:section/:subsection/:content(/)', 'showContent');
@@ -89,6 +94,36 @@ function showContent($section_slug, $subsection_slug, $content_slug){
 	require $config->viewsPath . 'footer.php';
 }
 
+function messageAdmin(){
+	global $config;
+	$title = 'A Message From Administration';
+	$body_ID = "content";
+	require $config->viewsPath . 'header.php';
+	require $config->viewsPath . 'messageAdmin.php';
+	require $config->viewsPath . 'footer.php';
+}
+
+function charter(){
+	global $config;
+	$title = 'Regional ACPC Charter';
+	$body_ID = "content";
+	require $config->viewsPath . 'header.php';
+	require $config->viewsPath . 'charter.php';
+	require $config->viewsPath . 'footer.php';
+}
+
+function acpcMembers(){
+	global $config;
+	$title = 'ACPC Members';
+	$body_ID = "content";
+	$c = new Content();
+	$regions = $c->getACPCRegions();
+	$members = $c->getACPCMembers();
+	require $config->viewsPath . 'header.php';
+	require $config->viewsPath . 'acpcMembers.php';
+	require $config->viewsPath . 'footer.php';
+}
+
 function changeSettings(){
 	$u = new User($_SESSION['username']);
 }
@@ -100,14 +135,11 @@ function register(){
 
 function registerValidate(){
 	global $config;
-	//look into autoloading classes
-	//grab post variable
 	$errors = User::check_registration($_POST);
 	if(count($errors) > 0){
 		showRegistrationForm($errors,$_POST);
 		return false;
 		}
-	//here to load post data
 	$obj = (object)array(
 		"username" => $_POST['username'],
 		"first_name" => $_POST['first_name'],
@@ -124,7 +156,7 @@ function registerValidate(){
 		return false;
 	}else{
 		registerComplete($u);
-	}
+		}
 }
 
 function showRegistrationForm($errors,$_POST){
@@ -151,15 +183,14 @@ function login(){
 
 function loginValidate(){
 	global $config;
+	global $app;
 	$u = new User();
 	$errors = $u->loginUser($_POST);
 	if ($errors == false){ //redirect to home page
-		global $app;
-		$app->redirect('/', 301);
+		$app->redirect($config->siteRoot, 301);
 	}
 	else{ //show errors on login page
-		showLoginForm($errors, $_POST);
-		
+		showLoginForm($errors, $_POST);	
 	}
 }
 
@@ -170,14 +201,13 @@ function showLoginForm($errors){
 	require $config->viewsPath . 'header.php';
 	require $config->viewsPath . 'login.php';
 	require $config->viewsPath . 'footer.php';
-
 }
 
 function logout(){
 	global $config;
 	global $app;
 	$logout = User::logout_User();
-	$app->redirect('/', 301);
+	$app->redirect($config->siteRoot, 301);
 }
 
 function search(){
@@ -186,9 +216,33 @@ function search(){
 	$body_ID = 'search';
 	$s = new Search();
 	$searchResults = $s->doSearch();
-/* 	print_r($searchResults); */
 	require $config->viewsPath . 'header.php';
 	require $config->viewsPath . 'search.php';
+	require $config->viewsPath . 'footer.php';
+}
+
+function checkUser(){
+	global $config;
+	global $app;
+	$check = User::checkEmployee();
+	if ($check == 'kp_employee'){
+		return true;
+	}
+	elseif ($check == 'other'){
+		$app->redirect('/employee-only');
+	}
+	else {
+		$errors['login_error'] = "You must be logged in to view that page";
+		showLoginForm($errors);
+	}
+}
+
+function employeeOnly(){
+	global $config;
+	$title = 'Employees Only';
+	$body_ID = '';
+	require $config->viewsPath . 'header.php';
+	require $config->viewsPath . 'employee.php';
 	require $config->viewsPath . 'footer.php';
 }
 

@@ -13,7 +13,7 @@
 							<div <?php if ($s->dropdown == 1){echo 'class="sub"';}?>>
 							<ul>
 								<?php
-								$subSections = $s->getAllSubsections();
+								$subSections = $s->getSubsections();
 								for($j=0; $j < count($subSections); $j++):
 									$subSection = $subSections[$j];
 								?>

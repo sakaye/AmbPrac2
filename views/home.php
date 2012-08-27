@@ -2,17 +2,17 @@
 		<section class="slider">
 			<div id="slider" class="nivoSlider">
 				<a href="#" title="Announcement">
-					<img src="<?=$config->imagePath;?>announ.jpg" alt="Announcement img" title="Announcement"/></a>
+					<img src="<?=$config->slidesPath;?>announ.jpg" alt="Announcement img" title="Announcement"/></a>
 				<a href="#" title="Upcoming Event">
-					<img src="<?=$config->imagePath;?>activities.jpg" alt="Activities img" title="Activities"/></a>
+					<img src="<?=$config->slidesPath;?>activities.jpg" alt="Activities img" title="Activities"/></a>
 				<a href="#" title="Education Opportunity">
-					<img src="<?=$config->imagePath;?>education.jpg" alt="Education Opportunity img" title="Education Opportunity"/></a>
+					<img src="<?=$config->slidesPath;?>education.jpg" alt="Education Opportunity img" title="Education Opportunity"/></a>
 				<a href="#" title="Featured Link">
-					<img src="<?=$config->imagePath;?>link.jpg" alt="Featured Link img" title="Featured Link"/></a>
+					<img src="<?=$config->slidesPath;?>link.jpg" alt="Featured Link img" title="Featured Link"/></a>
 				<a href="#" title="Quote">
-					<img src="<?=$config->imagePath;?>quote.jpg" alt="Quote img" title="Quote"/></a>
+					<img src="<?=$config->slidesPath;?>quote.jpg" alt="Quote img" title="Quote"/></a>
 				<a href="#" title="Upcoming Event">
-					<img src="<?=$config->imagePath;?>reading.jpg" alt="Good Reading img" title="Good Reading"/></a>
+					<img src="<?=$config->slidesPath;?>reading.jpg" alt="Good Reading img" title="Good Reading"/></a>
 			<!-- end #slides --></div>
 		<!-- end .slider --></section>
 		

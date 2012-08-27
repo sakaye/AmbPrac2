@@ -1,7 +1,7 @@
 <?php
 
 class Subsection{
-	public $id, $section_id, $name, $caption, $slug, $URL, $locked;
+	public $id, $section_id, $name, $discription, $slug, $URL, $locked;
 	public $content = array();
 	
 	function __construct($slug=null){
@@ -30,7 +30,7 @@ class Subsection{
 	function fillData($row){
 		$this->id = $row->id;
 		$this->name = $row->name;
-		$this->caption = $row->caption;
+		$this->discription = $row->discription;
 		$this->section_id = $row->section_id;
 		$this->slug = $row->slug;
 		$this->URL = $row->URL;
@@ -39,7 +39,12 @@ class Subsection{
 	
 	function getContent(){
 		$this->content = array();
-		$sql = "SELECT * FROM content WHERE subsection_id = $this->id";
+		if(isset($_SESSION['kp_employee']) && $_SESSION['kp_employee'] == 'yes'){
+			$sql = "SELECT * FROM content WHERE subsection_id = $this->id";
+		}
+		else{
+			$sql = "SELECT * FROM content WHERE subsection_id = $this->id AND `locked` = 'no' ORDER BY `order` ASC";			
+		}
 		$result = db()->query($sql);
 		while($row = $result->fetch_object()){
 			$content = new Content();

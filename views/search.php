@@ -13,17 +13,40 @@
 			<?php if(!isset($searchResults['error'])): ?>
 				<?php for($i=0; $i < count($searchResults); $i++): ?>
 				<div class="result_container">
-					<a class="result_link blue" href="<?= $config->siteRoot . $searchResults[$i]['link'] . $searchResults[$i]['file_name']?>">
-						
+				
+				<?php if($searchResults[$i]['type'] == "www"): ?>
+					<a class="result_link blue" href="<?=$searchResults[$i]['URL']?>">
 						<?=$searchResults[$i]['name'] //this is the anchor name?>
-						
-						<img src="<?=$config->cssImg?>pdficon_small.png">
-					
 					</a>
-						
-						
+					<p class="result_url green"><?=$searchResults[$i]['URL']?></p>
+					<p class="result_description"><?=$searchResults[$i]['description']?></p>
+					
+					
+				<?php elseif($searchResults[$i]['type'] == "doc"): ?>
+					<a class="result_link blue" href="<?= $config->siteRoot . $searchResults[$i]['link'] . $searchResults[$i]['file_name']?>">
+						<?=$searchResults[$i]['name'] //this is the anchor name?>
+					</a>
 					<p class="result_url green"><?= $config->siteRoot . $searchResults[$i]['link'] . $searchResults[$i]['file_name']?></p>
 					<p class="result_description"><?=$searchResults[$i]['description']?></p>
+					
+					
+				<?php elseif($searchResults[$i]['type'] == "edu"): ?>
+					<a class="result_link blue" href="<?= $config->siteRoot . $searchResults[$i]['link'] . $searchResults[$i]['slug'] . "/player.html"?>">
+						<?=$searchResults[$i]['name'] //this is the anchor name?>
+					</a>
+					<p class="result_url green"><?= $config->siteRoot . $searchResults[$i]['link'] . $searchResults[$i]['slug'] . "/player.html"?></p>
+					<p class="result_description"><?=$searchResults[$i]['description']?></p>
+					
+					
+				<?php else: ?>
+					<a class="result_link blue" href="<?= $config->siteRoot . $searchResults[$i]['link'] . $searchResults[$i]['slug']?>">
+						<?=$searchResults[$i]['name'] //this is the anchor name?>
+					</a>
+					<p class="result_url green"><?= $config->siteRoot . $searchResults[$i]['link'] . $searchResults[$i]['slug']?></p>	
+					<p class="result_description"><?=$searchResults[$i]['description']?></p>
+					
+					
+				<?php endif; ?>	
 				</div>
 				<?php endfor; ?>
 			<?php else: ?>

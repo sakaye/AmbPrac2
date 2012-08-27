@@ -70,8 +70,26 @@ a.submit_btn{
 a.submit_btn:visited{
 	color:#fff;
 }
+.italic {
+	font-style:italic;
+}
+.underline {
+	text-decoration:underline;
+}
+a.download {
+	display:inline-block;
+	width:132px;
+	height:34px;
+	font-size:18px;
+	text-align:center;
+	padding-top:17px;
+	color:#fff;
+	background:url(images/submit_button.png);
+	cursor:pointer;
+	float:right;
+}
 
-/****** HEADER STYLES ******/
+																	/****** HEADER STYLES ******/
 header {
 	width:100%;
 	height:130px;
@@ -121,7 +139,7 @@ a.header_btn:hover, a.header_btn:active { background-color:#da9720; }
 
 
 	
-/****** FOOTER STYLES ******/
+																/****** FOOTER STYLES ******/
 footer ul {
 	text-align:center;
 	color:#948987;
@@ -141,7 +159,7 @@ footer a:hover, footer a:active {
 
 
 	
-/****** SEARCH BAR STYLES ******/
+															/****** SEARCH BAR STYLES ******/
 div.search_block {
 	float:right;
 	margin-top:2px;
@@ -167,7 +185,7 @@ div.search_block input:focus { border:1px solid #dfd4d3; }
 
 
 
-/****** DROP-DOWN NAVAGATION BAR STYLES ******/
+														/****** DROP-DOWN NAVAGATION BAR STYLES ******/
 div.top_bar, nav.top_bar, footer {
 	width:100%;
 	height:34px;
@@ -270,7 +288,7 @@ ul#topnav div.sub h4 {
 
 
 
-/****** CONTENT STYLES ******/
+																/****** CONTENT STYLES ******/
 div.list_background {
 	width:669px;
 	min-height:429px;
@@ -306,7 +324,7 @@ div.list_background {
 	}
 	
 ul.content_list a {
-	font-size:.875em; /* 16/16 */
+	font-size:.875em; /* 14/16 */
 }
 ul.content_list li {
 	padding: 5px 0px;
@@ -318,8 +336,180 @@ div.content_background {
 	padding:0px 20px 20px;
 	border:1px solid #b4b4b4;
 	background-color:#efefef;
+	clear:both;
 }
-div.content_sidebar {
+															/****** ACPC Message Styles ******/
+															
+															
+	div#messageAdmin p {
+		line-height:1.5em;
+		margin-bottom:16px;
+		text-indent:20px;
+	}
+	div#messageAdmin img {
+		margin-left:20px;
+	}
+															/****** Charter Table Styles ******/
+															
+															
+	div.content_background img#kplogo {
+		margin:auto;
+		margin-bottom:20px;
+		display:block;
+	}
+	div.content_background h3.charter {
+		font-family: 'Droid Sans', serif;
+		text-align:center;
+		font-size:1.25em; /* 20/16 */
+		line-height:1.25em;
+		margin-bottom:20px;
+	}
+	table#ACPCcharter {
+		border:1px solid black;
+		border-collapse:collapse;
+		line-height:1.5em;
+		margin-bottom:20px;
+	}
+	table td.key {
+		width:160px;
+	}
+	table#ACPCcharter tr {
+		border-bottom:1px solid black;
+	}
+	table td {
+		border-right:1px solid black;
+		padding:3px 5px;
+		vertical-align:text-top;
+	}
+	tr.nobordertop {
+		border-top:none;
+	}
+	tr.noborderbot {
+		border-bottom:0px;
+	}
+	table#ACPCcharter ol {
+		list-style:decimal;
+		list-style-position:outside;
+		padding-left:25px;
+	}
+	caption {
+		caption-side:bottom;
+		margin-top:20px;
+	}
+															/****** ACPC Members Styles ******/
+															
+															
+	div#acpcMembers {
+		
+	}
+	div.acpc_region {
+		width:910px;
+		height:2.5em;
+		margin-bottom:10px;
+		background-color:#353231;
+		-webkit-border-radius:10px;
+		   -moz-border-radius:10px;
+		    -ms-border-radius:10px;
+		     -o-border-radius:10px;
+		        border-radius:10px;
+		-webkit-box-shadow: 0px 2px 2px #919191;
+		   -moz-box-shadow: 0px 2px 2px #919191;
+				box-shadow: 0px 2px 2px #919191;   
+	}
+	div.acpc_region p {
+		font-size:1.5em; /* 24/16 */
+		line-height:1.5em;
+		font-family: 'Droid Sans';
+		color:white;
+		text-align:right;
+		padding-right:10px;
+		padding-top:3px;
+	}
+	div.acpc_member {
+		width:870px;
+		border:1px solid #636363;
+		margin:auto;
+		margin-bottom:20px;
+		-webkit-border-radius:10px;
+		   -moz-border-radius:10px;
+		    -ms-border-radius:10px;
+		     -o-border-radius:10px;
+		        border-radius:10px;
+	}
+	div.name_gradient {
+		height:60px;
+		border-bottom:1px solid #636363;
+		background-color:#184e78;
+		background-image: -webkit-gradient(linear, left top, left bottom, from(#133e5f), to(#184e78)); /* Saf4+, Chrome */	
+		background-image: -webkit-linear-gradient(top, #133e5f, #184e78); /* Chrome 10+, Saf5.1+, iOS 5+ */
+		background-image:    -moz-linear-gradient(top, #133e5f, #184e78); /* FF3.6 */
+		background-image:     -ms-linear-gradient(top, #133e5f, #184e78); /* IE10 */
+		background-image:      -o-linear-gradient(top, #133e5f, #184e78); /* Opera 11.10+ */
+		-webkit-border-top-left-radius:10px;
+		-webkit-border-top-right-radius:10px;
+		   -moz-border-top-left-radius:10px;
+		   -moz-border-top-right-radius:10px;
+		    -ms-border-top-left-radius:10px;
+		    -ms-border-top-right-radius:10px;
+		     -o-border-top-left-radius:10px;
+ 		     -o-border-top-right-radius:10px;
+		        border-top-left-radius:10px;
+		        border-top-right-radius:10px;
+	}
+	div.name_gradient img {
+		float:right;
+		margin-top:10px;
+		margin-right:20px;
+	}
+	div.name_gradient h2 {
+		font-family: 'Droid Sans';
+		font-size:1.875em; /* 30/16 */
+		color:white;
+		padding:13px 0px 0px 12px;
+	}
+	div.acpcinfo_container {
+		margin:10px 20px; 
+	}
+	div.title_container {
+		min-height:95px;
+	}
+	div.acpcinfo_container p {
+		font:1em 'Droid Sans';
+	}
+	div.acpcinfo_container img {
+		padding-right:3px;
+		position:relative;
+		top:5px;
+	}
+	div.acpcinfo_container p.title {
+		width:600px;
+		font-size:1.35em;
+	}
+	div.discription {
+		padding:5px 10px;
+		background-color:#e2e2e2;
+		border-bottom:2px solid white;
+		border-top:2px solid #a9a9a9;
+		-webkit-border-radius:5px;
+		   -moz-border-radius:5px;
+		    -ms-border-radius:5px;
+		     -o-border-radius:5px;
+		        border-radius:5px;
+	}
+	p.discription_text {
+		font-size:.875em; /* 14/16 */
+		text-indent:15px;
+		
+	}
+	p.discription_header {
+		font-size:.75em; /* 12/16 */
+		color:#929292;
+		text-align:center;
+		text-shadow: 0 1px 0 white;
+	}
+	
+	
+div.subsection_sidebar {
 	width:228px;
 	min-height:200px;
 	border:1px solid #b4b4b4;
@@ -448,7 +638,7 @@ div.call_out h3.call_out_header {
 }
 
 
-/****** SLIDER STYLES ******/
+																/****** SLIDER STYLES ******/
 	section.slider {
 		width:1010px;
 		height:389px;
@@ -629,7 +819,7 @@ div.call_out h3.call_out_header {
 	
 
 
-/****** Search Results Styles ******/
+															/****** Search Results Styles ******/
 
 h3.search_term {
 	font-family: 'Droid Serif', serif;

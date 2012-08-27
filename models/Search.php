@@ -20,14 +20,15 @@ class Search{
 		else { //search found no matching keywords
 			$searchResults['error'] = "No matches were found for your search term";
 		}
-	return $searchResults;
+		return $searchResults;
 	}
 	
 	function fillData($row, $slug){
 		$data = array(
 			'id' => $row->id,
 			'subsection_id' => $row->subsection_id,
-			'name' => $row->name,'slug' => $row->slug,
+			'name' => $row->name,
+			'slug' => $row->slug,
 			'order' => $row->order,
 			'description' => $row->description,
 			'type' => $row->type,

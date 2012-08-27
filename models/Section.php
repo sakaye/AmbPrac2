@@ -26,7 +26,25 @@ class Section{
 		$this->dropdown = $row->dropdown;
 	}
 	
-	function getAllSubsections(){
+	function getSubsections(){
+		$this->subSections = array();
+		if(isset($_SESSION['kp_employee']) && $_SESSION['kp_employee'] == 'yes'){
+			$sql = "SELECT * FROM `subsection` WHERE `section_id` = $this->id ORDER BY `order` ASC";
+		}
+		else{
+			$sql = "SELECT * FROM `subsection` WHERE `section_id` = $this->id AND `locked` = 'no' ORDER BY `order` ASC";			
+		}
+		$result  = db()->query($sql);
+		while($row = $result->fetch_object()){
+			$sub = new Subsection();
+			$sub->fillData($row);
+			$this->subSections[] = $sub;
+			}
+		return $this->subSections;
+	}
+	
+	/*
+function getSubsections(){
 		$this->subSections = array();
 		$sql = "SELECT * FROM `subsection` WHERE `section_id` = $this->id ORDER BY `order` ASC";
 		$result  = db()->query($sql);
@@ -34,10 +52,10 @@ class Section{
 			$sub = new Subsection();
 			$sub->fillData($row);
 			$this->subSections[] = $sub;
-	}
-	
-	return $this->subSections;
-	}
+			}
+		return $this->subSections;
 
+	}
+*/
 }
 ?>

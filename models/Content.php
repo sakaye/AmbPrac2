@@ -10,7 +10,7 @@ class Content{
 	}
 	
 	function getContentBySlug($slug){
-		$sql = "SELECT * FROM content WHERE slug = '$slug' LIMIT 1";
+		$sql = "SELECT * FROM `content` WHERE slug = '$slug' LIMIT 1";
 		$result = db()->query($sql);
 		if($row = $result->fetch_object()){
 			$this->fillData($row);	
@@ -29,6 +29,43 @@ class Content{
 		$this->file_name = $row->file_name;
 	}
 	
+	function getACPCMembers(){
+		$sql = "SELECT * FROM `acpc_members` WHERE `active` = 'yes' ORDER BY `region_id` ASC, `order` ASC";
+		$result = db()->query($sql);
+		$i = 0;
+		while($row = $result->fetch_object()){
+			$members[$i] = array(
+								'id' => $row->id,
+								'last_name' => $row->last_name,
+								'first_name' => $row->first_name,
+								'middle_int' => $row->middle_int,
+								'degree' => $row->degree,
+								'title' => $row->title,
+								'phone_number' => $row->phone_number,
+								'tie_line' => $row->tie_line,
+								'email' => $row->email,
+								'discription' => $row->discription,
+								'picture' => $row->picture,
+								'region_id' => $row->region_id);
+			$i++;
+		}
+		
+		return $members;
+	}
+	
+	function getACPCRegions(){
+		$sql = "SELECT * FROM `acpc_regions` ORDER BY `order` ASC";
+		$result = db()->query($sql);
+		$i = 0;
+		while($row = $result->fetch_object()){
+			$regions[$i] = array(
+								'id' => $row->id,
+								'name' => $row->name);
+			$i++;
+		}
+		
+		return $regions;
+	}
 }
 
 ?>

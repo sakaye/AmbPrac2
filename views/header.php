@@ -9,7 +9,7 @@
 	<title><?=$title?></title>
 	
 	<!-- CSS Styles -->
-		<link href="http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic|Lobster+Two:700,400,400italic,700italic" rel="stylesheet" type="text/css"/>
+		<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Lobster|Droid+Serif:400,700,400italic,700italic|Lobster+Two:400,700' rel='stylesheet' type='text/css'>
 	<?php for($i = 0; $i < sizeof($config->styles); $i++):?>
 		<link href="<?=$config->cssPath . $config->styles[$i]?>" rel="stylesheet" type="text/css"/>
 	<?php endfor;?>
@@ -38,7 +38,7 @@
 <body id="<?=$body_ID?>">
 	<header>
 		<div class="user_bar">
-			<?php if(!empty($_SESSION['Logged_in']) && !empty($_SESSION['Username'])): //check to see if the user is already logged in ?>
+			<?php if(!empty($_SESSION['Logged_in']) && !empty($_SESSION['User_ID'])): //check to see if the user is already logged in ?>
 					<span id="username">Welcome, <?=$_SESSION['First_name']?></span>
 					<a id="logout_btn" class="header_btn right" href="<?=$config->siteRoot.'logout'?>">Logout</a>
 			<?php

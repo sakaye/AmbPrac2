@@ -1,6 +1,6 @@
 <?php
 class User{
-	public  $ID, $username, $last_name, $first_name, $password, $email, $kp_employee, $reloginDigest, $title, $area, $active, $val_key, $creation_date;
+	public  $ID, $username, $last_name, $first_name, $password, $email, $kp_employee, $reloginDigest, $position, $service_area, $campus, $active, $val_key, $creation_date;
 	
 	function __construct($username = null){
 		if($username !== null){
@@ -33,8 +33,9 @@ class User{
 		$this->email = $row->email;
 		$this->kp_employee = $row->kp_employee;
 		$this->reloginDigest = $row->reloginDigest;
-		$this->title = $row->title;
-		$this->area = $row->area;
+		$this->position = $row->position;
+		$this->service_area = $row->service_area;
+		$this->campus = $row->campus;
 		$this->active = $row->active;
 		
 	}
@@ -61,10 +62,10 @@ class User{
 	}
 
 	function setSessions(){
-		$_SESSION['Username'] = $this->username;
 		$_SESSION['First_name'] = $this->first_name;
 		$_SESSION['Logged_in'] = true;
 		$_SESSION['User_ID'] = $this->ID;
+		$_SESSION['kp_employee'] = $this->kp_employee;
 	}
 	
 	function setCookies(){
@@ -122,10 +123,28 @@ class User{
 
 
 
-
+	public static function checkEmployee(){
+		if ($_SESSION['Logged_in'] == true && isset($_SESSION['User_ID']) && $_SESSION['kp_employee'] == 'yes'){
+			//user is logged in and is a  KP employee
+			$check = 'kp_employee';
+			return $check;
+		}
+		elseif ($_SESSION['Logged_in'] == true && isset($_SESSION['User_ID']) && $_SESSION['kp_employee'] == 'no'){
+			//user is logged in but is not a KP employee
+			$check = 'other';
+			return $check;
+		}
+		else {
+			//user is not logged in
+			return false;
+		}
+	}
 
 	public static function logout_User(){
-		session_destroy();
+		$_SESSION['First_name'] = '';
+		$_SESSION['Logged_in'] = '';
+		$_SESSION['User_ID'] = '';
+		$_SESSION['kp_employee'] = '';
 	}
 
 	public static function check_registration($_POST){

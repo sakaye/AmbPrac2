@@ -3,14 +3,14 @@
 			<h1 class="underlined"><?=$section->name?></h1>
 			<ul class="main_list">
 				<?php
-				$subSections = $section->getAllSubsections();
+				$subSections = $section->getSubsections();
 				for($i=0; $i < count($subSections); $i++):
 					$subSection = $subSections[$i];
 				?>
 					<li><a href="<?=$config->siteRoot.$section->slug.'/'.$subSection->slug?>"><?=$subSection->name?></a>
 											
-					<?php if($subSection->caption): ?>
-						<p><?=$subSection->caption?></p>
+					<?php if($subSection->discription): ?>
+						<p><?=$subSection->discription?></p>
 					<?php endif; ?>
 					
 				</li>
