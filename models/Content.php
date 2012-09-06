@@ -66,6 +66,52 @@ class Content{
 		
 		return $regions;
 	}
+	
+	function getConnLinkSections(){
+		$sql = "SELECT * FROM `connlink_section` WHERE `active` = 'yes' ORDER BY `order` ASC";
+		$result = db()->query($sql);
+		$i = 0;
+		while($row = $result->fetch_object()){
+			$sections[$i] = array(
+								'id' => $row->id,
+								'name' => $row->name);
+			$i++;
+		}
+		return $sections;
+	}
+	
+	function getConnLinkLinks(){
+		if (isset($_SESSION['kp_employee']) && $_SESSION['kp_employee'] == 'yes'){
+			$sql = "SELECT * FROM `connlink_links` WHERE `active` = 'yes' ORDER BY `connlink_section_id` ASC, `order` ASC";
+		}
+		else {
+			$sql = "SELECT * FROM `connlink_links` WHERE `active` = 'yes' AND `locked` = 'no' ORDER BY `connlink_section_id` ASC, `order` ASC";
+		}
+		$result = db()->query($sql);
+		$i = 0;
+		while($row = $result->fetch_object()){
+			$links[$i] = array(
+								'id' => $row->id,
+								'name' => $row->name,
+								'connlink_section_id' => $row->connlink_section_id,
+								'url' => $row->url);
+			$i++;
+		}
+		return $links;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
 
 ?>

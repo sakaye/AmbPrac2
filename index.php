@@ -40,6 +40,7 @@ $app->post('/login(/)', 'loginValidate');
 $app->get('/logout(/)', 'logout');
 $app->get('/search-results(/)', 'search');
 $app->get('/employee-only(/)', 'employeeOnly');
+$app->get('/connections-links(/)', 'connectionsLinks');
 $app->get('/ambulatory-clinical-practice-committee/message-from-admin(/)', 'messageAdmin');
 $app->get('/ambulatory-clinical-practice-committee/committee-charter(/)', 'charter');
 $app->get('/ambulatory-clinical-practice-committee/members(/)', 'acpcMembers');
@@ -121,6 +122,18 @@ function acpcMembers(){
 	$members = $c->getACPCMembers();
 	require $config->viewsPath . 'header.php';
 	require $config->viewsPath . 'acpcMembers.php';
+	require $config->viewsPath . 'footer.php';
+}
+
+function connectionsLinks(){
+	global $config;
+	$title = 'Connections & Links';
+	$body_ID = '';
+	$c = new Content();
+	$Conn_sections = $c->getConnLinkSections();
+	$links = $c->getConnLinkLinks();
+	require $config->viewsPath . 'header.php';
+	require $config->viewsPath . 'connectionsLinks.php';
 	require $config->viewsPath . 'footer.php';
 }
 
