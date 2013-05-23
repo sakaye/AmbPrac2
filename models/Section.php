@@ -15,7 +15,7 @@ class Section{
 		$sql = "SELECT * FROM section WHERE slug = '$slug' LIMIT 1";
 		$result = db()->query($sql);
 		if($row = $result->fetch_object()){
-			$this->fillData($row);	
+			$this->fillData($row);
 		}
 	}
 	
@@ -27,12 +27,11 @@ class Section{
 	}
 	
 	function getSubsections(){
-		$this->subSections = array();
 		if(isset($_SESSION['kp_employee']) && $_SESSION['kp_employee'] == 'yes'){
-			$sql = "SELECT * FROM `subsection` WHERE `section_id` = $this->id ORDER BY `order` ASC";
+			$sql = "SELECT * FROM `subsection` WHERE `section_id` = $this->id AND `active` = 'yes' ORDER BY `order` ASC, `name` ASC";
 		}
 		else{
-			$sql = "SELECT * FROM `subsection` WHERE `section_id` = $this->id AND `locked` = 'no' ORDER BY `order` ASC";			
+			$sql = "SELECT * FROM `subsection` WHERE `section_id` = $this->id AND `locked` = 'no' AND `active` = 'yes' ORDER BY `order` ASC, `name` ASC";			
 		}
 		$result  = db()->query($sql);
 		while($row = $result->fetch_object()){
@@ -43,19 +42,5 @@ class Section{
 		return $this->subSections;
 	}
 	
-	/*
-function getSubsections(){
-		$this->subSections = array();
-		$sql = "SELECT * FROM `subsection` WHERE `section_id` = $this->id ORDER BY `order` ASC";
-		$result  = db()->query($sql);
-		while($row = $result->fetch_object()){
-			$sub = new Subsection();
-			$sub->fillData($row);
-			$this->subSections[] = $sub;
-			}
-		return $this->subSections;
-
-	}
-*/
 }
 ?>

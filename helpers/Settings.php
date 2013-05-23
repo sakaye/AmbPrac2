@@ -28,8 +28,8 @@ class Settings {
 		if ($this->db == null) {
 			$server = "localhost";
 			$user = "root";
-			$pass = "Atomicss1";
-			$dbName = "ambulprac";
+			$pass = "Atom!css1";
+			$dbName = "_ambulprac";
 			$this->db = new mysqli($server, $user, $pass, $dbName);
 		}
 		return $this->db;

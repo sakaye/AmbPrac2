@@ -1,23 +1,27 @@
 	<div class="container">
 		<section class="slider">
 			<div id="slider" class="nivoSlider">
-				<a href="#" title="Announcement">
+				<a href="<?=$config->siteRoot.'announcement'?>" title="Announcement">
 					<img src="<?=$config->slidesPath;?>announ.jpg" alt="Announcement img" title="Announcement"/></a>
-				<a href="#" title="Upcoming Event">
-					<img src="<?=$config->slidesPath;?>activities.jpg" alt="Activities img" title="Activities"/></a>
-				<a href="#" title="Education Opportunity">
+					
+				<a href="http://healthreform.kff.org/quizzes/health-reform-quiz.aspx?source=QL" title="Activities">
+					<img src="<?=$config->slidesPath;?>activity.jpg" alt="Activities img" title="Activities"/></a>
+					
+				<a href="https://www.signup4.net/public/ap.aspx?EID=PROF234E&OID=50" title="Education Opportunity">
 					<img src="<?=$config->slidesPath;?>education.jpg" alt="Education Opportunity img" title="Education Opportunity"/></a>
-				<a href="#" title="Featured Link">
+					
+				<a href="http://nursecredentialing.org/Certification/NurseSpecialties/AmbulatoryCare.html" title="Featured Link" target="_blank">
 					<img src="<?=$config->slidesPath;?>link.jpg" alt="Featured Link img" title="Featured Link"/></a>
+					
 				<a href="#" title="Quote">
 					<img src="<?=$config->slidesPath;?>quote.jpg" alt="Quote img" title="Quote"/></a>
-				<a href="#" title="Upcoming Event">
+					
+				<a href="http://www.amazon.com/Truth-about-Leadership-Heart-Matter/dp/0470633549" title="Good Reading" target="_blank">
 					<img src="<?=$config->slidesPath;?>reading.jpg" alt="Good Reading img" title="Good Reading"/></a>
 			<!-- end #slides --></div>
 		<!-- end .slider --></section>
 		
 		<section class="home_page">
-			<h1>Welcome to the new AmbulatoryPractice.org</h1>
 			<section id="what_new" class="info_slider">
 				<div class="control_box">
 					<h3>New Postings</h3>
@@ -27,35 +31,21 @@
 					<div class="box_container">
 						<div>
 							<span>
-								<a href="#">
-									<img src="images/Slides/new_postings/slide01.jpg" alt="slide 1" />
-									<p>Module A: Ordering/Signing in HealthConnect</p>
+								<a href="<?=$config->siteRoot;?>education-research/education/hearing-screening">
+									<img src="images/Slides/new_postings/hearing.jpg" alt="Hearing Screening Module" />
+									<p>Hearing Screening</p>
 								</a>
 							</span>
 							<span>
-								<a href="#">
-									<img src="images/Slides/new_postings/slide02.jpg" alt="slide 2" />
-									<p>Module B</p>
+								<a href="<?=$config->siteRoot;?>education-research/education/procedural-sedation">
+									<img src="images/Slides/new_postings/sedation.jpg" alt="Procedural Sedation Module" />
+									<p>Procedural Sedation</p>
 								</a>
 							</span>
 							<span>
-								<a href="#">
-									<img src="images/Slides/new_postings/slide03.jpg" alt="slide 3" />
-									<p>Module C</p>
-								</a>
-							</span>
-						</div>
-						<div>
-							<span>
-								<a href="#">
-									<img src="images/Slides/new_postings/slide04.jpg" alt="slide 4" />
-									<p>Module D</p>
-								</a>
-							</span>
-							<span>
-								<a href="#">
-									<img src="images/Slides/new_postings/slide02.jpg" alt="slide 2" />
-									<p>Module E</p>
+								<a href="<?=$config->siteRoot;?>education-research/education/intimate-partner-violence">
+									<img src="images/Slides/new_postings/IPV.jpg" alt="Intimate Partner Violence Module" />
+									<p>Intimate Partner Violence</p>
 								</a>
 							</span>
 						</div>
@@ -78,35 +68,15 @@
 					<div class="box_container">
 						<div>
 							<span>
-								<a href="#">
-									<img src="images/Slides/new_postings/slide01.jpg" alt="slide 1" />
-									<p>Green Street Practices</p>
+								<a href="http://www.signup4.net/Public/ap.aspx?EID=PCS715E">
+									<img src="images/Slides/new_postings/academiaCon.jpg" alt="slide 1" />
+									<p>7th Annual Service Academia Conference</p>
 								</a>
 							</span>
 							<span>
-								<a href="#">
-									<img src="images/Slides/new_postings/slide02.jpg" alt="slide 2" />
-									<p>Event B</p>
-								</a>
-							</span>
-							<span>
-								<a href="#">
-									<img src="images/Slides/new_postings/slide03.jpg" alt="slide 3" />
-									<p>Event C</p>
-								</a>
-							</span>
-						</div>
-						<div>
-							<span>
-								<a href="#">
-									<img src="images/Slides/new_postings/slide04.jpg" alt="slide 4" />
-									<p>Event D</p>
-								</a>
-							</span>
-							<span>
-								<a href="#">
-									<img src="images/Slides/new_postings/slide02.jpg" alt="slide 2" />
-									<p>Event E</p>
+								<a href="http://conference.aaacn.org/welcome">
+									<img src="images/Slides/new_postings/aaacnCon.jpg" alt="slide 1" />
+									<p>AAANC 38th Annual Conference</p>
 								</a>
 							</span>
 						</div>
@@ -119,54 +89,6 @@
 					</a>
 				</div>
 			<!-- end .info_slider --></section>
-<!--			<section class="bottom">
-				<section id="multimedia" class="info_window">
-					<h3>Multimedia</h3>
-					<ul class="bullets">
-						<li><a href="#">2010 Interregional Video</a></li>
-						<li><a href="#">2nd Annual Ambulatory Practice Symposium Handouts</a></li>
-						<li><a href="#">Florence Nightingale Video</a></li>
-						<li><a href="#">Four Habits</a></li>
-						<li><a href="#">Heart Failure Video</a></li>
-						<li><a href="#">KP History of Nursing Video</a></li>
-						<li><a href="#">Scope of Practice Videos</a></li>
-						<li><a href="#">Teamwork and Communication Video</a></li>
-					</ul>
-				</section><!-- end .multimedia -->
-<!--				<section id="searches" class="info_window">
-					<h3> Past Searches </h3>
-					<div id="recent_searches">
-						<ul>
-							<li class="head">Recent Searches</li>
-							<li>"module a"</li>
-							<li class="dark">"skills lab"</li>
-							<li>"standized procedures"</li>
-							<li class="dark"></li>
-							<li></li>
-						</ul>
-					</div>
-					<div id="popular_searches">
-						<ul>
-							<li class="head">Popular Searches</li>
-							<li>"module a"</li>
-							<li class="dark">"skills lab"</li>
-							<li>"standardized procedures"</li>
-							<li class="dark"></li>
-							<li></li>
-						</ul>
-					</div>
-					<div id="favorite_searches">
-						<ul>
-							<li class="head">Favorite Searches</li>
-							<li>"module a"</li>
-							<li class="dark">"skills lab"</li>
-							<li>"standardized procedures"</li>
-							<li class="dark"></li>
-							<li></li>
-						</ul>
-					</div>
-				</section><!-- end #searches -->
-<!--			</section><!-- end .bottom-->
 		</section><!-- end .content-->
 	</div><!-- end .container-->
 	<div class="clear"></div>

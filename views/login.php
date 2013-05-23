@@ -2,8 +2,10 @@
 	<div class="form_background">
 		<div class="form_container">
 			<h1 class="underlined">Sign In</h1>
-			<form method="post" action="<?= $config->siteRoot . "login" ?>" name="loginform" id="loginform">
-			
+			<form method="post" action="<?=$config->siteRoot."login"?>" name="loginform" id="loginform">
+				<?php if(isset($_SESSION['locked'])):?>
+					<p class="error"><?= $_SESSION['locked']?></p>
+				<?php endif; ?>
 				<?php if(isset($errors['login_error'])): ?>
 					<p class="error"><?= $errors['login_error']; ?></p>
 				<?php endif; ?>
@@ -13,11 +15,12 @@
 				<label for="password">Password</label>
 					<input type="password" name="password" id="password" /> <br/>
 				<label for="remember" id="remember_label" >Keep me logged in?</label>
-					<input type="checkbox" name="remember" id="remember" /> <br/>
+					<input type="checkbox" name="remember" id="remember" checked="checked" /> <br/>
 					<input type="submit" name="login" class="submit" id="login" value="Sign In" />
 			</form>
 			<span class="forgot">
-				<a id="forgot_user" href="#">Forgot Username? </a>| <a id="forgot_pass" href="#">Forgot Password?</a>
+				<a id="forgot_user" href="<?=$config->siteRoot."forgot-username"?>">Forgot Username? </a>
+				| <a id="forgot_pass" href="<?=$config->siteRoot."forgot-password"?>">Forgot Password?</a>
 			</span>
 		</div>
 	</div>

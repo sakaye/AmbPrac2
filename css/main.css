@@ -42,9 +42,12 @@ body {
 	/* font-size:.875em; */ /* 14/16 */
 }
 h1, h2, h3, h4, h5, h6 { font-family: "Lobster Two", cursive; }
-h1 { font-size:2.25em; /* 36/16 */ }
-h2 { font-size:1.875em; /* 30/16 */ }
-h3 { font-size:1.5em; /* 24/16 */ }
+h1 { font-size:2.25em; } /* 36/16 */
+h2 { font-size:1.875em; } /* 30/16 */
+h3 { font-size:1.5em; } /* 24/16 */
+h4 { font-size:1.125em; } /* 18/16 */
+
+.droidSerif { font-family:'Droid Serif'; }
 
 div.container {
 	width:960px;
@@ -211,6 +214,17 @@ div#date {
 	padding:9px 0px;
 	display:inline-block;
 }
+#quicklink p, #quicklink a {
+	color:#948987;
+	font-size:.9375em; /* 15/16 */
+	padding:9px 0px;
+}
+#quicklink a:visited {
+	color:#948987;
+}
+#quicklink a:hover {
+	color:white;
+}
 ul#topnav li {
 	width:96px;
 	height:45px;
@@ -290,9 +304,9 @@ ul#topnav div.sub h4 {
 
 																/****** CONTENT STYLES ******/
 div.list_background {
-	width:669px;
-	min-height:429px;
-	padding:0px 20px;
+	width:668px;
+	min-height:428px;
+	padding:20px;
 	border:1px solid #b4b4b4;
 	background-color:#efefef;
 	float:left;
@@ -316,27 +330,67 @@ div.list_background {
 	div.list_background li a:hover {
 		color:#da9720;
 	}
-	div.list_background p {
+	p.discription {
 		font-size:.75em; /* 12/16 */
 		color:#818181;
 		padding-top:5px;
 		padding-left:20px;
 	}
+	div.list_background h4 {
+		padding:5px 0px;
+		font-weight:bold;
+	}
 	
-ul.content_list a {
-	font-size:.875em; /* 14/16 */
-}
-ul.content_list li {
-	padding: 5px 0px;
-	border:none;
-}
 div.content_background {
 	width:920px;
 	min-height:320px;
-	padding:0px 20px 20px;
+	padding:20px;
 	border:1px solid #b4b4b4;
 	background-color:#efefef;
 	clear:both;
+}
+	ul.content_list {
+		font-size: 1.25em; /* 20/16 */
+	}
+	ul.content_list li {
+	padding: 10px 0px 9px;
+	border-bottom:1px dashed #b4b4b4;
+	}
+	div.video {
+		width:500px;
+		margin:auto;
+		margin-bottom:20px;
+	}
+	ul.content_list a {
+		color:#184e78;
+	}
+	ul.content_list a:hover {
+		color:#da9720;
+	}
+
+p.forgotInfo {
+	line-height:1.5em;
+	margin-bottom:15px;
+}
+input#sendUsername, input#sendInstructions, input#resetPassword {
+	float:none;
+	font-size:15px;
+	margin-top:30px;
+	display:block;
+}
+label.forgot {
+	width:250px;
+}
+img#caring_book {
+	padding:0px 10px 10px 0px;
+}
+span.book_title {
+	font-size:20px;
+	padding-bottom:20px;
+	display:block;
+}
+.book_info {
+	line-height:1.5em;
 }
 															/****** ACPC Message Styles ******/
 															
@@ -522,55 +576,82 @@ div.content_background {
 	}
 	
 div.subsection_sidebar {
-	width:228px;
+	width:208px;
 	min-height:200px;
 	border:1px solid #b4b4b4;
 	background-color:#efefef;
+	padding:10px;
 	float:right;
 }
+
+div.subsection_sidebar .header {
+	padding-bottom:10px;
+	margin-bottom:10px;
+	background:url(images/underline.gif) repeat-x bottom;
+}
+
 h1.underlined {
 	color:#000;
-	padding:20px 0px 15px;
+	padding:0px 0px 15px;
 	margin:0px 0px 20px;
 	background:url(images/underline.gif) repeat-x bottom;
 }
 div.form_background {
-	width:528px;
+	width:480px;
 	min-height:320px;
+	padding:20px;
 	border:1px solid #b4b4b4;
 	background-color:#efefef;
 	float:left;
 }
-div.form_container {
-	width:480px;
-	margin:auto;
+a.register {
+	width:132px;
+	height:51px;
+	margin:20px auto;
+	border:0;
+	text-align:center;
+	font-size:14px;
+	color:#fff;
+	background:url(images/submit_button.png);
+	cursor:pointer;
+	display:block;
 }
 div.form_field {
 	min-height:30px;
 	clear:both;
 }
-form#registerform span.error {
+span.error {
 	color:red;
 	width:260px;
 	margin-right:2px;
 	float:right;
 	display:block;
 }
-p.error {
+form#contactform span.error {
+	width:240px;
+	text-align:center;
+	display:inline-block;
+	padding-top:13px;
+}
+.error {
 	color:red;
 	text-align:center;
 	font-size:1.125em; /* 18/16 */
 }
+.valid {
+	color:green;
+	text-align:center;
+	font-size:1.125em; /* 18/16 */
+}
 div.container form select {
-	font-size:24px;
 	margin:10px 2px;
 	}
-div.container form label {
-	width:214px;
+div.container label {
+	width:208px;
 	font-size:1.125em; /* 18/16 */
 	display:inline-block;
 }
-div.container form input {
+div.container input {
 	font-size:1em; /* 16/16 */
 	width:250px;
 	padding:5px;
@@ -587,7 +668,7 @@ div.container form input {
 	     -o-box-shadow: rgba(0,0,0, 0.2) 0px 0px 8px;
 	        box-shadow: rgba(0,0,0, 0.2) 0px 0px 8px; 
 	}
-div.container form input.input_error {
+div.container form input.input_error, textarea.input_error {
 	border:1px solid red;
     -webkit-box-shadow: rgba(255,0,0, 1) 0px 0px 8px;
        -moz-box-shadow: rgba(255,0,0, 1) 0px 0px 8px;
@@ -599,7 +680,7 @@ div.container input:focus { border-color:#e89e1d; }
 div.container input.submit { 
 	width:132px;
 	height:51px;
-	margin:5px 0px 20px;
+	margin:5px auto 20px;
 	border:0;
 	font-size:18px;
 	color:#fff;
@@ -617,7 +698,7 @@ span.forgot a {
 	font-size:.75em; /* 12/16 */
 }
 div.form_container p { padding:10px 0; }
-div.form_container p.required { color:red; }
+p.required { color:red; }
 div.form_container p.form_info {
 	text-align:center;
 	font-size:.875em;
@@ -639,7 +720,7 @@ div.call_out ul, div.call_out p{
 }
 div.call_out li{
 	padding:2px 0px;
-	color:#818181;
+	color:#133E5F;
 }
 div.call_out h3.call_out_header {
 	background-color:#494443;
@@ -648,7 +729,20 @@ div.call_out h3.call_out_header {
 	font-weight:normal;
 	margin-bottom:10px;
 }
-
+form#contactform label {
+	width:150px;
+}
+form#contactform label.label_textarea {
+	position:relative;
+	bottom:65px;
+}
+form#contactform textarea {
+	width:508px;
+	max-width:508px;
+	height:78px;
+	max-height:78px;
+	resize:none;
+}
 
 																/****** SLIDER STYLES ******/
 	section.slider {
@@ -731,9 +825,15 @@ div.call_out h3.call_out_header {
 		left:10px;
 		background:url(images/slider_left.png) no-repeat;
 	}
+	.nivo-prevNav:active { 
+		background-position:0px -46px;
+	}
 	.nivo-nextNav {
 		right:10px;
 		background:url(images/slider_right.png) no-repeat;
+	}
+	.nivo-nextNav:active { 
+		background-position:0px -46px;
 	}
 	/* Control nav styles (e.g. 1,2,3...) */
 	.nivo-controlNav {
@@ -753,6 +853,7 @@ div.call_out h3.call_out_header {
 		background:url(images/pagination_blue.png) no-repeat;
 	}
 	.nivo-controlNav a.active { background:url(images/pagination_blue.png) 0px -13px no-repeat; }
+	
 
 /****** HOME PAGE STYLES ******/
 	section.home_page h1 {
@@ -865,6 +966,4 @@ p.result_url, p.result_description {
 p.result_description {
 	width:600px;
 }
-
-
 

@@ -4,27 +4,31 @@
 					<li><a class="home" href="<?=$config->siteRoot?>">Home</a></li>
 
 					<?php
-					$sections = getAllSections();
-					for ($i=0; $i < count($sections); $i++):
-						$s = $sections[$i];
+					$Navsections = getAllSections();
+					for ($i=0; $i < count($Navsections); $i++):
+						$s = $Navsections[$i];
 					?>
 					<li <?php if ($s->dropdown == 1){echo 'class="dropdown"';}?>>
 						<a href="<?=$config->siteRoot.$s->slug?>"><?=$s->name?></a>
 							<div <?php if ($s->dropdown == 1){echo 'class="sub"';}?>>
 							<ul>
 								<?php
-								$subSections = $s->getSubsections();
-								for($j=0; $j < count($subSections); $j++):
-									$subSection = $subSections[$j];
+								$NavsubSections = $s->getSubsections();
+								for($j=0; $j < count($NavsubSections); $j++):
+									$NavsubSection = $NavsubSections[$j];
 								?>
-								<li><a href="<?=$config->siteRoot.$s->slug.'/'.$subSection->slug?>"><?=$subSection->name?></a></li>
+								<?php if(isset($NavsubSection->URL)): ?>
+									<li><a href="<?=$NavsubSection->URL?>"><?=$NavsubSection->name?></a></li>
+								<?php else: ?>
+									<li><a href="<?=$config->siteRoot.$s->slug.'/'.$NavsubSection->slug?>"><?=$NavsubSection->name?></a></li>
+								<?php endif; ?>
 								<?php endfor; ?>
 							</ul>
 						</div>
 					</li>
 					<?php endfor; ?>
 					
-					<li class="last"><a class="contact" href="#">Contact Us</a></li>
+					<li class="last"><a class="contact" href="<?=$config->siteRoot.'contact-us'?>">Contact Us</a></li>
 				</ul>
 			</div>
 		</nav>

@@ -3,14 +3,17 @@
 			<h1 class="underlined"><?=$section->name?></h1>
 			<ul class="main_list">
 				<?php
-				$subSections = $section->getSubsections();
 				for($i=0; $i < count($subSections); $i++):
-					$subSection = $subSections[$i];
-				?>
-					<li><a href="<?=$config->siteRoot.$section->slug.'/'.$subSection->slug?>"><?=$subSection->name?></a>
-											
-					<?php if($subSection->discription): ?>
-						<p><?=$subSection->discription?></p>
+					$subSection = $subSections[$i];	?>
+					
+					<?php if(isset($subSection->URL)): ?>
+						<li><a href="<?=$subSection->URL?>"><?=$subSection->name?></a>
+					<?php else: ?>
+						<li><a href="<?=$config->siteRoot.$section->slug.'/'.$subSection->slug?>"><?=$subSection->name?></a>
+					<?php endif; ?>
+							
+					<?php if(isset($subSection->description)): ?>
+						<p class="discription"><?=$subSection->description?></p>
 					<?php endif; ?>
 					
 				</li>
@@ -23,4 +26,4 @@
 		</div>
 -->
 		<div class="clear"></div>		
-<!-- end .container--></div>
+</div><!-- end .container-->

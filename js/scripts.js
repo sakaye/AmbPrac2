@@ -10,6 +10,11 @@ function isValidEmailAddress(emailAddress) {
     return pattern.test(emailAddress);
 }
 
+function isValidPassword(password) {
+	var pattern = new RegExp(/^(?=.*\d+)(?=.*[a-zA-Z])[0-9a-zA-Z!@#$%]{6,}$/);
+	return pattern.test(password);
+}
+
 $(document).ready(function() {
 
 			var body_ID = $("body").attr("id");
@@ -30,22 +35,23 @@ $(document).ready(function() {
 					boxCols: 12, // For box animations
 					boxRows: 5, // For box animations
 					animSpeed: 500, // Slide transition speed
-					pauseTime: 4000, // How long each slide will show
+					pauseTime: 6000, // How long each slide will show
 					startSlide: 0, // Set starting Slide (0 index)
 					directionNav: true, // Next & Prev navigation
 					directionNavHide: false, // Only show on hover
 					controlNav: true, // 1,2,3... navigation
 					controlNavThumbs: false, // Use thumbnails for Control Nav
 					controlNavThumbsFromRel: false, // Use image rel for thumbs
-					keyboardNav: true, // Use left & right arrows
-					pauseOnHover: false, // Stop animation while hovering
+					keyboardNav: false, // Use left & right arrows
+					pauseOnHover: true, // Stop animation while hovering
 					manualAdvance: false, // Force manual transitions
 					captionOpacity: 1, // Universal caption opacity
 					prevText: '', // Prev directionNav text
 					nextText: '', // Next directionNav text
 					randomStart: false // Start on a random slide
 				});
-				$("#new_postings_slides, #upcoming_events_slides").slides({
+				/*
+$("#new_postings_slides, #upcoming_events_slides").slides({
 					preload: true,
 					container: 'box_container',
 					play: 10000,
@@ -69,8 +75,9 @@ $(document).ready(function() {
 						$(".arrows2").hide();
 					}
 				});
+*/
 			}
-			else if (body_ID == "register"){
+			else if (body_ID == "registerKP"){
 				var username = $("#username");
 				var email = $("#email");
 				var password = $("#password");
@@ -80,7 +87,8 @@ $(document).ready(function() {
 				var title = $("#title");
 				var area = $("#area");
 				
-				$("#submit").click(function(){
+				/*
+$("#submit").click(function(){
 					// checking empty field
 					if (var_check(username) && var_check(email) && var_check(password) && var_check(re_password)
 					    && var_check(first_name) && var_check(last_name) && var_check(title) && var_check(area)){
@@ -90,7 +98,7 @@ $(document).ready(function() {
 						}
 						// invalid email format
 						else {
-							alert("email is invalid");
+							alert("Email is invalid");
 						}						
 					}
 					// at least one of the fields is empty
@@ -100,6 +108,131 @@ $(document).ready(function() {
 					// prevents submit to submit the form
 					return false;
 				});	
+*/
+				area.change(function(){
+					var area = $(this).val();
+					var URL = siteRoot+"register/kp-employee/"+area;
+					$.get(URL,function(response){
+						//console.log(response.id);
+						var content = '<option selected="selected">-</option>';
+						for(campus in response){
+							content += '<option value="'+response[campus]+'">'+response[campus]+'</option>';
+						}
+						$("#campus").html(content);
+					},"json");
+				});				
+				$(".form_info").hide();
+				username.bind({
+					focusin:function(){
+						$("#userInfo").slideDown('fast');
+					},
+					focusout:function(){
+						$("#userInfo").slideUp('fast');
+					}
+				});
+				password.bind({
+					focusin:function(){
+						$("#passInfo").slideDown('fast');
+					},
+					focusout:function(){
+						$("#passInfo").slideUp('fast');
+					}
+				});
+				/*
+email.bind({
+					focusin:function(){
+						$("#emailInfo").slideDown('fast');
+					},
+					focusout:function(){
+						$("#emailInfo").slideUp('fast');
+					}
+				});
+*/
+			}
+			else if (body_ID == "forgotPassword"){
+				$('#sendInstructions').click(function(){
+					var username = $('#username').val();
+					var URL = siteRoot+'forgot-password/'+username;
+					var checkInbox = "An email has been sent. Please check your inbox.";
+					var dbError = 'There was an error with the database. Please try again.';
+					var noUser = 'Our records show that there is no account associated with the NUID/Username you provided. Please try again.'
+					$.get(URL, function(response){
+						//$("#sendInstructions").hide();
+						if (response == true){
+							$("#response").html(checkInbox).removeClass("error").addClass("valid");
+							$("#input_container").hide();
+						}
+						else if (response == 'dbError'){
+							$("#response").html(dbError);
+						}
+						else {
+							$("#response").html(noUser);
+						}
+					},"json");
+				})
+			}
+			else if (body_ID == "resetPassword"){
+				var noPassword = "Passwords can not be blank.";
+				var dontMatch = "Your passwords don't match. Please try again.";
+				var notValid = "Your password is not valid. Please try again.";
+				$("input#resetPassword").click(function(){
+					var password = $('input#password').val();
+					var rePassword = $('input#rePassword').val();
+					if (password != "" && rePassword != ""){
+						if ( password == rePassword ){
+							if (isValidPassword(password)){
+								$('#resetPasswordForm').submit();	
+							}
+							else {
+								$("#response").html(notValid);
+							}
+						}
+						else {
+							$("#response").html(dontMatch);
+							$("input#password").addClass("input_error");
+							$("input#rePassword").addClass("input_error");
+						}
+					}
+					else {
+						$("#response").html(noPassword);
+						if (password == ""){
+							$("input#password").addClass("input_error");	
+						}
+						if (rePassword == ""){
+							$("input#rePassword").addClass("input_error");	
+						}
+					}
+					return false;
+				});
+				/*
+				$('input#resetPassword').click(function(){
+					var username = $('#username').val();
+					var val_key = $('#val_key').val();
+					var password = $('#password').val();
+					var rePassword = $('#rePassword').val();
+					var URL = siteRoot+'user/reset-password/'+username+'/'+val_key+'/'+password+'/'+rePassword;
+					var complete = "Your password has been reset. You may now login with your new password.";
+					var noPassword = "Passwords can not be blank.";
+					var dontMatch = "Your passwords don't match. Please try again.";
+					var notValid = "Your password is not valid. Please try again.";
+					$.post(URL, function(response){
+						console.log(response)
+						if (response == true){
+							$("#response").html(complete).removeClass("error").addClass("valid");
+							$(".input_container").hide();
+						}
+						else if (response == 'noPassword'){
+							$("#response").html(noPassword);
+						}
+						else if (response == 'dontMatch'){
+							$("#response").html(dontMatch);
+						}
+						else if (response == 'notValid'){
+							$("#response").html(notValid);
+						}
+					},"json");
+				});
+*/
 			}
 		});
 		

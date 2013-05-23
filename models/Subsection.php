@@ -1,7 +1,7 @@
 <?php
 
 class Subsection{
-	public $id, $section_id, $name, $discription, $slug, $URL, $locked;
+	public $id, $section_id, $name, $description, $slug, $URL, $locked;
 	public $content = array();
 	
 	function __construct($slug=null){
@@ -16,6 +16,9 @@ class Subsection{
 		$result = db()->query($sql);
 		if($row = $result->fetch_object()){
 			$this->fillData($row);	
+			if ($this->locked === 'yes'){
+				$_SESSION['isLocked'] = true;
+			}
 		}
 	}
 	
@@ -30,7 +33,7 @@ class Subsection{
 	function fillData($row){
 		$this->id = $row->id;
 		$this->name = $row->name;
-		$this->discription = $row->discription;
+		$this->description = $row->description;
 		$this->section_id = $row->section_id;
 		$this->slug = $row->slug;
 		$this->URL = $row->URL;
@@ -40,10 +43,10 @@ class Subsection{
 	function getContent(){
 		$this->content = array();
 		if(isset($_SESSION['kp_employee']) && $_SESSION['kp_employee'] == 'yes'){
-			$sql = "SELECT * FROM content WHERE subsection_id = $this->id";
+			$sql = "SELECT * FROM content WHERE subsection_id = $this->id AND `active` = 'yes' ORDER BY `order` ASC, `name` ASC";
 		}
 		else{
-			$sql = "SELECT * FROM content WHERE subsection_id = $this->id AND `locked` = 'no' ORDER BY `order` ASC";			
+			$sql = "SELECT * FROM content WHERE subsection_id = $this->id AND `locked` = 'no' AND `active` = 'yes' ORDER BY `order` ASC, `name` ASC";
 		}
 		$result = db()->query($sql);
 		while($row = $result->fetch_object()){
